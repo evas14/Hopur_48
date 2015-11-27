@@ -100,7 +100,6 @@ vector<person> addpersontovector(vector<person>personvector)
 void search(string searchquery,vector<person> personvector)
 {
     int queryfoundcounter=0;
-    int lengthofquery = searchquery.length();
 
 
   for(unsigned int i = 0; i < personvector.size();i++)
@@ -157,8 +156,9 @@ int main()
 
             break;
             case 3:
-                searchquery = readsearchquery();
-                search(searchquery,personvector);
+            searchquery = readsearchquery();
+            search(searchquery,personvector);
+
 
             break;
             case 4:

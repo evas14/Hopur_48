@@ -9,6 +9,7 @@ public:
     UI();
     int mainMenu();
     int userInput();
+    int searchMenu();
 };
 
 #endif // UI_H
