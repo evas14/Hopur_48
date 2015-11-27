@@ -32,6 +32,8 @@ string readsearchquery();
 void displayperson( person per)
 {
     cout << "----------------------------------------"<<endl;
+    cout << "                WELCOME                 "<<endl;
+    cout << "----------------------------------------"<<endl;
     cout <<"ID: "<< per.getID() << endl;
     cout <<"Name: " << per.getName() << endl;
     cout <<"Gender: " << per.getGender() << endl;
