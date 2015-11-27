@@ -7,7 +7,7 @@ class UI
 {
 public:
     UI();
-    void mainMenu();
+    int mainMenu();
     int userInput();
 };
 

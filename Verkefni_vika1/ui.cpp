@@ -8,34 +8,33 @@ UI::UI()
 
 }
 
-void UI::mainMenu()
+int UI::mainMenu()
 {
-    cout << "Welcome to the database of elite computer scientists!" << endl << endl;
-    cout << "What would you like to do?" << endl;
+
     cout << "-----------------------------------------------------" << endl;
     cout << "1. Promote a new CS to the elite ranks(add new).\n"
             "2. Edit an existing scientist.\n"
             "3. Search amongst the elites.\n"
-            "4. Sort the elites by order of your choice.\n"
+            "4. Display all.\n"
             "5. Demote a CS from the elite ranks(delete).\n"
             "Any other choice quits!" << endl;
 
     switch(userInput())
     {
     case 1:
-        cout << "case 1" << endl;
+        return 1;
         break;
     case 2:
-        cout << "case 2" << endl;
+        return 2;
         break;
     case 3:
-        cout << "case 3" << endl;
+        return 3;
         break;
     case 4:
-        cout << "case 4" << endl;
+        return 4;
         break;
     case 5:
-        cout << "case 5" << endl;
+        return 5;
         break;
     default:
         exit(0);

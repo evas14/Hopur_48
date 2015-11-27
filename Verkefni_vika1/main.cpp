@@ -48,7 +48,6 @@ void readvector(vector <person> per)
 {
     for(unsigned int i = 0; i < per.size(); i++)
     {
-
         person currentperson = per.at(i);
         displayperson(currentperson);
 
@@ -99,11 +98,13 @@ vector<person> addpersontovector(vector<person>personvector)
 void search(string searchquery,vector<person> personvector)
 {
     int queryfoundcounter=0;
+    int lengthofquery = searchquery.length();
 
 
   for(unsigned int i = 0; i < personvector.size();i++)
   {
-      if (personvector.at(i).getName() == searchquery)
+
+      if (personvector.at(i).getName().find(searchquery) != string::npos)
       {
           queryfoundcounter++;
           displayperson(personvector.at(i));
@@ -136,24 +137,14 @@ string readsearchquery()
 
 int main()
 {
-    /*
-    int userselection=0;
+
     string searchquery;
     vector<person> personvector;
+    UI userInterface;
 
-    cout << "----------------------------------------"<<endl;
-    cout << "1.Enter in new Computer Scientist"<< endl;
-    cout << "2.Display all people"<< endl;
-    cout << "3.Search"<<endl;
-    cout << "4.Edit" << endl;
-    cout << "Any other button to Quit"<< endl;
-    cin >> userselection;
-    cout << "----------------------------------------"<<endl;
-
-    while(userselection >= 1 && userselection <= 4)
+    while(true)
     {
-
-        switch(userselection)
+        switch(userInterface.mainMenu())
         {
             case 1:
                 personvector = addpersontovector(personvector);
@@ -161,33 +152,27 @@ int main()
             break;
             case 2:
 
-                readvector(personvector);
+
             break;
             case 3:
                 searchquery = readsearchquery();
                 search(searchquery,personvector);
+
             break;
             case 4:
-                cout << "This feature is not ready"<<endl;
+                readvector(personvector);
+
+            break;
+            case 5:
+
             break;
 
         }
 
-        cout << "----------------------------------------"<<endl;
-        cout << "1.Enter in new Computer Scientist"<< endl;
-        cout << "2.Display all people"<< endl;
-        cout << "3.Search"<<endl;
-        cout << "4.Edit" << endl;
-        cout << "Any other button to Quit"<< endl;
-        cin >> userselection;
-        cout << "----------------------------------------"<<endl;
-
     }
 
-    */
 
-    UI userInterface;
-    userInterface.mainMenu();
+
 
     return 0;
 }

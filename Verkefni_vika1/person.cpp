@@ -65,5 +65,3 @@ person::person(string name,string gender,int yearofbirth,int yearofdeath)
 
 
 }
-
-

@@ -9,9 +9,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     person.cpp \
-    ui.cpp
+    ui.cpp \
+    datalayer.cpp
 
 HEADERS += \
     person.h \
-    ui.h
+    ui.h \
+    datalayer.h
 
