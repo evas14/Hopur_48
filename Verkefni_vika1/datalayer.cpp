@@ -1,10 +1,11 @@
 #include "datalayer.h"
 
+
 Datalayer::Datalayer()
 {
 }
 
-void DataLayer::AddData(vector<person> toFile )
+void Datalayer::AddData(vector<person> toFile )
 {
     ofstream out;
     out.open("data.txt");
@@ -21,6 +22,33 @@ void DataLayer::AddData(vector<person> toFile )
         out << ';' << endl;
     }
     out.close();
+
+}
+vector<person> Datalayer::PullData( )
+{
+    vector<person>pull;
+    ifstream in("data.txt");
+
+    //int ID,yearofbirth,yearofdeath;
+    string name;
+
+    if (in.is_open())
+    {
+        while( getline(in,name))
+        {
+
+
+           cout<<name<<endl;
+            /*getline(in,name);
+            in >>  >> endl;
+            in >>  >> endl;
+            in >> >> endl;
+            in >> ';' << endl;*/
+        }
+        in.close();
+    }
+
+    return pull;
 
 }
 
