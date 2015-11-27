@@ -4,6 +4,7 @@
 #include <string>
 #include <ctime>
 #include <person.h>
+#include <datalayer.h>
 #include <fstream>
 #include <ui.h>
 
@@ -14,6 +15,7 @@ using namespace std;
 void displayperson(person per);
 void readvector(vector <person> per);
 void search(string searchquery,vector<person> personvector);
+
 
 //vector föll
 /* addpersontovector
@@ -93,6 +95,9 @@ vector<person> addpersontovector(vector<person>personvector)
 
 
     personvector.push_back(per);
+    Datalayer writer;
+    writer.AddData(personvector);
+
     return personvector;
 
 }

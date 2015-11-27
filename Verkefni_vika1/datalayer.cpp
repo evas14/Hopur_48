@@ -4,7 +4,7 @@ Datalayer::Datalayer()
 {
 }
 
-void DataLayer::AddData(vector<person> toFile )
+void Datalayer::AddData(vector<person> toFile )
 {
     ofstream out;
     out.open("data.txt");
