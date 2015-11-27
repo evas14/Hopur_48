@@ -6,6 +6,7 @@ class Datalayer
 {
 public:
     Datalayer();
+    void AddData(vector<person> toFile );
 };
 
 #endif // DATALAYER_H
