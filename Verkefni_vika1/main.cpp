@@ -4,12 +4,27 @@
 #include <string>
 #include <ctime>
 #include <person.h>
+#include <fstream>
+#include <ui.h>
 
 using namespace std;
+
+
+//void föll
 void displayperson(person per);
 void readvector(vector <person> per);
-vector<person> addpersontovector(vector<person>personvector);
 void search(string searchquery,vector<person> personvector);
+
+//vector föll
+/* addpersontovector
+ * Tekur inn: vector af taginu person og bætir við persónu í vectorinn
+ * Skilar: vector af taginu person
+ * 
+ * 
+*/
+vector<person> addpersontovector(vector<person>personvector);
+
+//string föll
 string readsearchquery();
 
 
@@ -121,7 +136,8 @@ string readsearchquery()
 
 int main()
 {
-    int choice=0;
+    /*
+    int userselection=0;
     string searchquery;
     vector<person> personvector;
 
@@ -131,13 +147,13 @@ int main()
     cout << "3.Search"<<endl;
     cout << "4.Edit" << endl;
     cout << "Any other button to Quit"<< endl;
-    cin >> choice;
+    cin >> userselection;
     cout << "----------------------------------------"<<endl;
 
-    while(choice >= 1 && choice <= 4)
+    while(userselection >= 1 && userselection <= 4)
     {
 
-        switch(choice)
+        switch(userselection)
         {
             case 1:
                 personvector = addpersontovector(personvector);
@@ -163,11 +179,15 @@ int main()
         cout << "3.Search"<<endl;
         cout << "4.Edit" << endl;
         cout << "Any other button to Quit"<< endl;
-        cin >> choice;
+        cin >> userselection;
         cout << "----------------------------------------"<<endl;
 
     }
 
+    */
+
+    UI userInterface;
+    userInterface.mainMenu();
 
     return 0;
 }
