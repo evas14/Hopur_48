@@ -8,6 +8,7 @@
 #include <fstream>
 #include <ui.h>
 #include <datalayer.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,6 +19,9 @@ void readvector(vector <person> per);
 void search(string searchquery,vector<person> personvector);
 void editperson(vector <person> per);
 void removeperson(vector <person> per);
+bool vectorhasperson(int id);
+int currentyear();
+
 
 
 //vector föll
@@ -28,10 +32,60 @@ void removeperson(vector <person> per);
  * 
 */
 vector<person> addpersontovector(vector<person>personvector);
-
+void sortvectorbyname(vector<person>personvector);
+void sortvectorbynameReverse(vector<person> personvector);
+bool isgreater(person per1,person per2)
+{
+    return per1.getName() < per2.getName();
+}
 
 //string föll
 string readsearchquery();
+
+int currentyear()
+{
+    time_t currentTime;
+    struct tm *localTime;
+
+    time( &currentTime );
+    localTime = localtime( &currentTime );
+    int currentYear = localTime->tm_year + 1900;
+
+    return currentYear;
+}
+
+void sortvectorbynameReverse(vector<person> personvector)
+{
+    vector <person> reverseperson;
+    sort(personvector.begin(),personvector.end(),isgreater);
+
+    for(int i = personvector.size(); i >= 0; i--)
+    {
+        reverseperson.push_back(personvector.at(i));
+    }
+
+    readvector(reverseperson);
+}
+
+void sortvectorbyname(vector<person>personvector)
+{
+
+    sort(personvector.begin(),personvector.end(),isgreater);
+    readvector(personvector);
+
+}
+
+//removeperson notar þetta fall
+bool vectorhasperson(vector <person> per,int id)
+{
+    for(unsigned int i = 0; i < per.size(); i++)
+    {
+
+    }
+
+    return true;
+
+}
 
 void removeperson(vector<person> per)
 {
@@ -39,6 +93,8 @@ void removeperson(vector<person> per)
     readvector(per);
     cout << "Enter ID of the person you want to remove: ";
     cin >> id;
+
+
 
 
 }
@@ -49,7 +105,6 @@ void editperson(vector <person> per)
     readvector(per);
     cout << "Enter ID of the person you want to edit: ";
     cin >> id;
-
 
 }
 
@@ -184,7 +239,9 @@ int main()
 
             break;
             case 4:
-                readvector(personvector);
+                //readvector(personvector);
+                //sortvectorbyname(personvector);
+                sortvectorbynameReverse(personvector);
 
             break;
             case 5:
