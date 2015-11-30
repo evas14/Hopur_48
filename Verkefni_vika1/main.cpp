@@ -7,6 +7,7 @@
 #include <datalayer.h>
 #include <fstream>
 #include <ui.h>
+#include <datalayer.h>
 
 using namespace std;
 
@@ -15,6 +16,8 @@ using namespace std;
 void displayperson(person per);
 void readvector(vector <person> per);
 void search(string searchquery,vector<person> personvector);
+void editperson(vector <person> per);
+void removeperson(vector <person> per);
 
 
 //vector föll
@@ -26,15 +29,34 @@ void search(string searchquery,vector<person> personvector);
 */
 vector<person> addpersontovector(vector<person>personvector);
 
+
 //string föll
 string readsearchquery();
 
+void removeperson(vector<person> per)
+{
+    int id = 0;
+    readvector(per);
+    cout << "Enter ID of the person you want to remove: ";
+    cin >> id;
+
+
+}
+
+void editperson(vector <person> per)
+{
+    int id = 0;
+    readvector(per);
+    cout << "Enter ID of the person you want to edit: ";
+    cin >> id;
+
+
+}
 
 
 void displayperson( person per)
 {
-    cout << "----------------------------------------"<<endl;
-    cout << "                WELCOME                 "<<endl;
+
     cout << "----------------------------------------"<<endl;
     cout <<"ID: "<< per.getID() << endl;
     cout <<"Name: " << per.getName() << endl;
@@ -45,7 +67,7 @@ void displayperson( person per)
     {
         cout <<"Year of death: " << per.getYearOfdeath()<< endl;
     }
-    cout << "----------------------------------------"<<endl;
+
 }
 
 void readvector(vector <person> per)
@@ -82,22 +104,13 @@ vector<person> addpersontovector(vector<person>personvector)
     cin >> yearofdeath;
 
     person per(name,gender,yearofbirth,yearofdeath);
+    per.setID(personvector.size()+1);
 
-    if(personvector.size() == 0)
-    {
-        per.setID(1);
-    }
-
-    else
-    {
-        per.setID(personvector.size()+1);
-    }
 
 
     personvector.push_back(per);
     Datalayer writer;
     writer.AddData(personvector);
-
     return personvector;
 
 }
@@ -145,8 +158,11 @@ int main()
 {
 
     string searchquery;
-    vector<person> personvector;
+    Datalayer reader;
+    vector<person> personvector = reader.PullData();
     UI userInterface;
+
+
 
     while(true)
     {
@@ -157,6 +173,7 @@ int main()
 
             break;
             case 2:
+            editperson(personvector);
 
 
             break;
@@ -177,8 +194,6 @@ int main()
         }
 
     }
-
-
 
 
     return 0;
