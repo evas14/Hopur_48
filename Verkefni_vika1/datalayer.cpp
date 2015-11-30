@@ -19,7 +19,6 @@ void Datalayer::AddData(vector<person> toFile )
         out << currentperson.getGender() << endl;
         out << currentperson.getYearOfbirth() << endl;
         out << currentperson.getYearOfdeath() << endl;
-        out << ';' << endl;
     }
     out.close();
 
@@ -29,25 +28,40 @@ vector<person> Datalayer::PullData( )
     vector<person>pull;
     ifstream in("data.txt");
 
-    //int ID,yearofbirth,yearofdeath;
-    string name;
+    string id, yearofbirth,yearofdeath;
+    string name,gender;
+
+    int Yearofbirth = 0,Yearofdeath = 0;
 
     if (in.is_open())
     {
-        while( getline(in,name))
-        {
+
+            while(in.good()&& getline(in,id))
+            {
+
+                getline (in,name);
+                getline (in,gender);
+                getline (in,yearofbirth);
+                getline (in,yearofdeath);
+
+                stringstream s1(yearofbirth);
+                s1 >> Yearofbirth;
+
+                stringstream s2(yearofdeath);
+                s2 >> Yearofdeath;
+
+                person per(name,gender,Yearofbirth,Yearofdeath);
+                per.setID(pull.size()+1);
+
+                pull.push_back(per);
 
 
-           cout<<name<<endl;
-            /*getline(in,name);
-            in >>  >> endl;
-            in >>  >> endl;
-            in >> >> endl;
-            in >> ';' << endl;*/
-        }
-        in.close();
+
+            }
+
     }
 
+    in.close();
     return pull;
 
 }
