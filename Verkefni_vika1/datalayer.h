@@ -1,5 +1,11 @@
 #ifndef DATALAYER_H
 #define DATALAYER_H
+#include <vector>
+#include <fstream>
+#include <person.h>
+#include <string>
+#include <iostream>
+using namespace std;
 
 
 class Datalayer
@@ -7,6 +13,7 @@ class Datalayer
 public:
     Datalayer();
     void AddData(vector<person> toFile );
+    vector<person> PullData( );
 };
 
 #endif // DATALAYER_H

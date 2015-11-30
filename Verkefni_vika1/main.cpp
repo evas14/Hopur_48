@@ -6,6 +6,7 @@
 #include <person.h>
 #include <fstream>
 #include <ui.h>
+#include <datalayer.h>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ void search(string searchquery,vector<person> personvector);
  * 
 */
 vector<person> addpersontovector(vector<person>personvector);
+
 
 //string föll
 string readsearchquery();
@@ -93,6 +95,8 @@ vector<person> addpersontovector(vector<person>personvector)
 
 
     personvector.push_back(per);
+    Datalayer writer;
+    writer.AddData(personvector);
     return personvector;
 
 }
@@ -143,6 +147,10 @@ int main()
     vector<person> personvector;
     UI userInterface;
 
+    Datalayer pulleddata;
+    pulleddata.PullData( );
+
+
     while(true)
     {
         switch(userInterface.mainMenu())
@@ -172,8 +180,6 @@ int main()
         }
 
     }
-
-
 
 
     return 0;
