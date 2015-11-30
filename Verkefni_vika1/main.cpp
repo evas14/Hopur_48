@@ -75,6 +75,7 @@ void sortvectorbyname(vector<person>personvector)
 
 }
 
+/*
 //removeperson notar þetta fall
 bool vectorhasperson(vector <person> per,int id)
 {
@@ -86,6 +87,7 @@ bool vectorhasperson(vector <person> per,int id)
     return true;
 
 }
+*/
 
 void removeperson(vector<person> per)
 {
@@ -164,8 +166,12 @@ vector<person> addpersontovector(vector<person>personvector)
 
     cout << "Year of death, if the person is still alive please enter 0" << endl;
     cin >> yearofdeath;
-    while(cin.fail() || yearofdeath < 999 || yearofdeath < yearofbirth )
+    while(cin.fail() || yearofdeath < 999 || yearofdeath < yearofbirth || yearofdeath > currentyear() )
     {
+        if(yearofdeath == 0)
+        {
+            break;
+        }
         cout << "Error, please enter a valid year" << endl;
         cin.clear();
         cin.ignore(256, '\n');
