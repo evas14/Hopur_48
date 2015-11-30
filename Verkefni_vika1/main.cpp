@@ -28,8 +28,8 @@ int currentyear();
 /* addpersontovector
  * Tekur inn: vector af taginu person og bætir við persónu í vectorinn
  * Skilar: vector af taginu person
- * 
- * 
+ *
+ *
 */
 vector<person> addpersontovector(vector<person>personvector);
 void sortvectorbyname(vector<person>personvector);
@@ -134,19 +134,6 @@ void readvector(vector <person> per)
 
     }
 }
-
-int currentyear()
-{
-    time_t currentTime;
-    struct tm *localTime;
-
-    time( &currentTime );
-    localTime = localtime( &currentTime );
-    int currentYear = localTime->tm_year + 1900;
-
-    return currentYear;
-}
-
 
 vector<person> addpersontovector(vector<person>personvector)
 {
