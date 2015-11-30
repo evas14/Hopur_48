@@ -80,6 +80,19 @@ void readvector(vector <person> per)
     }
 }
 
+int currentyear()
+{
+    time_t currentTime;
+    struct tm *localTime;
+
+    time( &currentTime );
+    localTime = localtime( &currentTime );
+    int currentYear = localTime->tm_year + 1900;
+
+    return currentYear;
+}
+
+
 vector<person> addpersontovector(vector<person>personvector)
 {
 
@@ -99,9 +112,23 @@ vector<person> addpersontovector(vector<person>personvector)
 
     cout << "Year of birth: ";
     cin >> yearofbirth;
+    while(cin.fail() || yearofbirth < 999 || yearofbirth > currentyear())
+    {
+        cout << "Error, please enter a valid year" << endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> yearofbirth;
+    }
 
-    cout << "Year of death: ";
+    cout << "Year of death, if the person is still alive please enter 0" << endl;
     cin >> yearofdeath;
+    while(cin.fail() || yearofdeath < 999 || yearofdeath < yearofbirth )
+    {
+        cout << "Error, please enter a valid year" << endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> yearofdeath;
+    }
 
     person per(name,gender,yearofbirth,yearofdeath);
     per.setID(personvector.size()+1);
