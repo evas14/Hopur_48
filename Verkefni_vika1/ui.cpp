@@ -16,7 +16,7 @@ int UI::mainMenu()
             "3. Display Names in Reverse Alphabetical Order.\n"
             "4. Search by Name.\n"
             "5. Remove from List.\n" << endl;
-    cout << "Any other Choice will Terminate Program!" << endl;
+    cout << "Any other Choice will Terminate Program! \n" << endl;
 
     switch(userInput())
     {
