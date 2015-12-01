@@ -267,7 +267,6 @@ string readsearchquery()
     cout << "Who are you looking for?: ";
     cin.ignore();
     getline(cin, searchquery);
-    searchquery[0] = toupper(searchquery[0]);
 
     return searchquery;
 }
