@@ -166,6 +166,22 @@ vector<person> addpersontovector(vector<person>personvector)
 
     cout << "Gender: ";
     cin >> gender;
+    gender[0] = toupper(gender[0]);
+
+    while(true)
+    {
+        if(gender == "Male" || gender == "Female")
+        {
+            break;
+        }
+
+        cout << "Type Male or Female: ";
+        cin >> gender;
+        gender[0] = toupper(gender[0]);
+
+    }
+
+
 
     cout << "Year of birth: ";
     cin >> yearofbirth;
