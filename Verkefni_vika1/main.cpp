@@ -164,6 +164,28 @@ vector<person> addpersontovector(vector<person>personvector)
     std::getline(std::cin, name);
     name[0] = toupper(name[0]);
 
+    while(true)
+    {
+        //Athugar hvort slegið sé inn tölustafur í nafn
+        if(name.find_first_of("0123456789")!=std::string::npos)
+        {
+            cout << "Error, name may not contain numbers!" << endl;
+            cout << "Name: ";
+            cin.ignore();
+            std::getline(std::cin, name);
+            name[0] = toupper(name[0]);
+
+        }
+
+        else
+        {
+            break;
+        }
+
+    }
+
+
+
     cout << "Gender: ";
     cin >> gender;
     gender[0] = toupper(gender[0]);
@@ -175,7 +197,7 @@ vector<person> addpersontovector(vector<person>personvector)
             break;
         }
 
-        cout << "Type Male or Female: ";
+        cout << "Error, please enter a valid Gender. Male or Female" << endl;
         cin >> gender;
         gender[0] = toupper(gender[0]);
 
