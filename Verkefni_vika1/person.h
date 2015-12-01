@@ -4,18 +4,12 @@
 #include <ctime>
 using namespace std;
 
-
-
-
 /*Class person
- * Hefur 6 private breytur
+ * Hefur 6 "private" breytur
  * int ID er auðkenni sem hver ný persóna fær
- *
- *
 */
 class person
 {
-
   private:
       int ID;
       string Name;
@@ -24,7 +18,7 @@ class person
       int YearOfdeath;
       int Age;
   public:
-    person(string name,string gender,int yearofbirth,int yearofdeath);
+    person(string name, string gender, int yearofbirth, int yearofdeath);
     int getID();
     void setID(int id);
     string getName();
@@ -32,8 +26,6 @@ class person
     int getYearOfbirth();
     int getYearOfdeath();
     int getAge();
-
-
 };
 
 #endif // PERSON_H

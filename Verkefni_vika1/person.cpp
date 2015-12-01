@@ -1,6 +1,5 @@
 #include "person.h"
 
-
 int person::getAge()
 {
     return Age;
@@ -34,18 +33,17 @@ string person::getName()
 string person::getGender()
 {
     return Gender;
-
 }
 
-person::person(string name,string gender,int yearofbirth,int yearofdeath)
+//Reiknar út aldur
+person::person(string name, string gender, int yearofbirth, int yearofdeath)
 {
-
     time_t currentTime;
-    struct tm *localTime;
+    struct tm * localTime;
 
     time( &currentTime );
     localTime = localtime( &currentTime );
-    int currentYear = localTime->tm_year + 1900;
+    int currentYear = localTime-> tm_year + 1900;
 
     ID = 0;
     Name = name;
@@ -56,12 +54,8 @@ person::person(string name,string gender,int yearofbirth,int yearofdeath)
     if(yearofdeath == 0)
     {
         Age = currentYear - yearofbirth;
-    }
-
-    else
+    }else
     {
        Age = yearofdeath - yearofbirth;
     }
-
-
 }

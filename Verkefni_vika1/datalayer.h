@@ -9,13 +9,12 @@
 
 using namespace std;
 
-
 class Datalayer
 {
-public:
-    Datalayer();
-    void AddData(vector<person> toFile );
-    vector<person> PullData( );
+    public:
+        Datalayer();
+        void AddData(vector<person> toFile );
+        vector<person> PullData();
 };
 
 #endif // DATALAYER_H
