@@ -179,7 +179,7 @@ vector<person> addpersontovector(vector<person>personvector)
         cin >> yearofbirth;
     }
 
-    cout << "Year of death, if the person is still alive please enter -" << endl;
+    cout << "Year of death, if the person is still alive please enter 0" << endl;
     cin >> yearofdeath;
     //Athugar hvort slegið sé inn tölustafur, að slegið sé inn 4 stafa ártal, að dánarár sé ekki
     //á undan fæðingarári og að dánarár sé ekki stærra en árið í ár.
@@ -200,6 +200,7 @@ vector<person> addpersontovector(vector<person>personvector)
     return personvector;
 }
 
+//Leita að persónu í vector
 void search(string searchquery, vector<person> personvector)
 {
     int queryfoundcounter = 0;
@@ -217,34 +218,29 @@ void search(string searchquery, vector<person> personvector)
 
   if(queryfoundcounter == 0)
   {
-      cout << "No match for: " << searchquery<<endl;
+      cout << "No match for: " << searchquery << endl;
   }
-
-
 }
 
+//Skilaboð til notanda um leit.
 string readsearchquery()
 {
     string searchquery;
     cout << "Who are you looking for?: ";
     cin.ignore();
-    getline(cin,searchquery);
+    getline(cin, searchquery);
     searchquery[0] = toupper(searchquery[0]);
 
     return searchquery;
-
 }
 
 
 int main()
 {
-
     string searchquery;
     Datalayer reader;
     vector<person> personvector = reader.PullData();
     UI userInterface;
-
-
 
     while(true)
     {
@@ -252,32 +248,25 @@ int main()
         {
             case 1:
                 personvector = addpersontovector(personvector);
-
             break;
+
             case 2:
                 sortvectorbyname(personvector);
-
-
             break;
+
             case 3:
             sortvectorbynameReverse(personvector);
-
-
-
             break;
+
             case 4:
                 searchquery = readsearchquery();
-                search(searchquery,personvector);
-
-
+                search(searchquery, personvector);
             break;
+
             case 5:
-            removeperson(personvector);
-
+                 removeperson(personvector);
             break;
-
         }
-
     }
 
 
