@@ -14,12 +14,20 @@ using namespace std;
 
 
 //void föll
+//skrifar út eina persónu í einu
 void displayperson(person per);
+
+//les allan vectorin og kallar á displayperson fyrir öll stökin í vectornum
 void readvector(vector <person> per);
+
 void search(string searchquery,vector<person> personvector);
-void editperson(vector <person> per);
-void removeperson(vector <person> per);
-bool vectorhasperson(int id);
+void removeperson(vector <person> &personvector);
+void updatefile(vector<person> per);
+void sortvectorbyname(vector<person>personvector);
+void sortvectorbynameReverse(vector<person> personvector);
+
+//int föll
+int vectorhasperson(int id);
 int currentyear();
 
 
@@ -32,8 +40,8 @@ int currentyear();
  *
 */
 vector<person> addpersontovector(vector<person>personvector);
-void sortvectorbyname(vector<person>personvector);
-void sortvectorbynameReverse(vector<person> personvector);
+
+//bool föll
 bool isgreater(person per1,person per2)
 {
     return per1.getName() < per2.getName();
@@ -41,6 +49,12 @@ bool isgreater(person per1,person per2)
 
 //string föll
 string readsearchquery();
+
+void updatefile(vector<person> per)
+{
+    Datalayer writer;
+    writer.AddData(per);
+}
 
 int currentyear()
 {
@@ -56,15 +70,11 @@ int currentyear()
 
 void sortvectorbynameReverse(vector<person> personvector)
 {
-    vector <person> reverseperson;
+
     sort(personvector.begin(),personvector.end(),isgreater);
+    reverse(personvector.begin(),personvector.end());
 
-    for(int i = personvector.size(); i >= 0; i--)
-    {
-        reverseperson.push_back(personvector.at(i));
-    }
-
-    readvector(reverseperson);
+    readvector(personvector);
 }
 
 void sortvectorbyname(vector<person>personvector)
@@ -75,38 +85,42 @@ void sortvectorbyname(vector<person>personvector)
 
 }
 
-//removeperson notar þetta fall
-bool vectorhasperson(vector <person> per,int id)
+//removeperson notar þetta fall til að athuga hvort manneskjan
+//sé til
+int vectorhasperson(vector <person> per,int id)
 {
     for(unsigned int i = 0; i < per.size(); i++)
     {
-
+        if(per.at(i).getID() == id)
+        {
+            return i;
+        }
     }
 
-    return true;
+    return -1;
 
 }
 
-void removeperson(vector<person> per)
+void removeperson(vector <person> &personvector)
 {
-    int id = 0;
-    readvector(per);
+    int id = 0,locationinvector=0;
+    readvector(personvector);
     cout << "Enter ID of the person you want to remove: ";
     cin >> id;
+    if(vectorhasperson(personvector,id) != -1)
+    {
+        locationinvector = vectorhasperson(personvector,id);
+        personvector.erase(personvector.begin()+locationinvector);
+        updatefile(personvector);
+    }
 
-
-
+    else
+    {
+        cout << "Error ID not found!"<<endl;
+    }
 
 }
 
-void editperson(vector <person> per)
-{
-    int id = 0;
-    readvector(per);
-    cout << "Enter ID of the person you want to edit: ";
-    cin >> id;
-
-}
 
 
 void displayperson( person per)
@@ -166,6 +180,11 @@ vector<person> addpersontovector(vector<person>personvector)
     cin >> yearofdeath;
     while(cin.fail() || yearofdeath < 999 || yearofdeath < yearofbirth )
     {
+        if(yearofdeath == 0)
+        {
+            break;
+        }
+
         cout << "Error, please enter a valid year" << endl;
         cin.clear();
         cin.ignore(256, '\n');
@@ -242,23 +261,24 @@ int main()
 
             break;
             case 2:
-            editperson(personvector);
+                sortvectorbyname(personvector);
 
 
             break;
             case 3:
-            searchquery = readsearchquery();
-            search(searchquery,personvector);
+            sortvectorbynameReverse(personvector);
+
 
 
             break;
             case 4:
-                //readvector(personvector);
-                //sortvectorbyname(personvector);
-                sortvectorbynameReverse(personvector);
+                searchquery = readsearchquery();
+                search(searchquery,personvector);
+
 
             break;
             case 5:
+            removeperson(personvector);
 
             break;
 

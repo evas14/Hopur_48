@@ -12,11 +12,11 @@ int UI::mainMenu()
 {
 
     cout << "-----------------------------------------------------" << endl;
-    cout << "1. Promote a new CS to the elite ranks(add new).\n"
-            "2. Edit an existing scientist.\n"
-            "3. Search amongst the elites.\n"
-            "4. Display all.\n"
-            "5. Demote a CS from the elite ranks(delete).\n"
+    cout << "1. Add New.\n"
+            "2. Display Names in Alphabetical Order.\n"
+            "3. Display Names in Reverse Alphabetical Order.\n"
+            "4. Search By Name.\n"
+            "5. Remove From List.\n"
             "Any other choice quits!" << endl;
 
     switch(userInput())
