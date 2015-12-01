@@ -1,0 +1,50 @@
+1
+Mark Zuckerberg
+Male
+1984
+0
+2
+Alan Turing
+Male
+1912
+1954
+3
+Richard Stallman
+Male
+1953
+0
+4
+Larry Page 
+male
+1973
+0
+5
+Bill Gates
+male
+1955
+0
+6
+Linus Benedict Torvalds
+male
+1969
+0
+7
+Konrad Zuse
+male
+1910
+1995
+8
+Margaret Hamilton
+female
+1936
+0
+9
+Sophie Wilson
+female
+1957
+0
+10
+Sergey Brin
+male
+1973
+0
