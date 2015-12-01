@@ -36,8 +36,6 @@ int currentyear();
 /* addpersontovector
  * Tekur inn: vector af taginu person og bætir við persónu í vectorinn
  * Skilar: vector af taginu person
- *
- *
 */
 vector<person> addpersontovector(vector<person>personvector);
 
@@ -68,6 +66,7 @@ int currentyear()
     return currentYear;
 }
 
+//Skilar vector í öfugri stafrófsröð
 void sortvectorbynameReverse(vector<person> personvector)
 {
 
@@ -77,6 +76,7 @@ void sortvectorbynameReverse(vector<person> personvector)
     readvector(personvector);
 }
 
+//Skilar vector í stafrófsröð
 void sortvectorbyname(vector<person>personvector)
 {
 
@@ -101,6 +101,7 @@ int vectorhasperson(vector <person> per,int id)
 
 }
 
+//fjarlægir einstakling úr vector
 void removeperson(vector <person> &personvector)
 {
     int id = 0,locationinvector=0;
@@ -122,7 +123,7 @@ void removeperson(vector <person> &personvector)
 }
 
 
-
+//Skrifar persónu út á skjá
 void displayperson( person per)
 {
 
@@ -139,6 +140,7 @@ void displayperson( person per)
 
 }
 
+//Les persónur úr vector til að setja á skjá
 void readvector(vector <person> per)
 {
     for(unsigned int i = 0; i < per.size(); i++)
@@ -149,10 +151,9 @@ void readvector(vector <person> per)
     }
 }
 
+//Bætir persónu við vector
 vector<person> addpersontovector(vector<person>personvector)
 {
-
-
     string name;
     string gender;
     int yearofbirth = 0;
@@ -168,6 +169,8 @@ vector<person> addpersontovector(vector<person>personvector)
 
     cout << "Year of birth: ";
     cin >> yearofbirth;
+    //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
+    //ártalið sé ekki meira en árið í ár.
     while(cin.fail() || yearofbirth < 999 || yearofbirth > currentyear())
     {
         cout << "Error, please enter a valid year" << endl;
@@ -176,15 +179,12 @@ vector<person> addpersontovector(vector<person>personvector)
         cin >> yearofbirth;
     }
 
-    cout << "Year of death, if the person is still alive please enter 0" << endl;
+    cout << "Year of death, if the person is still alive please enter -" << endl;
     cin >> yearofdeath;
-    while(cin.fail() || yearofdeath < 999 || yearofdeath < yearofbirth )
+    //Athugar hvort slegið sé inn tölustafur, að slegið sé inn 4 stafa ártal, að dánarár sé ekki
+    //á undan fæðingarári og að dánarár sé ekki stærra en árið í ár.
+    while(cin.fail() || (yearofdeath > 0 && yearofdeath < 999) || (yearofdeath > 0 && yearofdeath < yearofbirth) || yearofdeath > currentyear())
     {
-        if(yearofdeath == 0)
-        {
-            break;
-        }
-
         cout << "Error, please enter a valid year" << endl;
         cin.clear();
         cin.ignore(256, '\n');
@@ -194,31 +194,25 @@ vector<person> addpersontovector(vector<person>personvector)
     person per(name,gender,yearofbirth,yearofdeath);
     per.setID(personvector.size()+1);
 
-
-
     personvector.push_back(per);
     Datalayer writer;
     writer.AddData(personvector);
     return personvector;
-
 }
 
-void search(string searchquery,vector<person> personvector)
+void search(string searchquery, vector<person> personvector)
 {
-    int queryfoundcounter=0;
+    int queryfoundcounter = 0;
 
 
-  for(unsigned int i = 0; i < personvector.size();i++)
+  for(unsigned int i = 0; i < personvector.size(); i++)
   {
 
       if (personvector.at(i).getName().find(searchquery) != string::npos)
       {
           queryfoundcounter++;
           displayperson(personvector.at(i));
-
       }
-
-
   }
 
   if(queryfoundcounter == 0)
