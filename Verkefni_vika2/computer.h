@@ -18,12 +18,13 @@ private:
     bool wasBuilt;
 
 public:
-    Computer(string Name,int yearbuilt,string computertype,bool wasbuilt);
+    Computer(string Name,string computertype,int yearbuilt,bool wasbuilt);
     int getID();
     int getYearBuilt();
     string getName();
     string getComputerType();
     bool getWasBuilt();
+    void setID(int ID);
 };
 
 #endif // COMPUTER_H

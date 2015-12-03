@@ -4,7 +4,7 @@
 Datalayer::Datalayer()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("vlnr.sqlite");
+    db.setDatabaseName("vln.sqlite");
 
     if (!db.open())
     {
@@ -21,8 +21,8 @@ Datalayer::Datalayer()
 //Skrifar vector í .txt skjal
 void Datalayer::addPerson(person per)
 {
-    /*Datalayer add();
-    QSqlQuery query(add);
+
+    /*QSqlQuery query;
 
     string name = per.getName();
     string gender = per.getGender();
@@ -38,7 +38,44 @@ void Datalayer::addPerson(person per)
 
 }
 
-//Les af skrá inn í vector
+vector<Computer> Datalayer::pullComputer()
+{
+   /* vector<Computer>computervector;
+
+    //Datalayer pull();
+    QSqlQuery query(db);
+
+        if(query.exec("SELECT * FROM computer"))
+        {
+            while(query.next())
+            {
+               int id = query.value("id").toUInt();
+               string name = query.value("name").toString().toStdString();
+               string computertype = query.value("computerType").toString().toStdString();
+               int yearbuilt = query.value("yearBuilt").toUInt();
+               bool wasbuilt = query.value("wasBuilt").toUInt();
+
+               Computer comp(name,computertype,yearbuilt,wasbuilt);
+               comp.setID(id);
+               computervector.push_back(comp);
+
+            }
+        }
+
+
+     db.close();
+
+
+    return personvector;
+
+    */
+
+
+
+}
+
+//Les af gagnagrunn inn manneskjur setur það í vector
+//skilar
 vector<person> Datalayer::pullPerson()
 {
     vector<person>personvector;
@@ -58,6 +95,8 @@ vector<person> Datalayer::pullPerson()
                int yearofdeath = query.value("yearofdeath").toUInt();
 
                person per(name,gender,yearofbirth,yearofdeath);
+               per.setID(id);
+
                personvector.push_back(per);
 
             }

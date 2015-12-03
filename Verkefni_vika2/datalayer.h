@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <person.h>
+#include <computer.h>
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -19,6 +20,7 @@ class Datalayer
         Datalayer();
         void addPerson(person per);
         vector<person> pullPerson();
+        vector<Computer> pullComputer();
     private:
         QSqlDatabase db;
 

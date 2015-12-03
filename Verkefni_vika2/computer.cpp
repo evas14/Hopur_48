@@ -1,12 +1,17 @@
 #include "computer.h"
 
-Computer::Computer(string Name,int yearbuilt,string computertype,bool wasbuilt)
+Computer::Computer(string Name,string computertype,int yearbuilt,bool wasbuilt)
 {
     name = Name;
     yearBuilt = yearbuilt;
     computerType = computertype;
     wasBuilt = wasbuilt;
 
+}
+
+void Computer:: setID(int ID)
+{
+    id = ID;
 }
 
 int Computer::getID()

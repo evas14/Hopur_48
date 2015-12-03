@@ -9,6 +9,7 @@
 #include <ui.h>
 #include <datalayer.h>
 #include <algorithm>
+#include <computer.h>
 
 using namespace std;
 
@@ -277,6 +278,7 @@ int main()
     string searchquery;
     Datalayer reader;
     vector<person> personvector = reader.pullPerson();
+    vector<Computer> computervector = reader.pullComputer();
     UI userInterface;
 
     while(true)
