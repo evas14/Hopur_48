@@ -1,5 +1,6 @@
 QT += core
 QT -= gui
+QT += sql
 
 TARGET = Verkefni_vika2
 CONFIG += console

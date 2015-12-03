@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <Qtsql>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class Datalayer
         Datalayer();
         void AddData(vector<person> toFile );
         vector<person> PullData();
+
 };
 
 #endif // DATALAYER_H

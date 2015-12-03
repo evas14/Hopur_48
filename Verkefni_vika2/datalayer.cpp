@@ -3,6 +3,11 @@
 //Smiður
 Datalayer::Datalayer()
 {
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    string databaseName = "vln";
+    //db.setDatabaseName(databaseName);
+
 }
 
 //Skrifar vector í .txt skjal

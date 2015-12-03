@@ -70,7 +70,7 @@ int currentyear()
 void sortvectorbynameReverse(vector<person> personvector)
 {
 
-    sort(personvector.begin(),personvector.end(),isgreater);
+    //sort(personvector.begin(),personvector.end(),isgreater);
     reverse(personvector.begin(),personvector.end());
 
     readvector(personvector);
@@ -80,7 +80,7 @@ void sortvectorbynameReverse(vector<person> personvector)
 void sortvectorbyname(vector<person>personvector)
 {
 
-    sort(personvector.begin(),personvector.end(),isgreater);
+    //sort(personvector.begin(),personvector.end(),isgreater);
     readvector(personvector);
 
 }

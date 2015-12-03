@@ -18,8 +18,8 @@ private:
 public:
     Computer(string Name,int yearbuilt,string computertype,bool wasbuilt);
     int getID();
-    string getName();
     int getYearBuilt();
+    string getName();
     string getComputerType();
     bool getWasBuilt();
 };
