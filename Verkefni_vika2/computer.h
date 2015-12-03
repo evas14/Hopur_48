@@ -2,6 +2,8 @@
 #define COMPUTER_H
 #include <string>
 #include <iostream>
+#include <person.h>
+#include <computer.h>
 
 using namespace std;
 
@@ -11,8 +13,8 @@ class Computer
 private:
     int id;
     string name;
-    int yearBuilt;
     string computerType;
+    int yearBuilt;
     bool wasBuilt;
 
 public:

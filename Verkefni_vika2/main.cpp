@@ -50,8 +50,8 @@ string readsearchquery();
 
 void updatefile(vector<person> per)
 {
-    Datalayer writer;
-    writer.AddData(per);
+    //Datalayer writer;
+    //writer.AddData(per);
 }
 
 int currentyear()
@@ -234,7 +234,7 @@ vector<person> addpersontovector(vector<person>personvector)
 
     personvector.push_back(per);
     Datalayer writer;
-    writer.AddData(personvector);
+    writer.addPerson(per);
     return personvector;
 }
 
@@ -276,7 +276,7 @@ int main()
 {
     string searchquery;
     Datalayer reader;
-    vector<person> personvector = reader.PullData();
+    vector<person> personvector = reader.pullPerson();
     UI userInterface;
 
     while(true)

@@ -7,6 +7,9 @@
 #include <iostream>
 #include <sstream>
 #include <Qtsql>
+#include <Qtsql/QSqlDatabase>
+#include <QSqlQuery>
+#include <QCoreApplication>
 
 using namespace std;
 
@@ -14,8 +17,12 @@ class Datalayer
 {
     public:
         Datalayer();
-        void AddData(vector<person> toFile );
-        vector<person> PullData();
+        void addPerson(person per);
+        vector<person> pullPerson();
+    private:
+        QSqlDatabase db;
+
+
 
 };
 
