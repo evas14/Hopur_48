@@ -5,9 +5,7 @@ Datalayer::Datalayer()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
-    string databaseName = "vln";
-    //db.setDatabaseName(databaseName);
-
+    db.setDatabaseName("vln");
 }
 
 //Skrifar vector í .txt skjal
