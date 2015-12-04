@@ -2,6 +2,7 @@
 #define UI_H
 #include <person.h>
 #include <computer.h>
+#include <connections.h>
 #include <ostream>
 #include <string>
 using namespace std;
@@ -17,6 +18,7 @@ class UI
         //skrifar út eina persónu í einu
         void displayPerson(person per);
         void displayComputer(Computer comp);
+        void displayConnection(Connections con);
         void displayError(string error);
         void displayMessage(string message);
         void displayInput(string input);

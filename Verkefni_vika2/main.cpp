@@ -4,12 +4,13 @@
 #include <string>
 #include <ctime>
 #include <person.h>
-#include <datalayer.h>
+#include <computer.h>
+#include <connections.h>
 #include <fstream>
 #include <ui.h>
 #include <datalayer.h>
 #include <algorithm>
-#include <computer.h>
+
 
 using namespace std;
 
@@ -18,16 +19,20 @@ using namespace std;
 
 
 //les allan vectorin og kallar á displayperson fyrir öll stökin í vectornum
-void readPersonVector(vector <person> per);
-void readComputerVector(vector <Computer> comp);
-
+void readPersonVector(vector <person> personvector);
+void readComputerVector(vector <Computer> computervector);
+void readConnectionsVector(vector <Connections> connectionvector);
 void search(string searchquery,vector<person> personvector);
 void removeperson(vector <person> &personvector);
-void updatefile(vector<person> per);
-void sortvectorbyname(vector<person>personvector);
-void sortvectorbynameReverse(vector<person> personvector);
+void sortPersonVectorByName(vector<person>personvector);
+void sortPersonVectorByNameReverse(vector<person> personvector);
 
-//int föll
+//Vector Föll
+vector<person> updatePersonVector(vector<person> per);
+vector<Computer>updateComputerVector(vector<Computer> Comp);
+vector<Connections>updateConnectionsVector(vector<Connections> connections);
+
+//Int föll
 int vectorHasPerson(vector<person>per, int id);
 int vectorHasComputer(int id);
 int currentyear();
@@ -50,10 +55,22 @@ bool isgreater(person per1,person per2)
 //string föll
 string readsearchquery();
 
-void updatefile(vector<person> per)
+vector<person> updatePersonVector(vector<person> per)
 {
-    //Datalayer writer;
-    //writer.AddData(per);
+    Datalayer reader;
+    return reader.pullPerson();
+}
+
+vector<Computer>updateComputerVector(vector<Computer> Comp)
+{
+    Datalayer reader;
+    return reader.pullComputer();
+}
+
+vector<Connections>updateConnectionsVector(vector<Connections> connections)
+{
+    Datalayer reader;
+    return reader.pullConnections();
 }
 
 int currentyear()
@@ -69,7 +86,7 @@ int currentyear()
 }
 
 //Skilar vector í öfugri stafrófsröð
-void sortvectorbynameReverse(vector<person> personvector)
+void sortPersonVectorByNameReverse(vector<person> personvector)
 {
 
     //sort(personvector.begin(),personvector.end(),isgreater);
@@ -79,7 +96,7 @@ void sortvectorbynameReverse(vector<person> personvector)
 }
 
 //Skilar vector í stafrófsröð
-void sortvectorbyname(vector<person>personvector)
+void sortPersonVectorByName(vector<person>personvector)
 {
 
     //sort(personvector.begin(),personvector.end(),isgreater);
@@ -132,7 +149,7 @@ void removeperson(vector <person> &personvector)
     {
         locationinvector = vectorHasPerson(personvector,id);
         personvector.erase(personvector.begin()+locationinvector);
-        updatefile(personvector);
+        //updatefile(personvector);
     }
 
     else
@@ -144,13 +161,18 @@ void removeperson(vector <person> &personvector)
 }
 
 
-void readComputerVector(vector <Computer> comp)
+void readComputerVector(vector <Computer> computerVector)
 {
     UI toScreen;
 
-    for(unsigned int i = 0; i < comp.size(); i++)
+    if(computerVector.size() == 0)
     {
-        Computer currentcomputer = comp.at(i);
+        toScreen.displayError("Error: No Computers in Vector!");
+    }
+
+    for(unsigned int i = 0; i < computerVector.size(); i++)
+    {
+        Computer currentcomputer = computerVector.at(i);
         toScreen.displayComputer(currentcomputer);
 
     }
@@ -158,16 +180,29 @@ void readComputerVector(vector <Computer> comp)
 }
 
 
-
 //Les persónur úr vector til og sendir til UI til
 //að prenta út á skjá
-void readPersonVector(vector <person> per)
+void readPersonVector(vector <person> personVector)
 {
     UI toScreen;
-    for(unsigned int i = 0; i < per.size(); i++)
+    for(unsigned int i = 0; i < personVector.size(); i++)
     {
-        person currentperson = per.at(i);
+        person currentperson = personVector.at(i);
         toScreen.displayPerson(currentperson);
+
+    }
+}
+
+//Les tengingar úr vector til og sendir til UI til
+//að prenta út á skjá
+void readConnectionsVector(vector <Connections> connectionsVector)
+{
+    UI toScreen;
+    toScreen.displayMessage("id    NameID  ComputerID");
+    for(unsigned int i = 0; i < connectionsVector.size(); i++)
+    {
+        Connections currentconnection = connectionsVector.at(i);
+        toScreen.displayConnection(currentconnection);
 
     }
 }
@@ -259,7 +294,7 @@ vector<person> addpersontovector(vector<person>personvector)
 
     personvector.push_back(per);
     Datalayer writer;
-    writer.addPerson(per);
+    writer.addPersonToDB(per);
     return personvector;
 }
 
@@ -294,6 +329,8 @@ int main()
     Datalayer reader;
     vector<person> personvector = reader.pullPerson();
     vector<Computer> computervector = reader.pullComputer();
+    vector<Connections> connectionsVector = reader.pullConnections();
+    reader.closeDB();
     UI userInterface;
 
     while(true)
@@ -310,21 +347,26 @@ int main()
                 //connectionvector = addConnectionToVector(connectionvector);
             break;
             case 4:
-                sortvectorbyname(personvector);
+                readPersonVector(personvector);
             break;
 
             case 5:
-            sortvectorbynameReverse(personvector);
+                readComputerVector(computervector);
             break;
 
             case 6:
+                readConnectionsVector(connectionsVector);
 
-                searchquery = userInterface.readSearchQuery();
-                search(searchquery, personvector);
             break;
 
             case 7:
-                 removeperson(personvector);
+                searchquery = userInterface.readSearchQuery();
+                search(searchquery, personvector);
+
+            break;
+            case 8:
+                removeperson(personvector);
+
             break;
         }
     }

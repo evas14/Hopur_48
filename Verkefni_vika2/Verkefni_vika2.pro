@@ -12,11 +12,13 @@ SOURCES += main.cpp \
     computer.cpp \
     person.cpp \
     datalayer.cpp \
-    ui.cpp
+    ui.cpp \
+    connections.cpp
 
 HEADERS += \
     computer.h \
     person.h \
     datalayer.h \
-    ui.h
+    ui.h \
+    connections.h
 

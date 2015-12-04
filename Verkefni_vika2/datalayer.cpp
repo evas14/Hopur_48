@@ -17,9 +17,24 @@ Datalayer::Datalayer()
 
 }
 
+void Datalayer::closeDB()
+{
+    db.close();
+}
+
+void Datalayer::addComputerToDB(Computer comp)
+{
+
+}
+
+void Datalayer::addConnectionToDB(Connections connection)
+{
+
+}
+
 
 //Skrifar vector í .txt skjal
-void Datalayer::addPerson(person per)
+void Datalayer::addPersonToDB(person per)
 {
 
     /*QSqlQuery query;
@@ -38,16 +53,31 @@ void Datalayer::addPerson(person per)
 
 }
 
+void Datalayer::removeComputerFromDB(int id)
+{
+
+}
+
+void Datalayer::removePersonFromDB(int id)
+{
+
+}
+
+void Datalayer::removeConnectionFromDB(int id)
+{
+
+}
+
 vector<Computer> Datalayer::pullComputer()
 {
 
     //Þetta er kommentað út á meðan það er verið að búa til Computer töfluna
-   /* vector<Computer>computervector;
+    vector<Computer>computervector;
 
     //Datalayer pull();
     QSqlQuery query(db);
 
-        if(query.exec("SELECT * FROM computer"))
+        if(query.exec("SELECT * FROM computers"))
         {
             while(query.next())
             {
@@ -65,12 +95,11 @@ vector<Computer> Datalayer::pullComputer()
         }
 
 
-     db.close();
 
 
-    return personvector;
+    return computervector;
 
-    */
+
 
 
 
@@ -85,7 +114,7 @@ vector<person> Datalayer::pullPerson()
     //Datalayer pull();
     QSqlQuery query(db);
 
-        if(query.exec("SELECT * FROM person"))
+        if(query.exec("SELECT * FROM persons"))
         {
             while(query.next())
             {
@@ -93,8 +122,8 @@ vector<person> Datalayer::pullPerson()
                string name = query.value("name").toString().toStdString();
                string gender = query.value("gender").toString().toStdString();
                int age = query.value("age").toUInt();
-               int yearofbirth = query.value("yearofbirth").toUInt();
-               int yearofdeath = query.value("yearofdeath").toUInt();
+               int yearofbirth = query.value("yearOfBirth").toUInt();
+               int yearofdeath = query.value("yearOfDeath").toUInt();
 
                person per(name,gender,yearofbirth,yearofdeath);
                per.setID(id);
@@ -105,8 +134,36 @@ vector<person> Datalayer::pullPerson()
         }
 
 
-     db.close();
+
 
 
     return personvector;
+}
+
+vector<Connections> Datalayer::pullConnections()
+{
+    vector<Connections>connectionsVector;
+
+    //Datalayer pull();
+    QSqlQuery query(db);
+
+    if(query.exec("SELECT * FROM connection"))
+    {
+        while(query.next())
+        {
+           int id = query.value("id").toUInt();
+           int personID = query.value("pId").toUInt();
+           int computerID = query.value("cId").toUInt();
+
+           Connections connect(personID,computerID);
+           connect.setID(id);
+
+           connectionsVector.push_back(connect);
+
+        }
+    }
+
+
+
+    return connectionsVector;
 }
