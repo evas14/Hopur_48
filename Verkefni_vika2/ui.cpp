@@ -14,10 +14,11 @@ int UI::mainMenu()
     cout << "1. Add New Person.\n"
             "2. Add New Computer.\n"
             "3. Add New Connection.\n"
-            "4. Display Names in Alphabetical Order.\n"
-            "5. Display Names in Reverse Alphabetical Order.\n"
-            "6. Search by Name.\n"
-            "7. Remove from List.\n" << endl;
+            "4. Display Names\n"
+            "5. Display Computers\n"
+            "6. Show Connections\n"
+            "7. Search by Name.\n"
+            "8. Remove from List.\n" << endl;
     cout << "Any other Choice will Terminate Program! \n" << endl;
 
     switch(userInput())
@@ -36,6 +37,15 @@ int UI::mainMenu()
             break;
         case 5:
             return 5;
+            break;
+        case 6:
+            return 6;
+            break;
+        case 7:
+            return 7;
+            break;
+        case 8:
+            return 8;
             break;
         default:
             exit(0);
@@ -95,6 +105,15 @@ void UI::displayComputer(Computer comp)
     {
        cout <<"Was it Built: No"<<endl;
     }
+
+}
+
+void UI::displayConnection(Connections con)
+{
+
+    cout <<"ID: "<< con.getID();
+    cout <<"Name: " << con.getPersonID();
+    cout <<"Type: " << con.getComputerID() << endl;
 
 }
 
