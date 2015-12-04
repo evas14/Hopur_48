@@ -11,11 +11,13 @@ UI::UI()
 int UI::mainMenu()
 {
     cout << "-----------------------------------------------------" << endl;
-    cout << "1. Add New.\n"
-            "2. Display Names in Alphabetical Order.\n"
-            "3. Display Names in Reverse Alphabetical Order.\n"
-            "4. Search by Name.\n"
-            "5. Remove from List.\n" << endl;
+    cout << "1. Add New Person.\n"
+            "2. Add New Computer.\n"
+            "3. Add New Connection.\n"
+            "4. Display Names in Alphabetical Order.\n"
+            "5. Display Names in Reverse Alphabetical Order.\n"
+            "6. Search by Name.\n"
+            "7. Remove from List.\n" << endl;
     cout << "Any other Choice will Terminate Program! \n" << endl;
 
     switch(userInput())
@@ -59,5 +61,64 @@ int UI::searchMenu()
         int userinput = userInput();
         */
         return 0;
+}
+
+//Skrifar persónu út á skjá
+void UI::displayPerson( person per)
+{
+
+    cout << "----------------------------------------"<<endl;
+    cout <<"ID: "<< per.getID() << endl;
+    cout <<"Name: " << per.getName() << endl;
+    cout <<"Gender: " << per.getGender() << endl;
+    cout <<"Age: " << per.getAge() << endl;
+    cout <<"Year of birth: " << per.getYearOfbirth() << endl;
+    if (per.getYearOfdeath() > 0)
+    {
+        cout <<"Year of death: " << per.getYearOfdeath()<< endl;
+    }
+
+}
+
+void UI::displayComputer(Computer comp)
+{
+    cout << "----------------------------------------"<<endl;
+    cout <<"ID: "<< comp.getID() << endl;
+    cout <<"Name: " << comp.getName() << endl;
+    cout <<"Type: " << comp.getComputerType() << endl;
+    cout <<"Year built: " << comp.getYearBuilt() << endl;
+    if (comp.getWasBuilt())
+    {
+      cout <<"Was it Built: Yes"<<endl;
+    }
+    else
+    {
+       cout <<"Was it Built: No"<<endl;
+    }
+
+}
+
+void UI::displayError(string error)
+{
+    cout << error << endl;
+}
+
+void UI::displayMessage(string message)
+{
+    cout << message << endl;
+}
+void UI::displayInput(string input)
+{
+    cout << input;
+}
+
+string UI::readSearchQuery()
+{
+    string searchquery;
+    cout << "Who are you looking for?: ";
+    cin.ignore();
+    getline(cin, searchquery);
+
+    return searchquery;
 }
 

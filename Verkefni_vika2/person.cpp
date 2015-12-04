@@ -54,7 +54,8 @@ person::person(string name, string gender, int yearofbirth, int yearofdeath)
     if(yearofdeath == 0)
     {
         Age = currentYear - yearofbirth;
-    }else
+    }
+    else
     {
        Age = yearofdeath - yearofbirth;
     }

@@ -40,6 +40,8 @@ void Datalayer::addPerson(person per)
 
 vector<Computer> Datalayer::pullComputer()
 {
+
+    //Þetta er kommentað út á meðan það er verið að búa til Computer töfluna
    /* vector<Computer>computervector;
 
     //Datalayer pull();
@@ -75,7 +77,7 @@ vector<Computer> Datalayer::pullComputer()
 }
 
 //Les af gagnagrunn inn manneskjur setur það í vector
-//skilar
+//og skilar honum
 vector<person> Datalayer::pullPerson()
 {
     vector<person>personvector;

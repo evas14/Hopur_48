@@ -24,8 +24,8 @@ void readComputerVector(vector <Computer> comp);
 void search(string searchquery,vector<person> personvector);
 void removeperson(vector <person> &personvector);
 void updatefile(vector<person> per);
-void sortvectorbyname(vector<person>personvector);
-void sortvectorbynameReverse(vector<person> personvector);
+void sortPersonVectorByName(vector<person>personvector);
+void sortPersonVectorByNameReverse(vector<person> personvector);
 
 //int föll
 int vectorHasPerson(vector<person>per, int id);
@@ -69,7 +69,7 @@ int currentyear()
 }
 
 //Skilar vector í öfugri stafrófsröð
-void sortvectorbynameReverse(vector<person> personvector)
+void sortPersonVectorByNameReverse(vector<person> personvector)
 {
 
     //sort(personvector.begin(),personvector.end(),isgreater);
@@ -79,7 +79,7 @@ void sortvectorbynameReverse(vector<person> personvector)
 }
 
 //Skilar vector í stafrófsröð
-void sortvectorbyname(vector<person>personvector)
+void sortPersonVectorByName(vector<person>personvector)
 {
 
     //sort(personvector.begin(),personvector.end(),isgreater);
@@ -310,15 +310,14 @@ int main()
                 //connectionvector = addConnectionToVector(connectionvector);
             break;
             case 4:
-                sortvectorbyname(personvector);
+                sortPersonVectorByName(personvector);
             break;
 
             case 5:
-            sortvectorbynameReverse(personvector);
+                sortPersonVectorByNameReverse(personvector);
             break;
 
             case 6:
-
                 searchquery = userInterface.readSearchQuery();
                 search(searchquery, personvector);
             break;
