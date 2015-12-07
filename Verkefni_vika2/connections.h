@@ -1,18 +1,20 @@
 #ifndef CONNECTIONS_H
 #define CONNECTIONS_H
+#include <string>
+using namespace std;
 
 
 class Connections
 {
 private:
     int ID;
-    int personID;
-    int computerID;
+    string personName;
+    string computerName;
 public:
-    Connections(int personid,int computerid);
+    Connections(string personname,string computername);
     int getID();
-    int getPersonID();
-    int getComputerID();
+    string getPersonName();
+    string getComputerName();
     void setID(int id);
 };
 

@@ -1,9 +1,9 @@
 #include "connections.h"
 
-Connections::Connections(int personid,int computerid)
+Connections::Connections(string personname,string computername)
 {
-    personID = personid;
-    computerID = computerid;
+    personName = personname;
+    computerName = computername;
 }
 
 int Connections::getID()
@@ -11,14 +11,14 @@ int Connections::getID()
   return ID;
 }
 
-int Connections::getPersonID()
+string Connections::getPersonName()
 {
-    return personID;
+    return personName;
 }
 
-int Connections::getComputerID()
+string Connections::getComputerName()
 {
-    return computerID;
+    return computerName;
 }
 
 void Connections ::setID(int id)

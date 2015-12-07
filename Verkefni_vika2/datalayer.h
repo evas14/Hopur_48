@@ -5,6 +5,7 @@
 #include <person.h>
 #include <computer.h>
 #include <connections.h>
+#include <ui.h>
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -19,6 +20,7 @@ class Datalayer
 {
     public:
         Datalayer();
+
         void addPersonToDB(person per);
         void addComputerToDB(Computer comp);
         void addConnectionToDB (Connections connection);
@@ -26,6 +28,12 @@ class Datalayer
         void removePersonFromDB(int id);
         void removeComputerFromDB(int id);
         void closeDB();
+
+        //Sort föll
+        vector<person>sortPersonByName();
+        vector<person>sortPersonByAge();
+        vector<Computer>sortComputerByName();
+        //Sort eftir id
         vector<person> pullPerson();
         vector<Computer> pullComputer();
         vector<Connections> pullConnections();
