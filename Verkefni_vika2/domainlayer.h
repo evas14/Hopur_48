@@ -20,9 +20,14 @@ class DomainLayer
 {
 public:
     DomainLayer();
-
+    //Search föll
     void searchPersonByName(string searchquery);
+    void searchComputerByName(string searchquery);
+
+    //remove föll
     void removePerson();
+    void removeComputer();
+    void removeConnection();
 
     //Sort föll
     void sortPersonVectorByID(string sortType);
@@ -30,6 +35,7 @@ public:
     void sortPersonVectorByAge(string sortType);
     void sortComputerVectorByID(string sortType);
     void sortComputerVectorByName(string sortType);
+    void sortConnectionsVectorByID();
 
 
     //Vector Föll
@@ -42,11 +48,10 @@ public:
     void addComputer();
     void addConnection();
 
-    //Athugar hvort stak sé til í vector og skilar
-    //staðsetningu á stakinu. Ef stakið er ekki til skila
-    //föllin -1
-    int vectorHasPerson(vector<person>per, int id);
-    int vectorHasComputer(vector<Computer> comp,int id);
+    //Athugar hvort stak sé til í vector
+    bool vectorHasPerson(vector<person>per, int id);
+    bool vectorHasComputer(vector<Computer> comp,int id);
+    bool vectorHasConnection(vector<Connections> con,int id);
 
     //Nær í núverandi ár og skilar sem int tölu
     int currentYear();

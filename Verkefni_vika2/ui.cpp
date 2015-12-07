@@ -11,6 +11,7 @@ UI::UI()
 void UI::mainMenu()
 {
 
+
     cout << "-----------------------------------------------------" << endl;
     cout << "1. Add New\n"
             "2. Display Names\n"
@@ -72,7 +73,7 @@ void UI::displayAddMenu()
     switch(userSelection)
     {
         case 1:
-            domain.addPerson();
+        domain.addPerson();
         break;
     case 2:
         domain.addComputer();
@@ -125,7 +126,9 @@ void UI::displaySearchMenu()
 
         break;
         case 2:
-            cout << "Coming soon"<<endl;
+            displayInput("What Computer are you looking for?: ");
+            searchQuery = readStringInputWithSpaces();
+            domain.searchComputerByName(searchQuery);
 
         break;
 
@@ -135,12 +138,43 @@ void UI::displaySearchMenu()
 
 void UI::displayRemoveMenu()
 {
+    DomainLayer domain;
     int userSelection=0;
 
     cout << "1.Remove Person\n"
             "2.Remove Computer\n"
             "3.Remove Connection\n";
-    userSelection = userInput();
+
+    while(true)
+    {
+        userSelection = readIntInput();
+        if(userSelection >= 1 && userSelection <= 3)
+        {
+            break;
+        }
+        else
+        {
+            displayError("Error unknown command!");
+            displayError("Select 1,2 or 3");
+        }
+
+    }
+
+    switch(userSelection)
+    {
+        case 1:
+           domain.removePerson();
+
+        break;
+        case 2:
+           domain.removeComputer();
+        break;
+
+        case 3:
+            domain.removeConnection();
+        break;
+
+    }
 }
 
 //Skrifar persónu út á skjá
@@ -319,9 +353,8 @@ void UI::displayComputerMenu()
 
 void UI::displayConnectionsMenu()
 {
-    Datalayer data;
-    vector <Connections> connectionvec = data.pullConnections();
-    displayConnectionVector(connectionvec);
+    DomainLayer domain;
+    domain.sortConnectionsVectorByID();
 
 }
 

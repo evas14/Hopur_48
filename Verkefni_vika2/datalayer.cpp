@@ -25,47 +25,104 @@ void Datalayer::closeDB()
 void Datalayer::addComputerToDB(Computer comp)
 {
 
+    QSqlQuery query;
+
+    string name = comp.getName();
+    string computerType = comp.getComputerType();
+    int yearBuilt = comp.getYearBuilt();
+    bool wasBuilt = comp.getWasBuilt();
+    stringstream ss1, ss2, ss3;
+    string a;
+    if (wasBuilt){
+        a = "1";
+    } else{
+        a = "0";
+    }
+    ss3 << yearBuilt;
+    string str3 = ss3.str();
+
+        query.exec("INSERT INTO computers (name,computerType,yearBuilt,wasBuilt) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(computerType.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "','" + QString::fromStdString(a.c_str()) + "')");
+
+     //qDebug() << query.lastQuery();
 }
 
 void Datalayer::addConnectionToDB(Connections connection)
 {
 
+        QSqlQuery query;
+        int pId = connection.getPerID();
+        int cId = connection.getComID();
+        stringstream ss1, ss2;
+        ss1 << pId;
+        string str1 = ss1.str();
+        ss2 << cId;
+        string str2 = ss2.str();
+
+        query.exec("INSERT into connections (pId,cId) VALUES('"+ QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "')");
+        qDebug() << query.lastQuery();
+
+
 }
 
 
-//Skrifar vector í .txt skjal
 void Datalayer::addPersonToDB(person per)
 {
 
     QSqlQuery query;
 
-    string name = per.getName();
-    string gender = per.getGender();
-    int age = per.getAge();
-    int yearOfBirth = per.getYearOfbirth();
-    int yearOfDeath = per.getYearOfdeath();
+        string name = per.getName();
+        string gender = per.getGender();
+        int age = per.getAge();
+        int yearOfBirth = per.getYearOfbirth();
+        int yearOfDeath = per.getYearOfdeath();
+        stringstream ss1, ss2, ss3;
+        ss1 << yearOfBirth;
+        string str1 = ss1.str();
+        ss2 << yearOfDeath;
+        string str2 = ss2.str();
+        ss3 << age;
+        string str3 = ss3.str();
 
-    /*query.exec("INSERT into person (name,gender,age,birthyear,deathyear)"
-    + "values('" + name + "','" + gender + "','" + age + "','" + yearOfBirth + "','" + yearOfDeath + "')");
-
-    query.exec("INSERT INTO customer_details (rationcard_num, aadharcard_num, name)"
-                + "values('" + rationcard_num + "','" + aadharcard_num + "','"
-                + name + "')");*/
-
+        query.exec("INSERT into persons (name,gender,yearOfBirth,yearOfDeath,age) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(gender.c_str()) + "','" + QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "')");
+        //qDebug() << query.lastQuery();
 }
 
 void Datalayer::removeComputerFromDB(int id)
 {
+    QSqlQuery query;
+
+    stringstream ss1;
+    ss1 << id;
+    string str1 = ss1.str();
+
+    query.exec("DELETE FROM computers where id = " + QString::fromStdString(str1.c_str()));
+    qDebug() << query.lastQuery();
 
 }
 
 void Datalayer::removePersonFromDB(int id)
 {
+    QSqlQuery query;
+
+    stringstream ss1;
+    ss1 << id;
+    string str1 = ss1.str();
+
+    query.exec("DELETE FROM persons where id = " + QString::fromStdString(str1.c_str()));
+    qDebug() << query.lastQuery();
 
 }
 
 void Datalayer::removeConnectionFromDB(int id)
 {
+    QSqlQuery query;
+
+    stringstream ss1;
+    ss1 << id;
+    string str1 = ss1.str();
+
+    query.exec("DELETE FROM connections where id = " + QString::fromStdString(str1.c_str()));
+    qDebug() << query.lastQuery();
 
 }
 
