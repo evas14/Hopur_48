@@ -48,11 +48,39 @@ void UI::mainMenu()
 
 void UI::displayAddMenu()
 {
+    DomainLayer domain;
     int userSelection = 0;
     cout << "1.Add New Person\n"
             "2.Add New Computer\n"
             "3.Add New Connection\n";
-    userSelection = userInput();
+
+    while(true)
+    {
+        userSelection = readIntInput();
+        if(userSelection >= 1 && userSelection <= 3)
+        {
+            break;
+        }
+        else
+        {
+            displayError("Error unknown command!");
+            displayError("Select 1,2 or 3");
+        }
+
+    }
+
+    switch(userSelection)
+    {
+        case 1:
+            domain.addPerson();
+        break;
+    case 2:
+        domain.addComputer();
+        break;
+    case 3:
+        domain.addConnection();
+        break;
+    }
 
 }
 

@@ -22,7 +22,7 @@ public:
     DomainLayer();
 
     void searchPersonByName(string searchquery);
-    void removePerson(vector <person> &personvector);
+    void removePerson();
 
     //Sort föll
     void sortPersonVectorByID(string sortType);
@@ -39,8 +39,8 @@ public:
 
     //Add Föll
     void addPerson();
-    vector<Computer> addComputer(vector<person>computerVector);
-    vector<Connections> addConnection(vector<person>connectionsVector);
+    void addComputer();
+    void addConnection();
 
     //Athugar hvort stak sé til í vector og skilar
     //staðsetningu á stakinu. Ef stakið er ekki til skila

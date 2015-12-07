@@ -116,7 +116,6 @@ void DomainLayer::searchPersonByName(string searchquery)
 {
    Datalayer Reader;
    vector<person> personvector = Reader.pullPerson();
-
    vector<person> queryMatchVector;
    UI toScreen;
    string personName;
@@ -220,9 +219,21 @@ void DomainLayer::addPerson()
 
     person per(name,gender,yearofbirth,yearofdeath);
 
+
     Datalayer writer;
     writer.addPersonToDB(per);
 }
+
+void DomainLayer::addComputer()
+{
+
+}
+
+void DomainLayer::addConnection()
+{
+
+}
+
 
 int DomainLayer::currentYear()
 {
@@ -256,9 +267,12 @@ vector<Connections> DomainLayer::updateConnectionsVector()
 
 
 //fjarlægir einstakling úr vector
-void DomainLayer::removePerson(vector <person> &personvector)
+void DomainLayer::removePerson()
 {
-    UI toScreen;
+    /*UI toScreen;
+    vector<Person> personvector;
+    Datalayer Reader;
+    personvector = Reader.pullPerson();
 
     int id = 0,locationinvector=0;
     toScreen.displayPersonVector(personvector);
@@ -275,7 +289,7 @@ void DomainLayer::removePerson(vector <person> &personvector)
     {
         UI error;
         error.displayError("Error ID not found!");
-    }
+    }*/
 
 }
 
