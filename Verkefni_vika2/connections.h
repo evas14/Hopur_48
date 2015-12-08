@@ -12,6 +12,7 @@ private:
     int comID;
     string personName;
     string computerName;
+
 public:
     Connections(string personname,string computername);
     Connections(int perid,int comid);

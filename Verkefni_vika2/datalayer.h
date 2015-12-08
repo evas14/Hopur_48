@@ -18,29 +18,30 @@ using namespace std;
 
 class Datalayer
 {
-    public:
-        Datalayer();
+public:
+    Datalayer();
 
-        bool addPersonToDB(person per);
-        bool addComputerToDB(Computer comp);
-        bool addConnectionToDB (Connections connection);
-        bool removeConnectionFromDB(int id);
-        bool removePersonFromDB(int id);
-        bool removeComputerFromDB(int id);
-        void closeDB();
+    bool addPersonToDB(person per);
+    bool addComputerToDB(Computer comp);
+    bool addConnectionToDB (Connections connection);
+    bool removeConnectionFromDB(int id);
+    bool removePersonFromDB(int id);
+    bool removeComputerFromDB(int id);
+    void closeDB();
 
-        //Sort föll
-        vector<person>sortPersonByName();
-        vector<person>sortPersonByAge();
-        vector<Computer>sortComputerByName();
-        //Sort eftir id
-        vector<person> pullPerson();
-        vector<Computer> pullComputer();
-        vector<Connections> pullConnections();
+    //Sort föll
+    vector<person>sortPersonByName();
+    vector<person>sortPersonByAge();
+    vector<Computer>sortComputerByName();
+    //Sort eftir id
+    vector<person> pullPerson();
+    vector<Computer> pullComputer();
+    vector<Connections> pullConnections();
 
-        void connectDB();
-    private:
-        QSqlDatabase db;
+    void connectDB();
+
+private:
+    QSqlDatabase db;
 
 
 

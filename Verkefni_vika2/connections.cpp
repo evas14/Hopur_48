@@ -46,7 +46,6 @@ void Connections:: setPerID(int id)
     perID = id;
 }
 
-
 void Connections:: setComID(int id)
 {
     comID = id;

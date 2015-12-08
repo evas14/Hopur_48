@@ -87,7 +87,6 @@ bool Datalayer::addConnectionToDB(Connections connection)
 
 }
 
-
 bool Datalayer::addPersonToDB(person per)
 {
 

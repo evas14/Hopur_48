@@ -5,13 +5,12 @@ using namespace std;
 
 UI::UI()
 {
+
 }
 
 //Valmynd
 void UI::mainMenu()
 {
-
-
     cout << "-----------------------------------------------------" << endl;
     cout << "1. Add New\n"
             "2. Display Names\n"
@@ -74,17 +73,17 @@ void UI::displayAddMenu()
     switch(userSelection)
     {
         case 1:
-        domain.addPerson();
-        break;
-    case 2:
-        domain.addComputer();
-        break;
-    case 3:
-        domain.addConnection();
-        break;
-    case 4:
-        mainMenu();
-        break;
+            domain.addPerson();
+            break;
+        case 2:
+            domain.addComputer();
+            break;
+        case 3:
+            domain.addConnection();
+            break;
+        case 4:
+            mainMenu();
+            break;
     }
 
 }
@@ -128,19 +127,15 @@ void UI::displaySearchMenu()
             displayInput("Who are you looking for?: ");
             searchQuery = readStringInputWithSpaces();
             domain.searchPersonByName(searchQuery);
-
-        break;
+            break;
         case 2:
             displayInput("What Computer are you looking for?: ");
             searchQuery = readStringInputWithSpaces();
             domain.searchComputerByName(searchQuery);
-        break;
-
+            break;
         case 3:
             mainMenu();
-        break;
-
-
+            break;
     }
 
 }
@@ -148,7 +143,7 @@ void UI::displaySearchMenu()
 void UI::displayRemoveMenu()
 {
     DomainLayer domain;
-    int userSelection=0;
+    int userSelection = 0;
 
     cout << "1.Remove Person\n"
             "2.Remove Computer\n"
@@ -174,16 +169,13 @@ void UI::displayRemoveMenu()
     {
         case 1:
            domain.removePerson();
-
-        break;
+           break;
         case 2:
            domain.removeComputer();
-        break;
-
+           break;
         case 3:
             domain.removeConnection();
-        break;
-
+            break;
         case 4:
             mainMenu();
 
@@ -210,8 +202,6 @@ void UI::displayPersonVector(vector <person> perVec)
         }
 
     }
-
-
 
 }
 
@@ -290,31 +280,24 @@ void UI::displayPersonMenu()
     {
         case 1:
             domain.sortPersonVectorByID("normal");
-        break;
-
+            break;
         case 2:
             domain.sortPersonVectorByID("reverse");
-
-        break;
+            break;
         case 3:
             domain.sortPersonVectorByName("normal");
-        break;
+            break;
         case 4:
             domain.sortPersonVectorByName("reverse");
-
-        break;
+            break;
         case 5:
             domain.sortPersonVectorByAge("normal");
-
-        break;
+            break;
         case 6:
             domain.sortPersonVectorByAge("reverse");
-
-        break;
+            break;
 
     }
-
-
 
 }
 
@@ -349,20 +332,16 @@ void UI::displayComputerMenu()
     {
         case 1:
             domain.sortComputerVectorByID("normal");
-        break;
-
+            break;
         case 2:
             domain.sortComputerVectorByID("reverse");
-        break;
-
+            break;
         case 3:
             domain.sortComputerVectorByName("normal");
-        break;
-
+            break;
         case 4:
             domain.sortComputerVectorByName("reverse");
-        break;
-
+            break;
     }
 
 }
@@ -408,7 +387,7 @@ string UI::readStringInputWithSpaces()
 
 int UI::readIntInput()
 {
-    int num=0;
+    int num = 0;
 
     cin.clear();
     cin.ignore(256, '\n');

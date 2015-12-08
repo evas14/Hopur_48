@@ -37,8 +37,6 @@ public:
     void sortComputerVectorByName(string sortType);
     void sortConnectionsVectorByID();
 
-
-
     //Add Föll
     void addPerson();
     void addComputer();

@@ -24,7 +24,6 @@ void DomainLayer::sortPersonVectorByID(string sortType)
 
 }
 
-
 //Skilar vector í stafrófsröð
 void DomainLayer::sortPersonVectorByName(string sortType)
 {
@@ -199,7 +198,6 @@ void DomainLayer::addPerson()
             name[0] = toupper(name[0]);
 
         }
-
         else
         {
             break;
@@ -319,8 +317,8 @@ void DomainLayer::addConnection()
     vector <person> personVector = writer.pullPerson();
     vector <Computer> computerVector = writer.pullComputer();
 
-    int pId=0;
-    int cId=0;
+    int pId = 0;
+    int cId = 0;
     toScreen.displayPersonVector(personVector);
     while(true)
     {

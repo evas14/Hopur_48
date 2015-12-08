@@ -10,14 +10,15 @@ using namespace std;
 */
 class person
 {
-  private:
-      int ID;
-      string Name;
-      string Gender;
-      int YearOfbirth;
-      int YearOfdeath;
-      int Age;
-  public:
+private:
+    int ID;
+    string Name;
+    string Gender;
+    int YearOfbirth;
+    int YearOfdeath;
+    int Age;
+
+public:
     person(string name, string gender, int yearofbirth, int yearofdeath);
     int getID();
     void setID(int id);
