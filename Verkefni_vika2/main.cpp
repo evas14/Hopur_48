@@ -16,6 +16,9 @@ using namespace std;
 
 int main()
 {
+    Datalayer data;
+    data.connectDB();
+
     UI userInterface;
     while(true)
     {
