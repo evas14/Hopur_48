@@ -10,7 +10,8 @@ Datalayer::Datalayer()
 void Datalayer::connectDB()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("vbla.sqlite");
+
+    db.setDatabaseName("vln.sqlite");
 
     if (!db.open())
     {
