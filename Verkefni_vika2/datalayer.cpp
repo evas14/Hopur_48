@@ -10,7 +10,7 @@ Datalayer::Datalayer()
 void Datalayer::connectDB()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("vln.sqlite");
+    db.setDatabaseName("vbla.sqlite");
 
     if (!db.open())
     {
@@ -18,8 +18,19 @@ void Datalayer::connectDB()
     }
     else
     {
+        createDB();
         qDebug() << "Database: connection ok";
     }
+
+}
+
+void Datalayer::createDB()
+{
+    QSqlQuery query;
+
+    query.exec("CREATE TABLE IF NOT EXISTS computers ( id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR NOT NULL, computerType VARCHAR NOT NULL, yearBuilt INTEGER, wasBuilt BOOL)");
+    query.exec("CREATE TABLE IF NOT EXISTS connections ( id INTEGER  PRIMARY KEY AUTOINCREMENT,pId INTEGER NOT NULL, cId INTEGER NOT NULL, FOREIGN KEY (pId) REFERENCES persons (id)ON DELETE CASCADE, FOREIGN KEY (cId) REFERENCES computers (id) ON DELETE CASCADE)");
+    query.exec("CREATE TABLE IF NOT EXISTS persons ( id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR NOT NULL,gender VARCHAR NOT NULL, yearOfBirth INTERGER NOT NULL, yearOfDeath INTEGER, age INTEGER NOT NULL )");
 
 }
 

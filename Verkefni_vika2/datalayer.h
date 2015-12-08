@@ -39,6 +39,7 @@ public:
     vector<Connections> pullConnections();
 
     void connectDB();
+    void createDB();
 
 private:
     QSqlDatabase db;
