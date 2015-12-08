@@ -221,7 +221,6 @@ vector<person> Datalayer::pullPerson()
                int id = query.value("id").toUInt();
                string name = query.value("name").toString().toStdString();
                string gender = query.value("gender").toString().toStdString();
-               int age = query.value("age").toUInt();
                int yearofbirth = query.value("yearOfBirth").toUInt();
                int yearofdeath = query.value("yearOfDeath").toUInt();
 

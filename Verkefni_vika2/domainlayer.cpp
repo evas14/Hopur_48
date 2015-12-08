@@ -384,25 +384,6 @@ int DomainLayer::currentYear()
     return currentYear;
 }
 
-vector<person> DomainLayer::updatePersonVector()
-{
-    Datalayer reader;
-    return reader.pullPerson();
-}
-
-vector<Computer> DomainLayer::updateComputerVector()
-{
-    Datalayer reader;
-    return reader.pullComputer();
-}
-
-vector<Connections> DomainLayer::updateConnectionsVector()
-{
-    Datalayer reader;
-    return reader.pullConnections();
-}
-
-
 //fjarlægir einstakling úr vector
 void DomainLayer::removePerson()
 {
@@ -430,7 +411,9 @@ void DomainLayer::removePerson()
     else
     {
         UI error;
-        error.displayError("Error ID not found!");
+        toScreen.displayMessage("\n");
+        error.displayError("Error ID not found!\n");
+        toScreen.displayRemoveMenu();
     }
 
 }
@@ -461,7 +444,9 @@ void DomainLayer::removeComputer()
     else
     {
         UI error;
-        error.displayError("Error ID not found!");
+        toScreen.displayMessage("\n");
+        error.displayError("Error ID not found!\n");
+        toScreen.displayRemoveMenu();
     }
 
 
@@ -493,7 +478,9 @@ void DomainLayer::removeConnection()
     else
     {
         UI error;
-        error.displayError("Error ID not found!");
+        toScreen.displayMessage("\n");
+        error.displayError("Error ID not found!\n");
+        toScreen.displayRemoveMenu();
     }
 
 

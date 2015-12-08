@@ -38,10 +38,6 @@ public:
     void sortConnectionsVectorByID();
 
 
-    //Vector Föll
-    vector<person> updatePersonVector();
-    vector<Computer>updateComputerVector();
-    vector<Connections>updateConnectionsVector();
 
     //Add Föll
     void addPerson();
