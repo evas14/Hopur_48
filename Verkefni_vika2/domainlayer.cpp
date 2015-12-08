@@ -32,7 +32,6 @@ void DomainLayer::sortPersonVectorByName(string sortType)
     Datalayer Reader;
     vector <person>sortedVector = Reader.sortPersonByName();
 
-
     if(sortType == "normal")
     {
        toScreen.displayPersonVector(sortedVector);
@@ -43,7 +42,6 @@ void DomainLayer::sortPersonVectorByName(string sortType)
         reverse(sortedVector.begin(),sortedVector.end());
         toScreen.displayPersonVector(sortedVector);
     }
-
 
 }
 
@@ -53,7 +51,6 @@ void DomainLayer::sortPersonVectorByAge(string sortType)
     Datalayer Reader;
     vector <person>sortedVector = Reader.sortPersonByAge();
 
-
     if(sortType == "normal")
     {
        toScreen.displayPersonVector(sortedVector);
@@ -65,7 +62,6 @@ void DomainLayer::sortPersonVectorByAge(string sortType)
         toScreen.displayPersonVector(sortedVector);
     }
 
-
 }
 
 void DomainLayer::sortComputerVectorByID(string sortType)
@@ -73,7 +69,6 @@ void DomainLayer::sortComputerVectorByID(string sortType)
     UI toScreen;
     Datalayer Reader;
     vector <Computer> sortedVector = Reader.pullComputer();
-
 
     if(sortType == "normal")
     {
@@ -85,7 +80,6 @@ void DomainLayer::sortComputerVectorByID(string sortType)
         reverse(sortedVector.begin(),sortedVector.end());
         toScreen.displayComputerVector(sortedVector);
     }
-
 
 }
 
@@ -106,8 +100,6 @@ void DomainLayer:: sortComputerVectorByName(string sortType)
         toScreen.displayComputerVector(sortedVector);
     }
 
-
-
 }
 
 void DomainLayer::sortConnectionsVectorByID()
@@ -123,33 +115,33 @@ void DomainLayer::sortConnectionsVectorByID()
 //Leita að persónu í vector
 void DomainLayer::searchPersonByName(string searchquery)
 {
-   Datalayer Reader;
-   vector<person> personvector = Reader.pullPerson();
-   vector<person> queryMatchVector;
-   UI toScreen;
-   string personName;
+    Datalayer Reader;
+    vector<person> personvector = Reader.pullPerson();
+    vector<person> queryMatchVector;
+    UI toScreen;
+    string personName;
 
-   transform(searchquery.begin(), searchquery.end(), searchquery.begin(),::tolower);
+    transform(searchquery.begin(), searchquery.end(), searchquery.begin(),::tolower);
 
 
-  for(unsigned int i = 0; i < personvector.size(); i++)
-  {
-      personName = personvector.at(i).getName();
-      transform(personName.begin(), personName.end(), personName.begin(),::tolower);
+    for(unsigned int i = 0; i < personvector.size(); i++)
+    {
+        personName = personvector.at(i).getName();
+        transform(personName.begin(), personName.end(), personName.begin(),::tolower);
 
-      if (personName.find(searchquery) != string::npos)
-      {
-          queryMatchVector.push_back(personvector.at(i));
-      }
-  }
+        if (personName.find(searchquery) != string::npos)
+        {
+            queryMatchVector.push_back(personvector.at(i));
+        }
+    }
 
-  if(queryMatchVector.size() == 0)
-  {
-      UI error;
-      error.displayError("No match for: " + searchquery);
-  }
+    if(queryMatchVector.size() == 0)
+    {
+        UI error;
+        error.displayError("No match for: " + searchquery);
+    }
 
-  toScreen.displayPersonVector(queryMatchVector);
+    toScreen.displayPersonVector(queryMatchVector);
 }
 
 void DomainLayer::searchComputerByName(string searchquery)
@@ -257,7 +249,6 @@ void DomainLayer::addPerson()
 
     person per(name,gender,yearofbirth,yearofdeath);
 
-
     Datalayer writer;
     if(!writer.addPersonToDB(per))
     {
@@ -281,14 +272,13 @@ void DomainLayer::addComputer()
     name = toScreen.readStringInputWithSpaces();
     name[0] = toupper(name[0]);
 
-
     toScreen.displayInput("Computer type: ");
     computertype = toScreen.readStringInput();
     computertype[0] = toupper(computertype[0]);
 
-
     toScreen.displayInput("Year built: ");
     yearbuilt = toScreen.readIntInput();
+
     //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
     //ártalið sé ekki meira en árið í ár.
     while(cin.fail() || yearbuilt < 999 || yearbuilt > currentYear())
@@ -301,12 +291,13 @@ void DomainLayer::addComputer()
 
     toScreen.displayMessage("Was built: 1 for true, 0 for false");
     wasbuilt = toScreen.readIntInput();
-    if (wasbuilt == 1){
+    if (wasbuilt == 1)
+    {
         wasbuilt = true;
-    }else{
+    }else
+    {
         wasbuilt = false;
     }
-
 
      Computer comp(name, computertype, yearbuilt, wasbuilt);
 
@@ -333,7 +324,6 @@ void DomainLayer::addConnection()
     toScreen.displayPersonVector(personVector);
     while(true)
     {
-
         toScreen.displayInput("Person Id: ");
         pId = toScreen.readIntInput();
 
@@ -343,7 +333,6 @@ void DomainLayer::addConnection()
         }
 
     }
-
 
     toScreen.displayComputerVector(computerVector);
     while(true)
@@ -369,8 +358,6 @@ void DomainLayer::addConnection()
     }
 
 }
-
-
 
 int DomainLayer::currentYear()
 {
@@ -407,7 +394,6 @@ void DomainLayer::removePerson()
             toScreen.displayMessage("Operation successful!");
         }
     }
-
     else
     {
         UI error;
@@ -440,7 +426,6 @@ void DomainLayer::removeComputer()
             toScreen.displayMessage("Operation successful!");
         }
     }
-
     else
     {
         UI error;
@@ -448,7 +433,6 @@ void DomainLayer::removeComputer()
         error.displayError("Error ID not found!\n");
         toScreen.displayRemoveMenu();
     }
-
 
 }
 
@@ -474,7 +458,6 @@ void DomainLayer::removeConnection()
             toScreen.displayMessage("Operation successful!");
         }
     }
-
     else
     {
         UI error;
@@ -482,7 +465,6 @@ void DomainLayer::removeConnection()
         error.displayError("Error ID not found!\n");
         toScreen.displayRemoveMenu();
     }
-
 
 }
 
@@ -499,7 +481,6 @@ bool DomainLayer::vectorHasPerson(vector <person> per,int id)
     }
 
     return false;
-
 }
 
 bool DomainLayer::vectorHasComputer(vector <Computer> comp,int id)
@@ -513,7 +494,6 @@ bool DomainLayer::vectorHasComputer(vector <Computer> comp,int id)
     }
 
     return false;
-
 }
 
 bool DomainLayer::vectorHasConnection(vector<Connections> con,int id)
@@ -527,5 +507,4 @@ bool DomainLayer::vectorHasConnection(vector<Connections> con,int id)
     }
 
     return false;
-
 }

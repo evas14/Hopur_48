@@ -32,18 +32,22 @@ bool Datalayer::addComputerToDB(Computer comp)
 {
 
     QSqlQuery query;
-
     string name = comp.getName();
     string computerType = comp.getComputerType();
     int yearBuilt = comp.getYearBuilt();
     bool wasBuilt = comp.getWasBuilt();
     stringstream ss1, ss2, ss3;
     string a;
-    if (wasBuilt){
+
+    if (wasBuilt)
+    {
         a = "1";
-    } else{
+    }
+    else
+    {
         a = "0";
     }
+
     ss3 << yearBuilt;
     string str3 = ss3.str();
 
@@ -55,31 +59,30 @@ bool Datalayer::addComputerToDB(Computer comp)
     {
         return false;
     }
-
-     //qDebug() << query.lastQuery();
+    //qDebug() << query.lastQuery();
 }
 
 bool Datalayer::addConnectionToDB(Connections connection)
 {
 
-        QSqlQuery query;
-        int pId = connection.getPerID();
-        int cId = connection.getComID();
-        stringstream ss1, ss2;
-        ss1 << pId;
-        string str1 = ss1.str();
-        ss2 << cId;
-        string str2 = ss2.str();
+    QSqlQuery query;
+    int pId = connection.getPerID();
+    int cId = connection.getComID();
+    stringstream ss1, ss2;
+    ss1 << pId;
+    string str1 = ss1.str();
+    ss2 << cId;
+    string str2 = ss2.str();
 
-        if(query.exec("INSERT into connections (pId,cId) VALUES('"+ QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "')"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-//        qDebug() << query.lastQuery();
+    if(query.exec("INSERT into connections (pId,cId) VALUES('"+ QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "')"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    //qDebug() << query.lastQuery();
 
 
 }
@@ -89,35 +92,33 @@ bool Datalayer::addPersonToDB(person per)
 {
 
     QSqlQuery query;
+    string name = per.getName();
+    string gender = per.getGender();
+    int age = per.getAge();
+    int yearOfBirth = per.getYearOfbirth();
+    int yearOfDeath = per.getYearOfdeath();
+    stringstream ss1, ss2, ss3;
+    ss1 << yearOfBirth;
+    string str1 = ss1.str();
+    ss2 << yearOfDeath;
+    string str2 = ss2.str();
+    ss3 << age;
+    string str3 = ss3.str();
 
-        string name = per.getName();
-        string gender = per.getGender();
-        int age = per.getAge();
-        int yearOfBirth = per.getYearOfbirth();
-        int yearOfDeath = per.getYearOfdeath();
-        stringstream ss1, ss2, ss3;
-        ss1 << yearOfBirth;
-        string str1 = ss1.str();
-        ss2 << yearOfDeath;
-        string str2 = ss2.str();
-        ss3 << age;
-        string str3 = ss3.str();
-
-        if(query.exec("INSERT into persons (name,gender,yearOfBirth,yearOfDeath,age) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(gender.c_str()) + "','" + QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "')"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        //qDebug() << query.lastQuery();
+    if(query.exec("INSERT into persons (name,gender,yearOfBirth,yearOfDeath,age) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(gender.c_str()) + "','" + QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "')"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    //qDebug() << query.lastQuery();
 }
 
 bool Datalayer::removeComputerFromDB(int id)
 {
     QSqlQuery query;
-
     stringstream ss1;
     ss1 << id;
     string str1 = ss1.str();
@@ -130,7 +131,7 @@ bool Datalayer::removeComputerFromDB(int id)
     {
         return false;
     }
-//    qDebug() << query.lastQuery();
+    //qDebug() << query.lastQuery();
 
 }
 
@@ -150,7 +151,7 @@ bool Datalayer::removePersonFromDB(int id)
     {
         return false;
     }
-//    qDebug() << query.lastQuery();
+    //qDebug() << query.lastQuery();
 
 }
 
@@ -170,14 +171,12 @@ bool Datalayer::removeConnectionFromDB(int id)
     {
         return false;
     }
-//    qDebug() << query.lastQuery();
+    //qDebug() << query.lastQuery();
 
 }
 
 vector<Computer> Datalayer::pullComputer()
 {
-
-
     vector<Computer>computervector;
 
     //Datalayer pull();

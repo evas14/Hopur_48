@@ -43,7 +43,7 @@ person::person(string name, string gender, int yearofbirth, int yearofdeath)
 
     time( &currentTime );
     localTime = localtime( &currentTime );
-    int currentYear = localTime-> tm_year + 1900;
+    int currentYear = localTime -> tm_year + 1900;
 
     ID = 0;
     Name = name;
