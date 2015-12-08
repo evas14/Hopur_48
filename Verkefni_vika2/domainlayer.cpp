@@ -297,17 +297,17 @@ void DomainLayer::addComputer()
         wasbuilt = false;
     }
 
-     Computer comp(name, computertype, yearbuilt, wasbuilt);
+    Computer comp(name, computertype, yearbuilt, wasbuilt);
 
-     Datalayer writer;
-     if(!writer.addComputerToDB(comp))
-     {
-         toScreen.displayError("Oops! something went wrong.");
-     }
-     else
-     {
-         toScreen.displayMessage("Operation successful!");
-     }
+    Datalayer writer;
+    if(!writer.addComputerToDB(comp))
+    {
+        toScreen.displayError("Oops! something went wrong.");
+    }
+    else
+    {
+        toScreen.displayMessage("Operation successful!");
+    }
 }
 
 void DomainLayer::addConnection()
