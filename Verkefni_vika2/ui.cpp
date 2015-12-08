@@ -53,19 +53,20 @@ void UI::displayAddMenu()
     int userSelection = 0;
     cout << "1.Add New Person\n"
             "2.Add New Computer\n"
-            "3.Add New Connection\n";
+            "3.Add New Connection\n"
+            "4.Back to Main Menu\n";
 
     while(true)
     {
         userSelection = readIntInput();
-        if(userSelection >= 1 && userSelection <= 3)
+        if(userSelection >= 1 && userSelection <= 4)
         {
             break;
         }
         else
         {
             displayError("Error unknown command!");
-            displayError("Select 1,2 or 3");
+            displayError("Select 1,2,3 or 4");
         }
 
     }
@@ -80,6 +81,9 @@ void UI::displayAddMenu()
         break;
     case 3:
         domain.addConnection();
+        break;
+    case 4:
+        mainMenu();
         break;
     }
 
@@ -100,50 +104,8 @@ void UI::displaySearchMenu()
     int userSelection=0;
 
     cout << "1.Search By Person Name\n"
-            "2.Search By Computer Name\n";
-
-    while(true)
-    {
-        userSelection = readIntInput();
-        if(userSelection >= 1 && userSelection <= 2)
-        {
-            break;
-        }
-        else
-        {
-            displayError("Error unknown command!");
-            displayError("Select 1 or 2");
-        }
-
-    }
-
-    switch(userSelection)
-    {
-        case 1:
-            displayInput("Who are you looking for?: ");
-            searchQuery = readStringInputWithSpaces();
-            domain.searchPersonByName(searchQuery);
-
-        break;
-        case 2:
-            displayInput("What Computer are you looking for?: ");
-            searchQuery = readStringInputWithSpaces();
-            domain.searchComputerByName(searchQuery);
-
-        break;
-
-    }
-
-}
-
-void UI::displayRemoveMenu()
-{
-    DomainLayer domain;
-    int userSelection=0;
-
-    cout << "1.Remove Person\n"
-            "2.Remove Computer\n"
-            "3.Remove Connection\n";
+            "2.Search By Computer Name\n"
+            "3.Back to Main Menu\n";
 
     while(true)
     {
@@ -163,6 +125,54 @@ void UI::displayRemoveMenu()
     switch(userSelection)
     {
         case 1:
+            displayInput("Who are you looking for?: ");
+            searchQuery = readStringInputWithSpaces();
+            domain.searchPersonByName(searchQuery);
+
+        break;
+        case 2:
+            displayInput("What Computer are you looking for?: ");
+            searchQuery = readStringInputWithSpaces();
+            domain.searchComputerByName(searchQuery);
+        break;
+
+        case 3:
+            mainMenu();
+        break;
+
+
+    }
+
+}
+
+void UI::displayRemoveMenu()
+{
+    DomainLayer domain;
+    int userSelection=0;
+
+    cout << "1.Remove Person\n"
+            "2.Remove Computer\n"
+            "3.Remove Connection\n"
+            "4.Back to Main Menu\n";
+
+    while(true)
+    {
+        userSelection = readIntInput();
+        if(userSelection >= 1 && userSelection <= 4)
+        {
+            break;
+        }
+        else
+        {
+            displayError("Error unknown command!");
+            displayError("Select 1,2,3 or 4");
+        }
+
+    }
+
+    switch(userSelection)
+    {
+        case 1:
            domain.removePerson();
 
         break;
@@ -173,6 +183,9 @@ void UI::displayRemoveMenu()
         case 3:
             domain.removeConnection();
         break;
+
+        case 4:
+            mainMenu();
 
     }
 }
@@ -254,19 +267,20 @@ void UI::displayPersonMenu()
             "4.Display Names in Reverse Alphabetical Order\n"
             "5.Display Names From Youngest to Oldest\n"
             "6.Display Names From Oldest to Youngest\n"
+            "7.Back to Main Menu\n"
 
          << endl;
     while(true)
     {
         userSelection = readIntInput();
-        if(userSelection >= 1 && userSelection <= 6)
+        if(userSelection >= 1 && userSelection <= 7)
         {
             break;
         }
         else
         {
             displayError("Error unknown command!");
-            displayError("Select 1,2,3,4,5 or 6");
+            displayError("Select 1,2,3,4,5,6 or 7");
         }
 
     }
@@ -311,20 +325,21 @@ void UI::displayComputerMenu()
     cout << "1.Display Computers From Lowest to Highest ID\n"
             "2.Display Computers From Highest to Lowest ID\n"
             "3.Display Computer Names in Alphabetical Order\n"
-            "4.Display Computer Names in Reverse Alphabetical Order"
+            "4.Display Computer Names in Reverse Alphabetical Order\n"
+            "5.Back to Main Menu\n"
          << endl;
 
     while(true)
     {
         userSelection = readIntInput();
-        if(userSelection >= 1 && userSelection <= 4)
+        if(userSelection >= 1 && userSelection <= 5)
         {
             break;
         }
         else
         {
             displayError("Error unknown command!");
-            displayError("Select 1,2,3 or 4");
+            displayError("Select 1,2,3,4 or 5");
         }
 
     }
