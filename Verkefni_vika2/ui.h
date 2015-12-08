@@ -7,6 +7,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 using namespace std;
 
 /*Sér um samskipti við notanda, og villutékkar áður en eitthvað er sent niður í domain*/

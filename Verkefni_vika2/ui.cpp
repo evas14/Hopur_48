@@ -95,7 +95,6 @@ int UI::userInput()
     return choice;
 }
 
-//Verður notað í næsta skilaverkefni.
 void UI::displaySearchMenu()
 {
     string searchQuery;
@@ -233,15 +232,15 @@ void UI::displayComputerVector(vector <Computer> compVec)
 void UI::displayConnectionVector(vector <Connections> conVec)
 {
 
-    displayMessage("id\t Name\t\t\t Computer");
+    displayMessage("id   Name\t\t\t Computer");
     displayMessage( "-----------------------------------------------------");
     for(unsigned int i = 0; i < conVec.size(); i++)
     {
-        Connections con = conVec.at(i);
+       Connections con = conVec.at(i);
 
-        cout << con.getID() << "\t ";
-        cout << con.getPersonName() << "\t ";
-        cout << con.getComputerName() << endl;
+       cout << left << setw(5) << con.getID();
+       cout << left << setw(25) <<con.getPersonName();
+       cout << con.getComputerName() << endl;
 
     }
 
