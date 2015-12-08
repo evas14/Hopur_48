@@ -506,3 +506,4 @@ bool DomainLayer::vectorHasConnection(vector<Connections> con,int id)
 
     return false;
 }
+

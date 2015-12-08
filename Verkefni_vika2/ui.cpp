@@ -348,47 +348,7 @@ void UI::displayComputerMenu()
 void UI::displayConnectionsMenu()
 {
     DomainLayer domain;
-    int userSelection = 0;
-
-
-    cout << "1.Display Connections\n"
-            "2.Display Persons With no Connection\n"
-            "3.Display Computers With no Connection\n"
-            "4.Back to Main Menu\n"
-         << endl;
-
-    while(true)
-    {
-        userSelection = readIntInput();
-        if(userSelection >= 1 && userSelection <= 4)
-        {
-            break;
-        }
-        else
-        {
-            displayError("Error unknown command!");
-            displayError("Select 1,2,3 or 4");
-        }
-
-    }
-
-    switch(userSelection)
-    {
-        case 1:
-            domain.sortConnectionsVectorByID();
-            break;
-        case 2:
-            domain.sortPersonNoConnection();
-            break;
-        case 3:
-            domain.sortComputerNoConnection();
-            break;
-        case 4:
-            mainMenu();
-            break;
-    }
-
-
+    domain.sortConnectionsVectorByID();
 }
 
 
