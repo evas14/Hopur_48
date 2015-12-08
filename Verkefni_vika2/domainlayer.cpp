@@ -259,7 +259,14 @@ void DomainLayer::addPerson()
 
 
     Datalayer writer;
-    writer.addPersonToDB(per);
+    if(!writer.addPersonToDB(per))
+    {
+        toScreen.displayError("Oops! something went wrong.");
+    }
+    else
+    {
+        toScreen.displayMessage("Operation successful!");
+    }
 }
 
 void DomainLayer::addComputer()
@@ -304,7 +311,14 @@ void DomainLayer::addComputer()
      Computer comp(name, computertype, yearbuilt, wasbuilt);
 
      Datalayer writer;
-     writer.addComputerToDB(comp);
+     if(!writer.addComputerToDB(comp))
+     {
+         toScreen.displayError("Oops! something went wrong.");
+     }
+     else
+     {
+         toScreen.displayMessage("Operation successful!");
+     }
 }
 
 void DomainLayer::addConnection()
@@ -345,7 +359,14 @@ void DomainLayer::addConnection()
     }
 
     Connections connection (pId,cId);
-    writer.addConnectionToDB(connection);
+    if(!writer.addConnectionToDB(connection))
+    {
+        toScreen.displayError("Oops! something went wrong.");
+    }
+    else
+    {
+        toScreen.displayMessage("Operation successful!");
+    }
 
 }
 
@@ -396,7 +417,14 @@ void DomainLayer::removePerson()
     id = toScreen.readIntInput();
     if(vectorHasPerson(personvector,id))
     {
-        Reader.removePersonFromDB(id);
+        if(!Reader.removePersonFromDB(id))
+        {
+            toScreen.displayError("Oops! something went wrong.");
+        }
+        else
+        {
+            toScreen.displayMessage("Operation successful!");
+        }
     }
 
     else
@@ -420,7 +448,14 @@ void DomainLayer::removeComputer()
     id = toScreen.readIntInput();
     if(vectorHasComputer(computerVector,id))
     {
-        Reader.removeComputerFromDB(id);
+        if(!Reader.removeComputerFromDB(id))
+        {
+            toScreen.displayError("Oops! something went wrong.");
+        }
+        else
+        {
+            toScreen.displayMessage("Operation successful!");
+        }
     }
 
     else
@@ -445,7 +480,14 @@ void DomainLayer::removeConnection()
     id = toScreen.readIntInput();
     if(vectorHasConnection(connectionsvector,id))
     {
-        Reader.removeConnectionFromDB(id);
+        if(!Reader.removeConnectionFromDB(id))
+        {
+            toScreen.displayError("Oops! something went wrong.");
+        }
+        else
+        {
+            toScreen.displayMessage("Operation successful!");
+        }
     }
 
     else

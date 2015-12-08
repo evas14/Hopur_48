@@ -28,7 +28,7 @@ void Datalayer::closeDB()
     db.close();
 }
 
-void Datalayer::addComputerToDB(Computer comp)
+bool Datalayer::addComputerToDB(Computer comp)
 {
 
     QSqlQuery query;
@@ -47,12 +47,19 @@ void Datalayer::addComputerToDB(Computer comp)
     ss3 << yearBuilt;
     string str3 = ss3.str();
 
-        query.exec("INSERT INTO computers (name,computerType,yearBuilt,wasBuilt) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(computerType.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "','" + QString::fromStdString(a.c_str()) + "')");
+    if(query.exec("INSERT INTO computers (name,computerType,yearBuilt,wasBuilt) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(computerType.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "','" + QString::fromStdString(a.c_str()) + "')"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 
      //qDebug() << query.lastQuery();
 }
 
-void Datalayer::addConnectionToDB(Connections connection)
+bool Datalayer::addConnectionToDB(Connections connection)
 {
 
         QSqlQuery query;
@@ -64,14 +71,21 @@ void Datalayer::addConnectionToDB(Connections connection)
         ss2 << cId;
         string str2 = ss2.str();
 
-        query.exec("INSERT into connections (pId,cId) VALUES('"+ QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "')");
-        qDebug() << query.lastQuery();
+        if(query.exec("INSERT into connections (pId,cId) VALUES('"+ QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "')"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+//        qDebug() << query.lastQuery();
 
 
 }
 
 
-void Datalayer::addPersonToDB(person per)
+bool Datalayer::addPersonToDB(person per)
 {
 
     QSqlQuery query;
@@ -89,11 +103,18 @@ void Datalayer::addPersonToDB(person per)
         ss3 << age;
         string str3 = ss3.str();
 
-        query.exec("INSERT into persons (name,gender,yearOfBirth,yearOfDeath,age) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(gender.c_str()) + "','" + QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "')");
+        if(query.exec("INSERT into persons (name,gender,yearOfBirth,yearOfDeath,age) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(gender.c_str()) + "','" + QString::fromStdString(str1.c_str()) + "','" + QString::fromStdString(str2.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "')"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
         //qDebug() << query.lastQuery();
 }
 
-void Datalayer::removeComputerFromDB(int id)
+bool Datalayer::removeComputerFromDB(int id)
 {
     QSqlQuery query;
 
@@ -101,12 +122,19 @@ void Datalayer::removeComputerFromDB(int id)
     ss1 << id;
     string str1 = ss1.str();
 
-    query.exec("DELETE FROM computers where id = " + QString::fromStdString(str1.c_str()));
-    qDebug() << query.lastQuery();
+    if(query.exec("DELETE FROM computers where id = " + QString::fromStdString(str1.c_str())))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+//    qDebug() << query.lastQuery();
 
 }
 
-void Datalayer::removePersonFromDB(int id)
+bool Datalayer::removePersonFromDB(int id)
 {
     QSqlQuery query;
 
@@ -114,12 +142,19 @@ void Datalayer::removePersonFromDB(int id)
     ss1 << id;
     string str1 = ss1.str();
 
-    query.exec("DELETE FROM persons where id = " + QString::fromStdString(str1.c_str()));
-    qDebug() << query.lastQuery();
+    if(query.exec("DELETE FROM persons where id = " + QString::fromStdString(str1.c_str())))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+//    qDebug() << query.lastQuery();
 
 }
 
-void Datalayer::removeConnectionFromDB(int id)
+bool Datalayer::removeConnectionFromDB(int id)
 {
     QSqlQuery query;
 
@@ -127,8 +162,15 @@ void Datalayer::removeConnectionFromDB(int id)
     ss1 << id;
     string str1 = ss1.str();
 
-    query.exec("DELETE FROM connections where id = " + QString::fromStdString(str1.c_str()));
-    qDebug() << query.lastQuery();
+    if(query.exec("DELETE FROM connections where id = " + QString::fromStdString(str1.c_str())))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+//    qDebug() << query.lastQuery();
 
 }
 

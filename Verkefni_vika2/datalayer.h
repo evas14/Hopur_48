@@ -21,12 +21,12 @@ class Datalayer
     public:
         Datalayer();
 
-        void addPersonToDB(person per);
-        void addComputerToDB(Computer comp);
-        void addConnectionToDB (Connections connection);
-        void removeConnectionFromDB(int id);
-        void removePersonFromDB(int id);
-        void removeComputerFromDB(int id);
+        bool addPersonToDB(person per);
+        bool addComputerToDB(Computer comp);
+        bool addConnectionToDB (Connections connection);
+        bool removeConnectionFromDB(int id);
+        bool removePersonFromDB(int id);
+        bool removeComputerFromDB(int id);
         void closeDB();
 
         //Sort föll
