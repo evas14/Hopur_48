@@ -190,7 +190,6 @@ vector<Computer> Datalayer::pullComputer()
 {
     vector<Computer>computervector;
 
-    //Datalayer pull();
     QSqlQuery query(db);
 
     if(query.exec("SELECT * FROM computers"))
@@ -206,12 +205,9 @@ vector<Computer> Datalayer::pullComputer()
             Computer comp(name,computertype,yearbuilt,wasbuilt);
             comp.setID(id);
             computervector.push_back(comp);
-
         }
     }
-
     return computervector;
-
 }
 
 //Les af gagnagrunn inn manneskjur setur það í vector
@@ -220,7 +216,6 @@ vector<person> Datalayer::pullPerson()
 {
     vector<person>personvector;
 
-    //Datalayer pull();
     QSqlQuery query(db);
 
     if(query.exec("SELECT * FROM persons"))
@@ -248,7 +243,6 @@ vector<Connections> Datalayer::pullConnections()
 {
     vector<Connections>connectionsVector;
 
-    //Datalayer pull();
     QSqlQuery query(db);
 
     if(query.exec("SELECT c.id, p.name AS S_Name, cp.name AS CP_Name FROM persons p JOIN connections c ON p.id = c.pId,computers  cp ON cp.id = c.cId"))

@@ -20,25 +20,31 @@ class Datalayer
 {
 public:
     Datalayer();
-
+    //Sendir domainlayer hvort tekist hafi að bæta við
     bool addPersonToDB(person per);
     bool addComputerToDB(Computer comp);
     bool addConnectionToDB (Connections connection);
+
+    //Sendir domainlayer hvort tekist hafi að eyða
     bool removeConnectionFromDB(int id);
-    bool removePersonFromDB(int id);
     bool removeComputerFromDB(int id);
+    bool removePersonFromDB(int id);
+
+    //lokar gagnagrunni
     void closeDB();
 
     //Sort föll
     vector<person>sortPersonByName();
     vector<person>sortPersonByAge();
     vector<Computer>sortComputerByName();
-    //Sort eftir id
+    //Sækir eftir id
     vector<person> pullPerson();
     vector<Computer> pullComputer();
     vector<Connections> pullConnections();
 
+    //Tengist gagnagrunni
     void connectDB();
+    //Býr til gagnagrunn
     void createDB();
 
 private:

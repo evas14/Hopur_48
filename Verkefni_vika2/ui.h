@@ -15,7 +15,7 @@ class UI
 {
 public:
     UI();
-    //Menu föll
+    //Föll sem birta valmyndir
     void mainMenu();
     void displaySearchMenu();
     void displayPersonMenu();
@@ -24,15 +24,17 @@ public:
     void displayRemoveMenu();
     void displayAddMenu();
 
-    //Display föll
+    //Föll sem birta gögn úr gagnagrunni
     void displayPersonVector(vector <person> perVec);
     void displayComputerVector(vector <Computer> compVec);
     void displayConnectionVector(vector <Connections> conVec);
+
+    //Föll sem birta ýmis skilaboð
     void displayError(string error);
     void displayMessage(string message);
     void displayInput(string input);
 
-    //Input föll
+    //Föll sem lesa inn upplýsingar frá notanda
     string readStringInput();
     string readStringInputWithSpaces();
     int readIntInput();

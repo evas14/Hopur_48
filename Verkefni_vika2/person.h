@@ -19,14 +19,16 @@ private:
     int Age;
 
 public:
+    //Smiður sem frumstillir breytur
     person(string name, string gender, int yearofbirth, int yearofdeath);
+    //Föll sem sækja breytur
     int getID();
-    void setID(int id);
     string getName();
     string getGender();
     int getYearOfbirth();
     int getYearOfdeath();
     int getAge();
+    void setID(int id);
 };
 
 #endif // PERSON_H
