@@ -244,6 +244,7 @@ void UI::displayConnectionVector(vector <Connections> conVec)
 {
 
     displayMessage("id\t Name\t\t\t Computer");
+    displayMessage( "-----------------------------------------------------");
     for(unsigned int i = 0; i < conVec.size(); i++)
     {
         Connections con = conVec.at(i);
