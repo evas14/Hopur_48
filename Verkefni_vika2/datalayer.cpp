@@ -3,6 +3,12 @@
 //Smiður
 Datalayer::Datalayer()
 {
+
+
+}
+
+void Datalayer::connectDB()
+{
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("vln.sqlite");
 

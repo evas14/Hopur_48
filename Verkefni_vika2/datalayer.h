@@ -37,6 +37,8 @@ class Datalayer
         vector<person> pullPerson();
         vector<Computer> pullComputer();
         vector<Connections> pullConnections();
+
+        void connectDB();
     private:
         QSqlDatabase db;
 
