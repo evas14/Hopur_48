@@ -181,23 +181,22 @@ vector<Computer> Datalayer::pullComputer()
     //Datalayer pull();
     QSqlQuery query(db);
 
-        if(query.exec("SELECT * FROM computers"))
+    if(query.exec("SELECT * FROM computers"))
+    {
+        while(query.next())
         {
-            while(query.next())
-            {
-               int id = query.value("id").toUInt();
-               string name = query.value("name").toString().toStdString();
-               string computertype = query.value("computerType").toString().toStdString();
-               int yearbuilt = query.value("yearBuilt").toUInt();
-               bool wasbuilt = query.value("wasBuilt").toUInt();
+            int id = query.value("id").toUInt();
+            string name = query.value("name").toString().toStdString();
+            string computertype = query.value("computerType").toString().toStdString();
+            int yearbuilt = query.value("yearBuilt").toUInt();
+            bool wasbuilt = query.value("wasBuilt").toUInt();
 
-               Computer comp(name,computertype,yearbuilt,wasbuilt);
-               comp.setID(id);
-               computervector.push_back(comp);
+            Computer comp(name,computertype,yearbuilt,wasbuilt);
+            comp.setID(id);
+            computervector.push_back(comp);
 
-            }
         }
-
+    }
 
     return computervector;
 
@@ -212,23 +211,23 @@ vector<person> Datalayer::pullPerson()
     //Datalayer pull();
     QSqlQuery query(db);
 
-        if(query.exec("SELECT * FROM persons"))
+    if(query.exec("SELECT * FROM persons"))
+    {
+        while(query.next())
         {
-            while(query.next())
-            {
-               int id = query.value("id").toUInt();
-               string name = query.value("name").toString().toStdString();
-               string gender = query.value("gender").toString().toStdString();
-               int yearofbirth = query.value("yearOfBirth").toUInt();
-               int yearofdeath = query.value("yearOfDeath").toUInt();
+            int id = query.value("id").toUInt();
+            string name = query.value("name").toString().toStdString();
+            string gender = query.value("gender").toString().toStdString();
+            int yearofbirth = query.value("yearOfBirth").toUInt();
+            int yearofdeath = query.value("yearOfDeath").toUInt();
 
-               person per(name,gender,yearofbirth,yearofdeath);
-               per.setID(id);
+            person per(name,gender,yearofbirth,yearofdeath);
+            per.setID(id);
 
-               personvector.push_back(per);
+            personvector.push_back(per);
 
-            }
         }
+    }
 
     return personvector;
 }
@@ -265,26 +264,26 @@ vector<person> Datalayer::sortPersonByName()
     vector<person>sortedVector;
     QSqlQuery query(db);
 
-        if(query.exec("SELECT * FROM persons s ORDER BY s.name ASC"))
+    if(query.exec("SELECT * FROM persons s ORDER BY s.name ASC"))
+    {
+        while(query.next())
         {
-            while(query.next())
-            {
 
-                int id = query.value("id").toUInt();
-                string name = query.value("name").toString().toStdString();
-                string gender = query.value("gender").toString().toStdString();
-                int yearofbirth = query.value("yearOfBirth").toUInt();
-                int yearofdeath = query.value("yearOfDeath").toUInt();
+            int id = query.value("id").toUInt();
+            string name = query.value("name").toString().toStdString();
+            string gender = query.value("gender").toString().toStdString();
+            int yearofbirth = query.value("yearOfBirth").toUInt();
+            int yearofdeath = query.value("yearOfDeath").toUInt();
 
-                person per(name,gender,yearofbirth,yearofdeath);
-                per.setID(id);
+            person per(name,gender,yearofbirth,yearofdeath);
+            per.setID(id);
 
-                sortedVector.push_back(per);
+            sortedVector.push_back(per);
 
             }
         }
 
-        return sortedVector;
+    return sortedVector;
 
 }
 
@@ -294,25 +293,25 @@ vector<person> Datalayer::sortPersonByAge()
     vector<person>sortedVector;
     QSqlQuery query(db);
 
-        if(query.exec("SELECT * FROM persons s ORDER BY s.age ASC"))
+    if(query.exec("SELECT * FROM persons s ORDER BY s.age ASC"))
+    {
+        while(query.next())
         {
-            while(query.next())
-            {
-                int id = query.value("id").toUInt();
-                string name = query.value("name").toString().toStdString();
-                string gender = query.value("gender").toString().toStdString();
-                int yearofbirth = query.value("yearOfBirth").toUInt();
-                int yearofdeath = query.value("yearOfDeath").toUInt();
+            int id = query.value("id").toUInt();
+            string name = query.value("name").toString().toStdString();
+            string gender = query.value("gender").toString().toStdString();
+            int yearofbirth = query.value("yearOfBirth").toUInt();
+            int yearofdeath = query.value("yearOfDeath").toUInt();
 
-                person per(name,gender,yearofbirth,yearofdeath);
-                per.setID(id);
+            person per(name,gender,yearofbirth,yearofdeath);
+            per.setID(id);
 
-                sortedVector.push_back(per);
+            sortedVector.push_back(per);
 
-            }
         }
+    }
 
-        return sortedVector;
+    return sortedVector;
 
 }
 
@@ -322,23 +321,23 @@ vector<Computer> Datalayer::sortComputerByName()
     vector<Computer>sortedVector;
     QSqlQuery query(db);
 
-        if(query.exec("SELECT * FROM computers s ORDER BY s.name ASC"))
+    if(query.exec("SELECT * FROM computers s ORDER BY s.name ASC"))
+    {
+        while(query.next())
         {
-            while(query.next())
-            {
-               int id = query.value("id").toUInt();
-               string name = query.value("name").toString().toStdString();
-               string computertype = query.value("computerType").toString().toStdString();
-               int yearbuilt = query.value("yearBuilt").toUInt();
-               bool wasbuilt = query.value("wasBuilt").toUInt();
+            int id = query.value("id").toUInt();
+            string name = query.value("name").toString().toStdString();
+            string computertype = query.value("computerType").toString().toStdString();
+            int yearbuilt = query.value("yearBuilt").toUInt();
+            bool wasbuilt = query.value("wasBuilt").toUInt();
 
-               Computer comp(name,computertype,yearbuilt,wasbuilt);
-               comp.setID(id);
-               sortedVector.push_back(comp);
+            Computer comp(name,computertype,yearbuilt,wasbuilt);
+            comp.setID(id);
+            sortedVector.push_back(comp);
 
-            }
         }
+    }
 
-        return sortedVector;
+    return sortedVector;
 
 }
