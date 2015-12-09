@@ -48,7 +48,7 @@ bool Datalayer::addComputerToDB(Computer comp)
     string computerType = comp.getComputerType();
     int yearBuilt = comp.getYearBuilt();
     bool wasBuilt = comp.getWasBuilt();
-    stringstream ss1, ss2, ss3;
+    stringstream ss3;
     string a;
 
     if (wasBuilt)
@@ -63,6 +63,7 @@ bool Datalayer::addComputerToDB(Computer comp)
     ss3 << yearBuilt;
     string str3 = ss3.str();
 
+    //Öllum breytum breytt í QString og síðan skeytt saman
     if(query.exec("INSERT INTO computers (name,computerType,yearBuilt,wasBuilt) VALUES('" + QString::fromStdString(name.c_str()) + "','" + QString::fromStdString(computerType.c_str()) + "','" + QString::fromStdString(str3.c_str()) + "','" + QString::fromStdString(a.c_str()) + "')"))
     {
         return true;
