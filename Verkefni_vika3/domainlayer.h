@@ -21,8 +21,8 @@ class DomainLayer
 public:
     DomainLayer();
     //Leitar föll
-    void searchPersonByName(string searchquery);
-    void searchComputerByName(string searchquery);
+    vector<person> searchPersonByName(string searchquery);
+    vector<Computer> searchComputerByName(string searchquery);
 
     //Föll sem eyða úr gagnagrunni
     void removePerson();
@@ -30,12 +30,12 @@ public:
     void removeConnection();
 
     //Föll sem raða
-    void sortPersonVectorByID(string sortType);
-    void sortPersonVectorByName(string sortType);
-    void sortPersonVectorByAge(string sortType);
-    void sortComputerVectorByID(string sortType);
-    void sortComputerVectorByName(string sortType);
-    void sortConnectionsVectorByID();
+    vector<person> sortPersonVectorByID(string sortType);
+    vector<person>sortPersonVectorByName(string sortType);
+    vector<person> sortPersonVectorByAge(string sortType);
+    vector<Computer> sortComputerVectorByID(string sortType);
+    vector<Computer> sortComputerVectorByName(string sortType);
+    vector<Connections> sortConnectionsVectorByID();
 
     //Föll sem bæta við gagnagrunn
     void addPerson();

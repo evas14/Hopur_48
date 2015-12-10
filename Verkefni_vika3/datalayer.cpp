@@ -267,7 +267,7 @@ vector<Connections> Datalayer::pullConnections()
 
 vector<person> Datalayer::sortPersonByName()
 {
-    UI toScreen;
+    //UI toScreen;
     vector<person>sortedVector;
     QSqlQuery query(db);
 
@@ -296,7 +296,7 @@ vector<person> Datalayer::sortPersonByName()
 
 vector<person> Datalayer::sortPersonByAge()
 {
-    UI toScreen;
+    //UI toScreen;
     vector<person>sortedVector;
     QSqlQuery query(db);
 
@@ -324,7 +324,7 @@ vector<person> Datalayer::sortPersonByAge()
 
 vector<Computer> Datalayer::sortComputerByName()
 {
-    UI toScreen;
+    //UI toScreen;
     vector<Computer>sortedVector;
     QSqlQuery query(db);
 
