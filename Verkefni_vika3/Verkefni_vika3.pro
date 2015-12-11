@@ -20,6 +20,7 @@ SOURCES += main.cpp\
     datalayer.cpp \
     domainlayer.cpp \
     person.cpp \
+    displayform.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -28,6 +29,8 @@ HEADERS  += mainwindow.h \
     datalayer.h \
     domainlayer.h \
     person.h \
+    displayform.h
 
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    displayform.ui

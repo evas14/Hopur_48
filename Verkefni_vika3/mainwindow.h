@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <person.h>
 #include <domainlayer.h>
+#include <displayform.h>
 #include <string>
 #include <vector>
 using namespace std;
@@ -23,14 +24,17 @@ public:
 
 
 private slots:
-    void on_pushButtonSortPersonByID_clicked();
+    /*void on_pushButtonSortPersonByID_clicked();
 
     void on_pushButtonSortPersonByName_clicked();
 
-    void on_pushButtonSortPersonByAge_clicked();
+    void on_pushButtonSortPersonByAge_clicked();*/
+
+    void on_pushButtonDisplayForm_clicked();
 
 private:
     Ui::MainWindow *ui;
+    DisplayForm form;
 };
 
 #endif // MAINWINDOW_H

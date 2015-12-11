@@ -7,49 +7,18 @@
     <x>0</x>
     <y>0</y>
     <width>352</width>
-    <height>636</height>
+    <height>217</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QListWidget" name="listBoxDisplay"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonSortPersonByAge">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pushButtonDisplayForm">
       <property name="text">
-       <string>Age</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonSortPersonByName">
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonSortPersonByID">
-      <property name="text">
-       <string>ID</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="radioButtonNormalSort">
-      <property name="text">
-       <string>Normal</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="radioButtonReverseSort">
-      <property name="text">
-       <string>Reverse</string>
+       <string>Display</string>
       </property>
      </widget>
     </item>

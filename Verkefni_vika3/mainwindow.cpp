@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->radioButtonNormalSort->setChecked(true);
+
 
 }
 
@@ -24,13 +24,13 @@ void MainWindow::displayPersonVector(vector<person> perVec)
            person per = perVec.at(i);
            name = per.getName();
 
-           ui->listBoxDisplay->addItem(QString::fromStdString(name));
+          // ui->listBoxDisplay->addItem(QString::fromStdString(name));
 
        }
 
 }
 
-
+/*
 void MainWindow::on_pushButtonSortPersonByID_clicked()
 {
     ui->listBoxDisplay->clear();
@@ -90,4 +90,9 @@ void MainWindow::on_pushButtonSortPersonByAge_clicked()
         vector<person>personVector = domain.sortPersonVectorByAge("reverse");
         displayPersonVector(personVector);
     }
+}
+*/
+void MainWindow::on_pushButtonDisplayForm_clicked()
+{
+    form.show();
 }

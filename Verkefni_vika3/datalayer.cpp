@@ -246,7 +246,7 @@ vector<Connections> Datalayer::pullConnections()
 
     QSqlQuery query(db);
 
-    if(query.exec("SELECT c.id, p.name AS S_Name, cp.name AS CP_Name FROM persons p JOIN connections c ON p.id = c.pId,computers  cp ON cp.id = c.cId"))
+    if(query.exec("SELECT c.id, p.name AS S_Name, cp.name AS CP_Name FROM persons p JOIN connections c ON p.id = c.pId,computers  cp ON cp.id = c.cId ORDER BY p.name"))
     {
         while(query.next())
         {
