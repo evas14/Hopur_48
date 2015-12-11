@@ -16,19 +16,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::displayPersonVector(vector<person> perVec)
-{
-    string name;
-    for(unsigned int i = 0; i < perVec.size(); i++)
-       {
-           person per = perVec.at(i);
-           name = per.getName();
-
-          // ui->listBoxDisplay->addItem(QString::fromStdString(name));
-
-       }
-
-}
 
 /*
 void MainWindow::on_pushButtonSortPersonByID_clicked()
@@ -92,7 +79,8 @@ void MainWindow::on_pushButtonSortPersonByAge_clicked()
     }
 }
 */
-void MainWindow::on_pushButtonDisplayForm_clicked()
+
+void MainWindow::on_commandLinkButtonPerson_clicked()
 {
-    form.show();
+    personmenu.show();
 }

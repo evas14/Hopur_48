@@ -5,6 +5,7 @@
 #include <person.h>
 #include <domainlayer.h>
 #include <displayform.h>
+#include <personmenu.h>
 #include <string>
 #include <vector>
 using namespace std;
@@ -20,7 +21,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void displayPersonVector(vector <person> perVec);
 
 
 private slots:
@@ -30,11 +30,12 @@ private slots:
 
     void on_pushButtonSortPersonByAge_clicked();*/
 
-    void on_pushButtonDisplayForm_clicked();
+    void on_commandLinkButtonPerson_clicked();
 
 private:
     Ui::MainWindow *ui;
-    DisplayForm form;
+    PersonMenu personmenu;
+
 };
 
 #endif // MAINWINDOW_H

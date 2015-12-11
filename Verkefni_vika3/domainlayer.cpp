@@ -117,7 +117,7 @@ vector<Connections> DomainLayer::sortConnectionsVectorByID()
 vector<person> DomainLayer::searchPersonByName(string searchquery)
 {
     Datalayer Reader;
-    vector<person> personvector = Reader.pullPerson();
+    vector<person> personvector = Reader.sortPersonByName();
     vector<person> queryMatchVector;
     //UI //toScreen;
     string personName;
@@ -136,13 +136,8 @@ vector<person> DomainLayer::searchPersonByName(string searchquery)
         }
     }
 
-    if(queryMatchVector.size() == 0)
-    {
-        //UI //error;
-        //error.display//error("No match for: " + searchquery);
-    }
 
-    //toScreen.displayPersonVector(queryMatchVector);
+    return queryMatchVector;
 }
 
 vector<Computer> DomainLayer::searchComputerByName(string searchquery)
