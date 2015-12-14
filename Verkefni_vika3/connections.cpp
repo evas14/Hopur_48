@@ -7,13 +7,13 @@ Connections::Connections(string personname,string computername)
 }
 Connections::Connections(int perid,int comid)
 {
-    perID =perid;
-    comID=comid;
+    perID = perid;
+    comID = comid;
 }
 
 int Connections::getID()
 {
-  return ID;
+    return ID;
 }
 
 int Connections::getPerID()

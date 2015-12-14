@@ -25,7 +25,7 @@ public:
     vector<Computer> searchComputerByName(string searchquery);
 
     //Föll sem eyða úr gagnagrunni
-    void removePerson();
+    void removePerson(int id);
     void removeComputer();
     void removeConnection();
 
@@ -38,7 +38,7 @@ public:
     vector<Connections> sortConnectionsVectorByID();
 
     //Föll sem bæta við gagnagrunn
-    void addPerson();
+    bool addPerson(string name,string gender,int yearofbirth,int yearofdeath);
     void addComputer();
     void addConnection();
 

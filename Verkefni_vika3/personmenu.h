@@ -7,6 +7,9 @@
 #include <person.h>
 #include <domainlayer.h>
 #include <algorithm>
+#include <addpersonform.h>
+#include <editperson.h>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -31,8 +34,22 @@ private slots:
 
     void on_listWidgetPerson_activated(const QModelIndex &index);
 
+    void on_commandLinkButtonRemovePerson_clicked();
+
+    int findPersonInVector(vector<person> personVector, string nameOfSelected);
+
+    void on_commandLinkButtonAddNewPerson_clicked();
+
+    void on_commandLinkButtonEditPerson_clicked();
+
+    void on_commandLinkButtonShowTable_clicked();
+
 private:
     Ui::PersonMenu *ui;
+    AddPersonForm addpersonform;
+    EditPerson editpersonform;
+
+
 };
 
 #endif // PERSONMENU_H

@@ -169,77 +169,32 @@ vector<Computer> DomainLayer::searchComputerByName(string searchquery)
 
     //toScreen.displayComputerVector(queryMatchVector);
 }
-/*
-//Bætir persónu við vector
-void DomainLayer::addPerson()
-{
-    //UI //toScreen;
-    string name;
-    string gender;
-    int yearofbirth = 0;
-    int yearofdeath = 0;
 
-    //toScreen.displayInput("Name: ");
-    name = //toScreen.readStringInputWithSpaces();
+//Bætir persónu við vector
+bool DomainLayer::addPerson(string name, string gender, int yearofbirth, int yearofdeath)
+{
+
+
     name[0] = toupper(name[0]);
 
-    while(true)
+    //Athugar hvort slegið sé inn tölustafur í nafn
+    if(name.find_first_of("0123456789")!=std::string::npos)
     {
-        //Athugar hvort slegið sé inn tölustafur í nafn
-        if(name.find_first_of("0123456789")!=std::string::npos)
-        {
-            //UI //error;
-            //error.display//error("//error, name may not contain numbers!");
-            //toScreen.displayInput("Name: ");
-            name = //toScreen.readStringInputWithSpaces();
-            name[0] = toupper(name[0]);
-
-        }
-        else
-        {
-            break;
-        }
-
+       return false;
     }
 
-    //toScreen.displayInput("Gender: ");
-    gender = //toScreen.readStringInput();
-    gender[0] = toupper(gender[0]);
-
-    while(true)
-    {
-        if(gender == "Male" || gender == "Female")
-        {
-            break;
-        }
-        //UI //error;
-        //error.display//error("//error, please enter a valid Gender. Male or Female");
-        gender = //toScreen.readStringInput();
-        gender[0] = toupper(gender[0]);
-
-    }
-
-    //toScreen.displayInput("Year of birth: ");
-    yearofbirth = //toScreen.readIntInput();
     //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
     //ártalið sé ekki meira en árið í ár.
-    while(cin.fail() || yearofbirth < 999 || yearofbirth > currentYear())
+    if(yearofbirth < 999 || yearofbirth > currentYear())
     {
-        //UI //error;
-        //error.display//error("//error, please enter a valid year");
-        yearofbirth = //toScreen.readIntInput();
-
+        return false;
     }
 
-    //toScreen.displayMessage("Year of death, if the person is still alive please enter 0");
-    yearofdeath = //toScreen.readIntInput();
     //Athugar hvort slegið sé inn tölustafur, að slegið sé inn 4 stafa ártal, að dánarár sé ekki
     //á undan fæðingarári og að dánarár sé ekki stærra en árið í ár.
-    while(cin.fail() || (yearofdeath > 0 && yearofdeath < 999) || (yearofdeath > 0 && yearofdeath < yearofbirth) || yearofdeath > currentYear())
+    if((yearofdeath > 0 && yearofdeath < 999) || (yearofdeath > 0 && yearofdeath < yearofbirth) || yearofdeath > currentYear())
     {
-        //UI //error;
-        //error.display//error("//error, please enter a valid year");
-        yearofdeath = //toScreen.readIntInput();
+        return false;
     }
 
     person per(name,gender,yearofbirth,yearofdeath);
@@ -247,15 +202,15 @@ void DomainLayer::addPerson()
     Datalayer writer;
     if(!writer.addPersonToDB(per))
     {
-        //toScreen.display//error("Oops! something went wrong.");
+        return false;
     }
     else
     {
-        //toScreen.displayMessage("Operation successful!");
+        return true;
     }
 }
 
-*/
+
 /*
 void DomainLayer::addComputer()
 {
@@ -371,41 +326,20 @@ int DomainLayer::currentYear()
 
     return currentYear;
 }
-/*
+
 //fjarlægir einstakling úr vector
-void DomainLayer::removePerson()
+void DomainLayer::removePerson(int id)
 {
     //UI //toScreen;
     Datalayer Reader;
     vector<person> personvector;
     personvector = Reader.pullPerson();
 
-    int id = 0;
-    //toScreen.displayPersonVector(personvector);
-    //toScreen.displayMessage("Enter ID of the person you want to remove: ");
-    id = //toScreen.readIntInput();
-    if(vectorHasPerson(personvector,id))
-    {
-        if(!Reader.removePersonFromDB(id))
-        {
-            //toScreen.display//error("Oops! something went wrong.");
-        }
-        else
-        {
-            //toScreen.displayMessage("Operation successful!");
-        }
-    }
-    else
-    {
-        //UI //error;
-        //toScreen.displayMessage("\n");
-        //error.display//error("//error ID not found!\n");
-        //toScreen.displayRemoveMenu();
-    }
+    Reader.removePersonFromDB(id);
 
 }
 
-*/
+
 /*
 void DomainLayer::removeComputer()
 {

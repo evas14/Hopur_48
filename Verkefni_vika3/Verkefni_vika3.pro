@@ -21,7 +21,10 @@ SOURCES += main.cpp\
     domainlayer.cpp \
     person.cpp \
     displayform.cpp \
-    personmenu.cpp
+    personmenu.cpp \
+    computermenu.cpp \
+    addpersonform.cpp \
+    editperson.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -31,9 +34,15 @@ HEADERS  += mainwindow.h \
     domainlayer.h \
     person.h \
     displayform.h \
-    personmenu.h
+    personmenu.h \
+    computermenu.h \
+    addpersonform.h \
+    editperson.h
 
 
 FORMS    += mainwindow.ui \
     displayform.ui \
-    personmenu.ui
+    personmenu.ui \
+    computermenu.ui \
+    addpersonform.ui \
+    editperson.ui
