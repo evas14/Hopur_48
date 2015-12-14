@@ -6,6 +6,7 @@
 #include <domainlayer.h>
 #include <displayform.h>
 #include <connectionsmenu.h>
+#include <computermenu.h>
 #include <personmenu.h>
 #include <string>
 #include <vector>
@@ -22,14 +23,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    int counter = 0;
 
 
 private slots:
-    /*void on_pushButtonSortPersonByID_clicked();
-
-    void on_pushButtonSortPersonByName_clicked();
-
-    void on_pushButtonSortPersonByAge_clicked();*/
 
     void on_commandLinkButtonPerson_clicked();
 
@@ -44,7 +41,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     PersonMenu personmenu;
-    ConnectionsMenu connectionmenu;
+    ComputerMenu computermenu;
+    ConnectionsMenu connectionsmenu;
+
 
 };
 

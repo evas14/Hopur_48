@@ -426,7 +426,7 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Persons Menu</string>
   </property>
   <widget class="QListWidget" name="listWidgetPerson">
    <property name="geometry">

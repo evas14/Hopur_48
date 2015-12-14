@@ -25,6 +25,7 @@ public:
     explicit PersonMenu(QWidget *parent = 0);
     ~PersonMenu();
     void displayPersonVector(vector <person> perVec);
+    void Refresh();
 
 
 private slots:
@@ -43,6 +44,8 @@ private slots:
     void on_commandLinkButtonEditPerson_clicked();
 
     void on_commandLinkButtonShowTable_clicked();
+
+
 
 private:
     Ui::PersonMenu *ui;

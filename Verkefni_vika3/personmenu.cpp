@@ -6,20 +6,7 @@ PersonMenu::PersonMenu(QWidget *parent) :
     ui(new Ui::PersonMenu)
 {
     ui->setupUi(this);
-    DomainLayer domain;
-    vector <person> personVector = domain.sortPersonVectorByName("normal");
-    displayPersonVector(personVector);
 
-    if(ui->listWidgetPerson->count() > 0)
-    {
-        ui->listWidgetPerson->item(0)->setSelected(true);
-        ui->listWidgetPerson->setCurrentRow(0);
-        on_listWidgetPerson_clicked(ui->listWidgetPerson->currentIndex());
-    }
-    else
-    {
-        QMessageBox::warning(this,"Warning!","Database is empty");
-    }
 }
 
 PersonMenu::~PersonMenu()
@@ -200,4 +187,23 @@ void PersonMenu::on_commandLinkButtonEditPerson_clicked()
 void PersonMenu::on_commandLinkButtonShowTable_clicked()
 {
     //Show table form
+}
+
+void PersonMenu::Refresh()
+{
+    DomainLayer domain;
+    vector <person> personVector = domain.sortPersonVectorByName("normal");
+    displayPersonVector(personVector);
+    ui->lineEditSearch->clear();
+
+    if(ui->listWidgetPerson->count() > 0)
+    {
+        ui->listWidgetPerson->item(0)->setSelected(true);
+        ui->listWidgetPerson->setCurrentRow(0);
+        on_listWidgetPerson_clicked(ui->listWidgetPerson->currentIndex());
+    }
+    else
+    {
+        QMessageBox::warning(this,"Warning!","Database is empty");
+    }
 }

@@ -10,10 +10,12 @@ AddPersonForm::AddPersonForm(QWidget *parent) :
     ui->radioButtonPersonGenderMale->clicked();
 
 
+
 }
 
 AddPersonForm::~AddPersonForm()
 {
+
     delete ui;
 }
 
@@ -69,6 +71,7 @@ void AddPersonForm::on_pushButtonAddPerson_clicked()
     DomainLayer domain;
     domain.addPerson(name,gender,yearofbirth,yearofdeath);
 
-    this->close();
+    this->destroy(true);
+
 
 }

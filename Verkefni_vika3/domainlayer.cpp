@@ -263,44 +263,15 @@ void DomainLayer::addComputer()
 }
 */
 
-/*
 
-void DomainLayer::addConnection()
+
+void DomainLayer::addConnection(int personID, int computerID)
 {
     //UI //toScreen;
     Datalayer writer;
-    vector <person> personVector = writer.pullPerson();
-    vector <Computer> computerVector = writer.pullComputer();
 
-    int pId = 0;
-    int cId = 0;
-    //toScreen.displayPersonVector(personVector);
-    while(true)
-    {
-        //toScreen.displayInput("Person Id: ");
-        pId = //toScreen.readIntInput();
 
-        if(vectorHasPerson(personVector,pId))
-        {
-            break;
-        }
-
-    }
-
-    //toScreen.displayComputerVector(computerVector);
-    while(true)
-    {
-        //toScreen.displayInput("Computer Id: ");
-        cId = //toScreen.readIntInput();
-
-        if(vectorHasComputer(computerVector,cId))
-        {
-            break;
-        }
-
-    }
-
-    Connections connection (pId,cId);
+    Connections connection (personID,computerID);
     if(!writer.addConnectionToDB(connection))
     {
         //toScreen.display//error("Oops! something went wrong.");
@@ -311,7 +282,7 @@ void DomainLayer::addConnection()
     }
 
 }
-*/
+
 
 int DomainLayer::currentYear()
 {
@@ -326,14 +297,19 @@ int DomainLayer::currentYear()
 }
 
 //fjarlægir einstakling úr vector
-void DomainLayer::removePerson(int id)
+bool DomainLayer::removePerson(int id)
 {
     //UI //toScreen;
     Datalayer Reader;
-    vector<person> personvector;
-    personvector = Reader.pullPerson();
 
-    Reader.removePersonFromDB(id);
+    if(!Reader.removePersonFromDB(id))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 
 }
 
@@ -371,40 +347,24 @@ void DomainLayer::removeComputer()
 
 }
 */
-/*
-void DomainLayer::removeConnection()
-{
-    //UI //toScreen;
-    Datalayer Reader;
-    vector<Connections> connectionsvector;
-    connectionsvector = Reader.pullConnections();
 
-    int id = 0;
-    //toScreen.displayConnectionVector(connectionsvector);
-    //toScreen.displayMessage("Enter ID of the connection you want to remove: ");
-    id = //toScreen.readIntInput();
-    if(vectorHasConnection(connectionsvector,id))
+bool DomainLayer::removeConnection(int id)
+{
+
+    Datalayer Reader;
+
+    if(!Reader.removeConnectionFromDB(id))
     {
-        if(!Reader.removeConnectionFromDB(id))
-        {
-            //toScreen.display//error("Oops! something went wrong.");
-        }
-        else
-        {
-            //toScreen.displayMessage("Operation successful!");
-        }
+        return false;
     }
     else
     {
-        //UI //error;
-        //toScreen.displayMessage("\n");
-        //error.display//error("//error ID not found!\n");
-        //toScreen.displayRemoveMenu();
+        return true;
     }
-
 }
 
-*/
+
+
 /*
 //removeperson notar þetta fall til að athuga hvort manneskjan
 //sé til

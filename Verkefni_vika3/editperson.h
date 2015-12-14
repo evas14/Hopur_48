@@ -22,6 +22,8 @@ public:
     ~EditPerson();
     void fillInfo(int ID);
 
+    int getPersonID() const;
+    void setPersonID(int value);
 
 private slots:
     void on_checkBoxPersonAlive_clicked();
@@ -30,8 +32,11 @@ private slots:
 
     void on_pushButtonPersonUpdate_clicked();
 
+
+
 private:
     Ui::EditPerson *ui;
+    int PersonID;
 
 };
 

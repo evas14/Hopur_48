@@ -32,6 +32,8 @@ void EditPerson::fillInfo(int ID)
         }
     }
 
+    setPersonID(personVector.at(locationInVector).getID());
+
     ui->lineEditPersonName->setText(QString::fromStdString(personVector.at(locationInVector).getName()));
 
     if(personVector.at(locationInVector).getGender() == "Male")
@@ -88,5 +90,15 @@ void EditPerson::on_pushButton_clicked()
 
 void EditPerson::on_pushButtonPersonUpdate_clicked()
 {
+    int ID = getPersonID();
+}
 
+int EditPerson::getPersonID() const
+{
+    return PersonID;
+}
+
+void EditPerson::setPersonID(int value)
+{
+    PersonID = value;
 }

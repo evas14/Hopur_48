@@ -448,6 +448,11 @@
    </attribute>
    <column>
     <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
      <string>Person</string>
     </property>
    </column>
@@ -457,13 +462,13 @@
     </property>
    </column>
   </widget>
-  <widget class="QPushButton" name="pushButtonAddNewConnection">
+  <widget class="QCommandLinkButton" name="commandLinkButtonAddNewConnection">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>310</y>
-     <width>151</width>
-     <height>28</height>
+     <width>221</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -477,12 +482,18 @@
    <property name="text">
     <string>Make New Connection</string>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButtonRemoveConnection">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>350</y>
+     <x>400</x>
+     <y>360</y>
      <width>151</width>
      <height>28</height>
     </rect>
@@ -497,6 +508,16 @@
    </property>
    <property name="text">
     <string>Remove Connection</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxConnectionID">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>310</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
    </property>
   </widget>
  </widget>

@@ -20,12 +20,12 @@ SOURCES += main.cpp\
     datalayer.cpp \
     domainlayer.cpp \
     person.cpp \
-    displayform.cpp \
     personmenu.cpp \
     computermenu.cpp \
     addpersonform.cpp \
     editperson.cpp \
-    connectionsmenu.cpp
+    connectionsmenu.cpp \
+    addconnectionform.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -34,18 +34,18 @@ HEADERS  += mainwindow.h \
     datalayer.h \
     domainlayer.h \
     person.h \
-    displayform.h \
     personmenu.h \
     computermenu.h \
     addpersonform.h \
     editperson.h \
-    connectionsmenu.h
+    connectionsmenu.h \
+    addconnectionform.h
 
 
 FORMS    += mainwindow.ui \
-    displayform.ui \
     personmenu.ui \
     computermenu.ui \
     addpersonform.ui \
     editperson.ui \
-    connectionsmenu.ui
+    connectionsmenu.ui \
+    addconnectionform.ui

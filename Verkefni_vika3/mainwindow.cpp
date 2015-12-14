@@ -16,83 +16,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-/*
-void MainWindow::on_pushButtonSortPersonByID_clicked()
-{
-    ui->listBoxDisplay->clear();
-
-    DomainLayer domain;
-
-
-    if(ui->radioButtonNormalSort->isChecked())
-    {
-        vector<person>personVector = domain.sortPersonVectorByID("normal");
-        displayPersonVector(personVector);
-
-    }
-
-    else
-    {
-        vector<person>personVector = domain.sortPersonVectorByID("reverse");
-        displayPersonVector(personVector);
-    }
-}
-
-void MainWindow::on_pushButtonSortPersonByName_clicked()
-{
-    ui->listBoxDisplay->clear();
-
-    DomainLayer domain;
-
-
-    if(ui->radioButtonNormalSort->isChecked())
-    {
-        vector<person>personVector = domain.sortPersonVectorByName("normal");
-        displayPersonVector(personVector);
-
-    }
-    else
-    {
-        vector<person>personVector = domain.sortPersonVectorByName("reverse");
-        displayPersonVector(personVector);
-
-    }
-}
-
-void MainWindow::on_pushButtonSortPersonByAge_clicked()
-{
-    ui->listBoxDisplay->clear();
-
-    DomainLayer domain;
-
-
-    if(ui->radioButtonNormalSort->isChecked())
-    {
-        vector<person>personVector = domain.sortPersonVectorByAge("normal");
-        displayPersonVector(personVector);
-    }
-    else
-    {
-        vector<person>personVector = domain.sortPersonVectorByAge("reverse");
-        displayPersonVector(personVector);
-    }
-}
-*/
-
 void MainWindow::on_commandLinkButtonPerson_clicked()
 {
+    personmenu.Refresh();
     personmenu.show();
 }
 
 void MainWindow::on_commandLinkButtonComputer_clicked()
 {
+    computermenu.show();
 
 }
 
 void MainWindow::on_commandLinkButtonConnections_clicked()
 {
-     connectionmenu.show();
+     connectionsmenu.refresh();
+     connectionsmenu.show();
 }
 
 
