@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     personmenu.cpp \
     computermenu.cpp \
     addpersonform.cpp \
-    editperson.cpp
+    editperson.cpp \
+    connectionsmenu.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
     personmenu.h \
     computermenu.h \
     addpersonform.h \
-    editperson.h
+    editperson.h \
+    connectionsmenu.h
 
 
 FORMS    += mainwindow.ui \
@@ -45,4 +47,5 @@ FORMS    += mainwindow.ui \
     personmenu.ui \
     computermenu.ui \
     addpersonform.ui \
-    editperson.ui
+    editperson.ui \
+    connectionsmenu.ui

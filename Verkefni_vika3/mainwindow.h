@@ -5,6 +5,7 @@
 #include <person.h>
 #include <domainlayer.h>
 #include <displayform.h>
+#include <connectionsmenu.h>
 #include <personmenu.h>
 #include <string>
 #include <vector>
@@ -32,9 +33,14 @@ private slots:
 
     void on_commandLinkButtonPerson_clicked();
 
+    void on_commandLinkButtonComputer_clicked();
+
+    void on_commandLinkButtonConnections_clicked();
+
 private:
     Ui::MainWindow *ui;
     PersonMenu personmenu;
+    ConnectionsMenu connectionmenu;
 
 };
 

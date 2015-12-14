@@ -105,11 +105,9 @@ vector<Computer> DomainLayer:: sortComputerVectorByName(string sortType)
 
 vector<Connections> DomainLayer::sortConnectionsVectorByID()
 {
-
     Datalayer Reader;
     vector <Connections>sortedVector = Reader.pullConnections();
     return sortedVector;
-
 }
 
 

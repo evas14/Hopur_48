@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //setWindowFlags( Qt::CustomizeWindowHint );
 
 
 }
@@ -83,4 +84,14 @@ void MainWindow::on_pushButtonSortPersonByAge_clicked()
 void MainWindow::on_commandLinkButtonPerson_clicked()
 {
     personmenu.show();
+}
+
+void MainWindow::on_commandLinkButtonComputer_clicked()
+{
+
+}
+
+void MainWindow::on_commandLinkButtonConnections_clicked()
+{
+     connectionmenu.show();
 }
