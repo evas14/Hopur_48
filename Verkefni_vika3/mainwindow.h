@@ -37,6 +37,10 @@ private slots:
 
     void on_commandLinkButtonConnections_clicked();
 
+    void on_Button_Close_clicked();
+
+
+
 private:
     Ui::MainWindow *ui;
     PersonMenu personmenu;

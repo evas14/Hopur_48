@@ -7,9 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //setWindowFlags( Qt::CustomizeWindowHint );
-
-
+    setWindowFlags(Qt::FramelessWindowHint);
+   // connect(on_Button_close_clicked()), SIGNAL(clicked()), qApp, SLOT(quit());
 }
 
 MainWindow::~MainWindow()
@@ -94,4 +93,11 @@ void MainWindow::on_commandLinkButtonComputer_clicked()
 void MainWindow::on_commandLinkButtonConnections_clicked()
 {
      connectionmenu.show();
+}
+
+
+
+void MainWindow::on_Button_Close_clicked()
+{
+   QMainWindow::close();
 }
