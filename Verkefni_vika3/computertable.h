@@ -7,6 +7,7 @@
 #include <domainlayer.h>
 #include <QMessageBox>
 #include <algorithm>
+#include <QMoveEvent>
 
 using namespace std;
 
@@ -24,12 +25,23 @@ public:
     void refresh();
     void displayComputerVectorInTable(vector<Computer> computerVector);
 
+    //mouse functions
+    void mouseMoveEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
+
 private slots:
     void on_commandLinkButtonRefresh_clicked();
+
+    void on_ButtonClose_clicked();
 
 private:
     Ui::ComputerTable *ui;
     DomainLayer domain;
+
+    //mouse variables
+    QPoint mLastMousePosition;
+    bool mMoving;
 };
 
 #endif // COMPUTERTABLE_H

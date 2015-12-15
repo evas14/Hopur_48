@@ -6,6 +6,8 @@ ComputerTable::ComputerTable(QWidget *parent) :
     ui(new Ui::ComputerTable)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint);
+
 }
 
 ComputerTable::~ComputerTable()
@@ -95,4 +97,34 @@ void ComputerTable::displayComputerVectorInTable(vector<Computer> computerVector
 void ComputerTable::on_commandLinkButtonRefresh_clicked()
 {
     refresh();
+}
+
+void ComputerTable::on_ButtonClose_clicked()
+{
+    ComputerTable::close();
+}
+
+void ComputerTable::mousePressEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = true;
+        mLastMousePosition = event->pos();
+    }
+}
+
+void ComputerTable::mouseMoveEvent(QMouseEvent* event)
+{
+    if( event->buttons().testFlag(Qt::LeftButton) && mMoving)
+    {
+        this->move(this->pos() + (event->pos() - mLastMousePosition));
+    }
+}
+
+void ComputerTable::mouseReleaseEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = false;
+    }
 }
