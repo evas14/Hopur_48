@@ -54,6 +54,8 @@ private slots:
 
     void on_ButtonCllose_clicked();
 
+    void on_pushButtonClear_clicked();
+
 private:
     Ui::ComputerMenu *ui;
     DomainLayer domain;

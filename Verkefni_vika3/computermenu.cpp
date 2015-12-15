@@ -9,7 +9,6 @@ ComputerMenu::ComputerMenu(QWidget *parent) :
     ui->labelYearBuilt->hide();
     ui->label4->hide();
     ui->lineEditComputerYearBuilt->hide();
-    ui->label_3->hide();
 
     setWindowFlags(Qt::FramelessWindowHint);
 }
@@ -79,7 +78,7 @@ int ComputerMenu::findComputerInVector(vector<Computer> computerVector, string n
 void ComputerMenu::on_commandLinkButtonAddNewComputer_clicked()
 {
     string name,computerType;
-    int yearBuilt = 0;
+    int yearBuilt = 0, status;
     bool wasBuilt;
 
     name = ui->lineEditComputerName->text().toStdString();
@@ -96,7 +95,20 @@ void ComputerMenu::on_commandLinkButtonAddNewComputer_clicked()
         yearBuilt = 0;
     }
 
-    domain.addComputer(name,computerType,yearBuilt,wasBuilt);
+    status = domain.addComputer(name,computerType,yearBuilt,wasBuilt);
+
+    switch(status)
+    {
+    case 0:
+        ui->labelStatus->setText("<font color = 'green'> Operation Successful!");
+        break;
+    case 1:
+        ui->labelStatus->setText("<font color = 'red'> Error: Invalid Build Year!");
+        break;
+    case 2:
+        ui->labelStatus->setText("<font color = 'red'> Error: Database Error!");
+        break;
+    }
     refresh();
 }
 
@@ -119,7 +131,15 @@ void ComputerMenu::on_commandLinkButtonRemoveComputer_clicked()
 
         int locationInVector = findComputerInVector(computerVector,nameOfSelected);
 
-        domain.removeComputer(computerVector.at(locationInVector).getID());
+        if(domain.removeComputer(computerVector.at(locationInVector).getID()))
+        {
+            ui->labelStatus->setText("<font color = 'green'> Operation Successful!");
+        }
+        else
+        {
+            ui->labelStatus->setText("<font color = 'red'> Error: Failed to Remove Computer");
+        }
+
 
         refresh();
 
@@ -137,7 +157,7 @@ void ComputerMenu::on_commandLinkButtonRemoveComputer_clicked()
 void ComputerMenu::on_commandLinkButtonEditComputer_clicked()
 {
     int compID = getComputerID();
-    int yearBuild = 0;
+    int yearBuild = 0, status;
     bool wasBuilt;
 
     string name = ui->lineEditComputerName->text().toStdString();
@@ -154,7 +174,20 @@ void ComputerMenu::on_commandLinkButtonEditComputer_clicked()
     }
 
 
-    domain.updateComputer(compID,name,type,yearBuild,wasBuilt);
+    status = domain.updateComputer(compID,name,type,yearBuild,wasBuilt);
+
+    switch(status)
+    {
+    case 0:
+        ui->labelStatus->setText("<font color = 'green'> Operation Successful!");
+        break;
+    case 1:
+        ui->labelStatus->setText("<font color = 'red'> Error: Invalid Build Year!");
+        break;
+    case 2:
+        ui->labelStatus->setText("<font color = 'red'> Error: Database Error!");
+        break;
+    }
     refresh();
 
 
@@ -216,7 +249,6 @@ void ComputerMenu::on_listWidgetComputer_clicked(const QModelIndex &index)
         ui->labelWasBuilt->setText("Yes");
         ui->labelYearBuilt->show();
         ui->label4->show();
-        ui->label_3->show();
         ui->lineEditComputerYearBuilt->show();
         ui->checkBoxWasBuilt->setChecked(true);
 
@@ -229,7 +261,6 @@ void ComputerMenu::on_listWidgetComputer_clicked(const QModelIndex &index)
         ui->labelYearBuilt->hide();
         ui->label4->hide();
         ui->lineEditComputerYearBuilt->hide();
-        ui->label_3->hide();
 
     }
 
@@ -241,13 +272,11 @@ void ComputerMenu::on_checkBoxWasBuilt_clicked()
     if(ui->checkBoxWasBuilt->isChecked())
     {
         ui->lineEditComputerYearBuilt->show();
-        ui->label_3->show();
     }
     else
     {
         ui->lineEditComputerYearBuilt->hide();
         ui->lineEditComputerYearBuilt->clear();
-        ui->label_3->hide();
     }
 }
 
@@ -289,4 +318,13 @@ void ComputerMenu::mouseReleaseEvent(QMouseEvent* event)
     {
         mMoving = false;
     }
+}
+
+void ComputerMenu::on_pushButtonClear_clicked()
+{
+    ui->lineEditComputerName->clear();
+    ui->lineEditComputerType->clear();
+    ui->checkBoxWasBuilt->setChecked(false);
+    ui->lineEditComputerYearBuilt->clear();
+    ui->labelStatus->clear();
 }

@@ -266,7 +266,7 @@ int DomainLayer::updateComputer(int id, string name, string computerType, int ye
 
     //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
     //ártalið sé ekki meira en árið í ár.
-    if(yearBuilt < 999 || yearBuilt > currentYear())
+    if(yearBuilt < 0 || yearBuilt > currentYear())
     {
         return 1;
     }
