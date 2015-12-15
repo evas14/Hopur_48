@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
-   // connect(on_Button_close_clicked()), SIGNAL(clicked()), qApp, SLOT(quit());
+
 }
 
 MainWindow::~MainWindow()
@@ -24,6 +24,7 @@ void MainWindow::on_commandLinkButtonPerson_clicked()
 
 void MainWindow::on_commandLinkButtonComputer_clicked()
 {
+    computermenu.refresh();
     computermenu.show();
 
 }

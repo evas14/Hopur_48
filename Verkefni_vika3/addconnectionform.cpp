@@ -99,7 +99,7 @@ int AddConnectionForm::findComputerInVector(vector<Computer> computerVector, str
             return i;
         }
     }
-
+    return -1;
 }
 
 

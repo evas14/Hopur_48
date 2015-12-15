@@ -26,7 +26,11 @@ public:
     ~PersonMenu();
     void displayPersonVector(vector <person> perVec);
     void Refresh();
+    int findPersonInVector(vector<person> personVector, string nameOfSelected);
 
+
+    int getPersonID() const;
+    void setPersonID(int value);
 
 private slots:
     void on_lineEditSearch_textChanged(const QString &arg1);
@@ -37,8 +41,6 @@ private slots:
 
     void on_commandLinkButtonRemovePerson_clicked();
 
-    int findPersonInVector(vector<person> personVector, string nameOfSelected);
-
     void on_commandLinkButtonAddNewPerson_clicked();
 
     void on_commandLinkButtonEditPerson_clicked();
@@ -47,10 +49,21 @@ private slots:
 
 
 
+    void on_pushButtonClear_clicked();
+
+    void on_pushButtonAddPerson_clicked();
+
+    void on_checkBoxPersonAlive_clicked();
+
+
+    void on_pushButtonUpdatePerson_clicked();
+
 private:
     Ui::PersonMenu *ui;
     AddPersonForm addpersonform;
     EditPerson editpersonform;
+    DomainLayer domain;
+    int personID;
 
 
 };

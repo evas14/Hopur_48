@@ -9,7 +9,6 @@
 #include <computer.h>
 #include <connections.h>
 #include <fstream>
-#include <ui.h>
 #include <datalayer.h>
 #include <algorithm>
 
@@ -18,6 +17,10 @@ using namespace std;
 
 class DomainLayer
 {
+
+private:
+    Datalayer datalayer;
+
 public:
     DomainLayer();
     //Leitar föll
@@ -26,7 +29,7 @@ public:
 
     //Föll sem eyða úr gagnagrunni
     bool removePerson(int id);
-    void removeComputer();
+    bool removeComputer(int id);
     bool removeConnection(int id);
 
     //Föll sem raða
@@ -39,8 +42,11 @@ public:
 
     //Föll sem bæta við gagnagrunn
     bool addPerson(string name,string gender,int yearofbirth,int yearofdeath);
-    void addComputer();
+    bool addComputer(string name, string computerType, int yearBuilt, bool wasBuilt);
     void addConnection(int personID,int computerID);
+
+    bool updateComputer(int id,string name,string computerType, int yearBuilt, bool wasBuilt);
+    bool updatePerson(int id,string name,string gender,int yearofbirth,int yearofdeath);
 
 
     //Athugar hvort stak sé til í vector

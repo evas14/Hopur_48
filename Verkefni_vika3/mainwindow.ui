@@ -9,12 +9,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>700</height>
+    <width>751</width>
+    <height>424</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -534,6 +534,12 @@
   <property name="windowFilePath">
    <string/>
   </property>
+  <property name="iconSize">
+   <size>
+    <width>40</width>
+    <height>40</height>
+   </size>
+  </property>
   <property name="animated">
    <bool>true</bool>
   </property>
@@ -702,7 +708,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../build-Verkefni_vika3-Desktop_Qt_5_4_2_MinGW_32bit2-Debug/per_image/person.png</normaloff>../build-Verkefni_vika3-Desktop_Qt_5_4_2_MinGW_32bit2-Debug/per_image/person.png</iconset>
+          <normaloff>per_image/person.png</normaloff>per_image/person.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -851,7 +857,8 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../build-Verkefni_vika3-Desktop_Qt_5_4_2_MinGW_32bit2-Debug/comp_image/computer.png</normaloff>../build-Verkefni_vika3-Desktop_Qt_5_4_2_MinGW_32bit2-Debug/comp_image/computer.png</iconset>
+          <normaloff>comp_image/computer.png</normaloff>
+          <normalon>comp_image/computer.png</normalon>comp_image/computer.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -864,7 +871,7 @@
       <item>
        <widget class="QCommandLinkButton" name="commandLinkButtonConnections">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1036,7 +1043,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../build-Verkefni_vika3-Desktop_Qt_5_4_2_MinGW_32bit2-Debug/con_image/connection.png</normaloff>../build-Verkefni_vika3-Desktop_Qt_5_4_2_MinGW_32bit2-Debug/con_image/connection.png</iconset>
+          <normaloff>con_image/connection.png</normaloff>con_image/connection.png</iconset>
         </property>
         <property name="iconSize">
          <size>

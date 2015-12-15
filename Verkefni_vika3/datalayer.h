@@ -5,7 +5,6 @@
 #include <person.h>
 #include <computer.h>
 #include <connections.h>
-#include <ui.h>
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -29,6 +28,9 @@ public:
     bool removeConnectionFromDB(int id);
     bool removeComputerFromDB(int id);
     bool removePersonFromDB(int id);
+
+    bool updateComputerToDB(Computer comp);
+    bool updatePersonToDB(person per);
 
     //lokar gagnagrunni
     void closeDB();

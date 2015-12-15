@@ -21,9 +21,9 @@ void ConnectionsMenu::displayConnectionsVectorInTable(vector<Connections> connec
     string computerName;
     int Id = 0;
 
-    ui->tableWidgetDisplayConnections ->setRowCount(connectionsVector.size());
+    ui->tableWidgetDisplayConnections->setRowCount(connectionsVector.size());
     ui->tableWidgetDisplayConnections->clear();
-    //ui->tableWidgetDisplayConnections->resizeColumnsToContents();
+
 
     QTableWidgetItem *headerColumn_1 = new QTableWidgetItem();
     headerColumn_1->setText("ID");

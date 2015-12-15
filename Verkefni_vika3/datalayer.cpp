@@ -167,6 +167,74 @@ bool Datalayer::removePersonFromDB(int id)
 
 }
 
+bool Datalayer::updateComputerToDB(Computer comp)
+{
+    QSqlQuery query;
+    string name = comp.getName();
+    string computerType = comp.getComputerType();
+    int yearBuilt = comp.getYearBuilt();
+    int id = comp.getID();
+    bool wasBuilt = comp.getWasBuilt();
+    stringstream ss3, ss2;
+    string a;
+
+    if (wasBuilt)
+    {
+        a = "1";
+    }
+    else
+    {
+        a = "0";
+    }
+
+    ss3 << yearBuilt;
+    string str3 = ss3.str();
+    ss2 << id;
+    string str2 = ss2.str();
+
+    //Öllum breytum breytt í QString og síðan skeytt saman
+    if(query.exec("UPDATE computers SET name = '" + QString::fromStdString(name.c_str()) + "', computerType = '" + QString::fromStdString(computerType.c_str()) + "', yearBuilt = '" + QString::fromStdString(str3.c_str()) + "', wasbuilt = '" + QString::fromStdString(a.c_str()) + "'WHERE computers.id = '" + QString::fromStdString(str2.c_str()) + "'"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+bool Datalayer::updatePersonToDB(person per)
+{
+    QSqlQuery query;
+    string name = per.getName();
+    string gender = per.getGender();
+    int id = per.getID();
+    int age = per.getAge();
+    int yearOfBirth = per.getYearOfbirth();
+    int yearOfDeath = per.getYearOfdeath();
+    stringstream ss1, ss2, ss3,ss4;
+    ss1 << yearOfBirth;
+    string str1 = ss1.str();
+    ss2 << yearOfDeath;
+    string str2 = ss2.str();
+    ss3 << age;
+    string str3 = ss3.str();
+    ss4 << id;
+    string str4 = ss4.str();
+
+    if(query.exec("UPDATE persons SET name = '" + QString::fromStdString(name.c_str()) + "',gender = '" + QString::fromStdString(gender.c_str()) + "', yearOfBirth = '" + QString::fromStdString(str1.c_str()) + "', yearOfDeath = '" + QString::fromStdString(str2.c_str()) + "', age = '" + QString::fromStdString(str3.c_str()) + "' WHERE id = '" + QString::fromStdString(str4.c_str()) + "'"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    //qDebug() << query.lastQuery();
+
+}
+
 bool Datalayer::removeConnectionFromDB(int id)
 {
     QSqlQuery query;

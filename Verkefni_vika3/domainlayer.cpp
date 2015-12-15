@@ -8,8 +8,7 @@ DomainLayer::DomainLayer()
 vector<person> DomainLayer::sortPersonVectorByID(string sortType)
 {
 
-    Datalayer Reader;
-    vector <person>sortedVector = Reader.pullPerson();
+    vector <person>sortedVector = datalayer.pullPerson();
 
     if(sortType == "normal")
     {
@@ -28,8 +27,8 @@ vector<person> DomainLayer::sortPersonVectorByID(string sortType)
 vector<person> DomainLayer::sortPersonVectorByName(string sortType)
 {
 
-    Datalayer Reader;
-    vector <person>sortedVector = Reader.sortPersonByName();
+
+    vector <person>sortedVector = datalayer.sortPersonByName();
 
     if(sortType == "normal")
     {
@@ -48,8 +47,8 @@ vector<person> DomainLayer::sortPersonVectorByName(string sortType)
 vector<person> DomainLayer::sortPersonVectorByAge(string sortType)
 {
 
-    Datalayer Reader;
-    vector <person>sortedVector = Reader.sortPersonByAge();
+
+    vector <person>sortedVector = datalayer.sortPersonByAge();
 
     if(sortType == "normal")
     {
@@ -68,8 +67,8 @@ vector<person> DomainLayer::sortPersonVectorByAge(string sortType)
 vector<Computer> DomainLayer::sortComputerVectorByID(string sortType)
 {
 
-    Datalayer Reader;
-    vector <Computer> sortedVector = Reader.pullComputer();
+
+    vector <Computer> sortedVector = datalayer.pullComputer();
 
     if(sortType == "normal")
     {
@@ -87,8 +86,8 @@ vector<Computer> DomainLayer::sortComputerVectorByID(string sortType)
 vector<Computer> DomainLayer:: sortComputerVectorByName(string sortType)
 {
 
-    Datalayer Reader;
-    vector <Computer>sortedVector = Reader.sortComputerByName();
+
+    vector <Computer>sortedVector = datalayer.sortComputerByName();
 
     if(sortType == "normal")
     {
@@ -105,8 +104,8 @@ vector<Computer> DomainLayer:: sortComputerVectorByName(string sortType)
 
 vector<Connections> DomainLayer::sortConnectionsVectorByID()
 {
-    Datalayer Reader;
-    vector <Connections>sortedVector = Reader.pullConnections();
+
+    vector <Connections>sortedVector = datalayer.pullConnections();
     return sortedVector;
 }
 
@@ -114,10 +113,10 @@ vector<Connections> DomainLayer::sortConnectionsVectorByID()
 //Leita að persónu í vector
 vector<person> DomainLayer::searchPersonByName(string searchquery)
 {
-    Datalayer Reader;
-    vector<person> personvector = Reader.sortPersonByName();
+
+    vector<person> personvector = datalayer.sortPersonByName();
     vector<person> queryMatchVector;
-    //UI //toScreen;
+
     string personName;
 
     transform(searchquery.begin(), searchquery.end(), searchquery.begin(),::tolower);
@@ -140,10 +139,10 @@ vector<person> DomainLayer::searchPersonByName(string searchquery)
 
 vector<Computer> DomainLayer::searchComputerByName(string searchquery)
 {
-    Datalayer Reader;
-    vector<Computer> computerVector = Reader.pullComputer();
+
+    vector<Computer> computerVector = datalayer.pullComputer();
     vector<Computer> queryMatchVector;
-    //UI //toScreen;
+
     string computerName;
 
     transform(searchquery.begin(), searchquery.end(), searchquery.begin(),::tolower);
@@ -159,13 +158,7 @@ vector<Computer> DomainLayer::searchComputerByName(string searchquery)
         }
     }
 
-    if(queryMatchVector.size() == 0)
-    {
-        //UI //error;
-        //error.display//error("No match for: " + searchquery);
-    }
-
-    //toScreen.displayComputerVector(queryMatchVector);
+    return queryMatchVector;
 }
 
 //Bætir persónu við vector
@@ -197,8 +190,7 @@ bool DomainLayer::addPerson(string name, string gender, int yearofbirth, int yea
 
     person per(name,gender,yearofbirth,yearofdeath);
 
-    Datalayer writer;
-    if(!writer.addPersonToDB(per))
+    if(!datalayer.addPersonToDB(per))
     {
         return false;
     }
@@ -209,50 +201,34 @@ bool DomainLayer::addPerson(string name, string gender, int yearofbirth, int yea
 }
 
 
-/*
-void DomainLayer::addComputer()
-{
-    //UI //toScreen;
-    string name;
-    string computertype;
-    int yearb//UIlt = 0;
-    bool wasb//UIlt;
 
-    //toScreen.displayInput("Name: ");
-    name = //toScreen.readStringInputWithSpaces();
+bool DomainLayer::addComputer(string name,string computerType,int yearBuilt,bool wasBuilt)
+{
+
     name[0] = toupper(name[0]);
 
-    //toScreen.displayInput("Computer type: ");
-    computertype = //toScreen.readStringInput();
-    computertype[0] = toupper(computertype[0]);
-
-    //toScreen.displayInput("Year b//UIlt: ");
-    yearb//UIlt = //toScreen.readIntInput();
+    computerType[0] = toupper(computerType[0]);
 
     //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
     //ártalið sé ekki meira en árið í ár.
-    while(cin.fail() || yearb//UIlt < 999 || yearb//UIlt > currentYear())
+    if(yearBuilt < 999 || yearBuilt > currentYear())
     {
-        //UI //error;
-        //error.display//error("//error, please enter a valid year");
-        yearb//UIlt = //toScreen.readIntInput();
-
+        return false;
     }
 
-    //toScreen.displayMessage("Was b//UIlt: 1 for true, 0 for false");
-    wasb//UIlt = //toScreen.readIntInput();
-    if (wasb//UIlt == 1)
+    if (wasBuilt == 1)
     {
-        wasb//UIlt = true;
-    }else
+       wasBuilt = true;
+    }
+    else
     {
-        wasb//UIlt = false;
+        wasBuilt = false;
     }
 
-    Computer comp(name, computertype, yearb//UIlt, wasb//UIlt);
+    Computer comp(name, computerType, yearBuilt, wasBuilt);
 
-    Datalayer writer;
-    if(!writer.addComputerToDB(comp))
+
+    if(!datalayer.addComputerToDB(comp))
     {
         //toScreen.display//error("Oops! something went wrong.");
     }
@@ -261,18 +237,15 @@ void DomainLayer::addComputer()
         //toScreen.displayMessage("Operation successful!");
     }
 }
-*/
+
 
 
 
 void DomainLayer::addConnection(int personID, int computerID)
 {
-    //UI //toScreen;
-    Datalayer writer;
-
 
     Connections connection (personID,computerID);
-    if(!writer.addConnectionToDB(connection))
+    if(!datalayer.addConnectionToDB(connection))
     {
         //toScreen.display//error("Oops! something went wrong.");
     }
@@ -281,6 +254,83 @@ void DomainLayer::addConnection(int personID, int computerID)
         //toScreen.displayMessage("Operation successful!");
     }
 
+}
+
+bool DomainLayer::updateComputer(int id, string name, string computerType, int yearBuilt, bool wasBuilt)
+{
+
+    name[0] = toupper(name[0]);
+
+    computerType[0] = toupper(computerType[0]);
+
+    //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
+    //ártalið sé ekki meira en árið í ár.
+    if(yearBuilt < 999 || yearBuilt > currentYear())
+    {
+        return false;
+    }
+
+    if (wasBuilt == 1)
+    {
+       wasBuilt = true;
+    }
+    else
+    {
+        wasBuilt = false;
+    }
+
+    Computer comp(name, computerType, yearBuilt, wasBuilt);
+    comp.setID(id);
+
+
+    if(!datalayer.updateComputerToDB(comp))
+    {
+        qDebug() << "Fail";
+    }
+    else
+    {
+        qDebug() << "Win";
+    }
+
+
+}
+
+bool DomainLayer::updatePerson(int id, string name, string gender, int yearofbirth, int yearofdeath)
+{
+
+    name[0] = toupper(name[0]);
+
+    //Athugar hvort slegið sé inn tölustafur í nafn
+    if(name.find_first_of("0123456789")!=std::string::npos)
+    {
+       return false;
+    }
+
+    //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
+    //ártalið sé ekki meira en árið í ár.
+    if(yearofbirth < 999 || yearofbirth > currentYear())
+    {
+        return false;
+    }
+
+    //Athugar hvort slegið sé inn tölustafur, að slegið sé inn 4 stafa ártal, að dánarár sé ekki
+    //á undan fæðingarári og að dánarár sé ekki stærra en árið í ár.
+    if((yearofdeath > 0 && yearofdeath < 999) || (yearofdeath > 0 && yearofdeath < yearofbirth) || yearofdeath > currentYear())
+    {
+        return false;
+    }
+
+    person per(name,gender,yearofbirth,yearofdeath);
+    per.setID(id);
+
+    if(!datalayer.updatePersonToDB(per))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 
@@ -296,13 +346,11 @@ int DomainLayer::currentYear()
     return currentYear;
 }
 
-//fjarlægir einstakling úr vector
+
 bool DomainLayer::removePerson(int id)
 {
-    //UI //toScreen;
-    Datalayer Reader;
 
-    if(!Reader.removePersonFromDB(id))
+    if(!datalayer.removePersonFromDB(id))
     {
         return false;
     }
@@ -314,46 +362,30 @@ bool DomainLayer::removePerson(int id)
 }
 
 
-/*
-void DomainLayer::removeComputer()
-{
-    //UI //toScreen;
-    Datalayer Reader;
-    vector<Computer> computerVector;
-    computerVector = Reader.pullComputer();
 
-    int id = 0;
-    //toScreen.displayComputerVector(computerVector);
-    //toScreen.displayMessage("Enter ID of the computer you want to remove: ");
-    id = //toScreen.readIntInput();
-    if(vectorHasComputer(computerVector,id))
+bool DomainLayer::removeComputer(int id)
+{
+    vector<Computer> computerVector;
+    computerVector = datalayer.pullComputer();
+
     {
-        if(!Reader.removeComputerFromDB(id))
+        if(!datalayer.removeComputerFromDB(id))
         {
-            //toScreen.display//error("Oops! something went wrong.");
+            return false;
         }
         else
         {
-            //toScreen.displayMessage("Operation successful!");
+            return true;
         }
-    }
-    else
-    {
-        //UI //error;
-        //toScreen.displayMessage("\n");
-        //error.display//error("//error ID not found!\n");
-        //toScreen.displayRemoveMenu();
     }
 
 }
-*/
+
 
 bool DomainLayer::removeConnection(int id)
 {
 
-    Datalayer Reader;
-
-    if(!Reader.removeConnectionFromDB(id))
+    if(!datalayer.removeConnectionFromDB(id))
     {
         return false;
     }
@@ -364,46 +396,3 @@ bool DomainLayer::removeConnection(int id)
 }
 
 
-
-/*
-//removeperson notar þetta fall til að athuga hvort manneskjan
-//sé til
-bool DomainLayer::vectorHasPerson(vector <person> per,int id)
-{
-    for(unsigned int i = 0; i < per.size(); i++)
-    {
-        if(per.at(i).getID() == id)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-bool DomainLayer::vectorHasComputer(vector <Computer> comp,int id)
-{
-    for(unsigned int i = 0; i < comp.size(); i++)
-    {
-        if(comp.at(i).getID() == id)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-bool DomainLayer::vectorHasConnection(vector<Connections> con,int id)
-{
-    for(unsigned int i = 0; i < con.size(); i++)
-    {
-        if(con.at(i).getID() == id)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-*/

@@ -26,6 +26,14 @@ void PersonMenu::displayPersonVector(vector<person> perVec)
 
     }
 
+    if(ui->listWidgetPerson->count() > 0)
+    {
+        ui->listWidgetPerson->item(0)->setSelected(true);
+        ui->listWidgetPerson->setCurrentRow(0);
+    }
+
+
+
 }
 
 void PersonMenu::on_lineEditSearch_textChanged(const QString &arg1)
@@ -61,6 +69,8 @@ void PersonMenu::on_listWidgetPerson_clicked(const QModelIndex &index)
 
     person selected = personVector.at(locationInVector);
 
+    setPersonID(selected.getID());
+
     stringstream personAge, personYearofbirth,personYearofdeath;
     personAge << selected.getAge();
     personYearofbirth << selected.getYearOfbirth();
@@ -74,6 +84,8 @@ void PersonMenu::on_listWidgetPerson_clicked(const QModelIndex &index)
     ui->labelGender->setText(QString::fromStdString(selected.getGender()));
     ui->labelAge->setText(QString::fromStdString(strAge));
     ui->labelYearofBirth->setText(QString::fromStdString(strYearofbirth));
+
+    ui->lineEditPersonName->setText(QString::fromStdString(selected.getName()));
     if(selected.getYearOfdeath() == 0)
     {
         ui->label5->setText("");
@@ -145,6 +157,7 @@ int PersonMenu::findPersonInVector(vector<person> personVector, string nameOfSel
             return i;
         }
     }
+
 }
 
 void PersonMenu::on_commandLinkButtonAddNewPerson_clicked()
@@ -206,4 +219,108 @@ void PersonMenu::Refresh()
     {
         QMessageBox::warning(this,"Warning!","Database is empty");
     }
+}
+
+void PersonMenu::on_pushButtonClear_clicked()
+{
+   ui->lineEditPersonName->clear();
+   ui->lineEditPersonYearOfBirth->clear();
+   ui->radioButtonPersonGenderMale->setChecked(true);
+   ui->checkBoxPersonAlive->setChecked(false);
+   ui->lineEditPersonYearOfDeath->clear();
+   ui->lineEditPersonYearOfDeath->show();
+}
+
+void PersonMenu::on_pushButtonAddPerson_clicked()
+{
+
+    string name;
+    string gender;
+    int yearofbirth=0,yearofdeath=0;
+
+
+    name = ui->lineEditPersonName->text().toStdString();
+
+    if(ui->radioButtonPersonGenderMale->isChecked())
+    {
+        gender = "Male";
+    }
+    else
+    {
+        gender = "Female";
+    }
+
+    yearofbirth = ui->lineEditPersonYearOfBirth->text().toInt();
+
+    if(ui->checkBoxPersonAlive->isChecked())
+    {
+        yearofdeath = ui->lineEditPersonYearOfDeath->text().toInt();
+    }
+
+    else
+    {
+        yearofdeath = 0;
+    }
+
+    DomainLayer domain;
+    domain.addPerson(name,gender,yearofbirth,yearofdeath);
+    Refresh();
+
+}
+
+void PersonMenu::on_checkBoxPersonAlive_clicked()
+{
+
+    if(!ui->checkBoxPersonAlive->isChecked())
+    {
+        ui->lineEditPersonYearOfDeath->show();
+    }
+    else
+    {
+        ui->lineEditPersonYearOfDeath->hide();
+    }
+}
+
+
+
+void PersonMenu::on_pushButtonUpdatePerson_clicked()
+{
+    string name = ui->lineEditPersonName->text().toStdString();
+    string gender;
+    int yearofbirth = ui->lineEditPersonYearOfBirth->text().toInt();
+    int yearofdeath;
+
+
+    if(ui->radioButtonPersonGenderMale->isChecked())
+    {
+        gender = "Male";
+    }
+    else
+    {
+        gender = "Female";
+    }
+
+    if(ui->checkBoxPersonAlive->isChecked())
+    {
+        yearofdeath = 0;
+    }
+    else
+    {
+        yearofdeath = ui->lineEditPersonYearOfDeath->text().toInt();
+    }
+
+    domain.updatePerson(getPersonID(),name,gender,yearofbirth,yearofdeath);
+    Refresh();
+
+
+}
+
+int PersonMenu::getPersonID() const
+{
+    return personID;
+}
+
+void PersonMenu::setPersonID(int value)
+{
+    personID = value;
 }
