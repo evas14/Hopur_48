@@ -484,7 +484,7 @@
    </property>
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/images/images/refresh.png</normaloff>:/images/images/refresh.png</iconset>
+     <normaloff>:/images/images/minus.png</normaloff>:/images/images/minus.png</iconset>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBoxConnectionID">
