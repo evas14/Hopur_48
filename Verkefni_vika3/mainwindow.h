@@ -10,6 +10,8 @@
 #include <personmenu.h>
 #include <string>
 #include <vector>
+
+#include<QMoveEvent>
 using namespace std;
 
 namespace Ui {
@@ -23,6 +25,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    void mouseMoveEvent(QMouseEvent* event);
+        void mousePressEvent(QMouseEvent* event);
+        void mouseReleaseEvent(QMouseEvent* event);
 
 
 
@@ -44,7 +50,8 @@ private:
     ComputerMenu computermenu;
     ConnectionsMenu connectionsmenu;
 
-
+    QPoint mLastMousePosition;
+        bool mMoving;
 };
 
 #endif // MAINWINDOW_H

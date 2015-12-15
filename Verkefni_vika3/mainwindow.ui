@@ -10,7 +10,6 @@
     <height>700</height>
    </rect>
   </property>
-Updated upstream
   <property name="sizePolicy">
    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
     <horstretch>0</horstretch>
@@ -544,11 +543,6 @@ Updated upstream
   <property name="dockOptions">
    <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
   </property>
-=======
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
->>>>>>> Stashed changes
   <widget class="QWidget" name="centralWidget">
    <property name="maximumSize">
     <size>
