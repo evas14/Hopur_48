@@ -162,7 +162,7 @@ vector<Computer> DomainLayer::searchComputerByName(string searchquery)
 }
 
 //Bætir persónu við vector
-bool DomainLayer::addPerson(string name, string gender, int yearofbirth, int yearofdeath)
+int DomainLayer::addPerson(string name, string gender, int yearofbirth, int yearofdeath)
 {
 
 
@@ -171,38 +171,39 @@ bool DomainLayer::addPerson(string name, string gender, int yearofbirth, int yea
     //Athugar hvort slegið sé inn tölustafur í nafn
     if(name.find_first_of("0123456789")!=std::string::npos)
     {
-       return false;
+       return 1;
     }
 
     //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
     //ártalið sé ekki meira en árið í ár.
     if(yearofbirth < 999 || yearofbirth > currentYear())
     {
-        return false;
+        return 2;
     }
 
     //Athugar hvort slegið sé inn tölustafur, að slegið sé inn 4 stafa ártal, að dánarár sé ekki
     //á undan fæðingarári og að dánarár sé ekki stærra en árið í ár.
     if((yearofdeath > 0 && yearofdeath < 999) || (yearofdeath > 0 && yearofdeath < yearofbirth) || yearofdeath > currentYear())
     {
-        return false;
+        return 3;
     }
 
     person per(name,gender,yearofbirth,yearofdeath);
 
     if(!datalayer.addPersonToDB(per))
     {
-        return false;
+
+        return 4;
     }
     else
     {
-        return true;
+        return 0;
     }
 }
 
 
 
-bool DomainLayer::addComputer(string name,string computerType,int yearBuilt,bool wasBuilt)
+int DomainLayer::addComputer(string name,string computerType,int yearBuilt,bool wasBuilt)
 {
 
     name[0] = toupper(name[0]);
@@ -213,7 +214,7 @@ bool DomainLayer::addComputer(string name,string computerType,int yearBuilt,bool
     //ártalið sé ekki meira en árið í ár.
     if(yearBuilt < 999 || yearBuilt > currentYear())
     {
-        return false;
+        return 1;
     }
 
     if (wasBuilt == 1)
@@ -230,33 +231,33 @@ bool DomainLayer::addComputer(string name,string computerType,int yearBuilt,bool
 
     if(!datalayer.addComputerToDB(comp))
     {
-        //toScreen.display//error("Oops! something went wrong.");
+        return 2;
     }
     else
     {
-        //toScreen.displayMessage("Operation successful!");
+        return 0;
     }
 }
 
 
 
 
-void DomainLayer::addConnection(int personID, int computerID)
+bool DomainLayer::addConnection(int personID, int computerID)
 {
 
     Connections connection (personID,computerID);
     if(!datalayer.addConnectionToDB(connection))
     {
-        //toScreen.display//error("Oops! something went wrong.");
+        return false;
     }
     else
     {
-        //toScreen.displayMessage("Operation successful!");
+        return true;
     }
 
 }
 
-bool DomainLayer::updateComputer(int id, string name, string computerType, int yearBuilt, bool wasBuilt)
+int DomainLayer::updateComputer(int id, string name, string computerType, int yearBuilt, bool wasBuilt)
 {
 
     name[0] = toupper(name[0]);
@@ -267,7 +268,7 @@ bool DomainLayer::updateComputer(int id, string name, string computerType, int y
     //ártalið sé ekki meira en árið í ár.
     if(yearBuilt < 999 || yearBuilt > currentYear())
     {
-        return false;
+        return 1;
     }
 
     if (wasBuilt == 1)
@@ -285,17 +286,17 @@ bool DomainLayer::updateComputer(int id, string name, string computerType, int y
 
     if(!datalayer.updateComputerToDB(comp))
     {
-        qDebug() << "Fail";
+        return 2;
     }
     else
     {
-        qDebug() << "Win";
+        return 0;
     }
 
 
 }
 
-bool DomainLayer::updatePerson(int id, string name, string gender, int yearofbirth, int yearofdeath)
+int DomainLayer::updatePerson(int id, string name, string gender, int yearofbirth, int yearofdeath)
 {
 
     name[0] = toupper(name[0]);
@@ -303,21 +304,21 @@ bool DomainLayer::updatePerson(int id, string name, string gender, int yearofbir
     //Athugar hvort slegið sé inn tölustafur í nafn
     if(name.find_first_of("0123456789")!=std::string::npos)
     {
-       return false;
+       return 1;
     }
 
     //Athugar hvort að slegið sé inn tölustafur, 4 stafa ártal og að
     //ártalið sé ekki meira en árið í ár.
     if(yearofbirth < 999 || yearofbirth > currentYear())
     {
-        return false;
+        return 2;
     }
 
     //Athugar hvort slegið sé inn tölustafur, að slegið sé inn 4 stafa ártal, að dánarár sé ekki
     //á undan fæðingarári og að dánarár sé ekki stærra en árið í ár.
     if((yearofdeath > 0 && yearofdeath < 999) || (yearofdeath > 0 && yearofdeath < yearofbirth) || yearofdeath > currentYear())
     {
-        return false;
+        return 3;
     }
 
     person per(name,gender,yearofbirth,yearofdeath);
@@ -325,11 +326,11 @@ bool DomainLayer::updatePerson(int id, string name, string gender, int yearofbir
 
     if(!datalayer.updatePersonToDB(per))
     {
-        return false;
+        return 4;
     }
     else
     {
-        return true;
+        return 0;
     }
 }
 
