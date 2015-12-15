@@ -53,7 +53,6 @@ FORMS    += \
     connectionsmenu.ui \
     addconnectionform.ui \
     computertable.ui \
-    ../../../../Desktop/Verkefni_vika3/mainwindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
 
 RESOURCES +=

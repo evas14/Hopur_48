@@ -27,7 +27,7 @@ public:
     void displayPersonVector(vector <person> perVec);
     void Refresh();
     int findPersonInVector(vector<person> personVector, string nameOfSelected);
-
+    bool validateInput();
 
     int getPersonID() const;
     void setPersonID(int value);
@@ -41,13 +41,7 @@ private slots:
 
     void on_commandLinkButtonRemovePerson_clicked();
 
-    void on_commandLinkButtonAddNewPerson_clicked();
-
-    void on_commandLinkButtonEditPerson_clicked();
-
     void on_commandLinkButtonShowTable_clicked();
-
-
 
     void on_pushButtonClear_clicked();
 

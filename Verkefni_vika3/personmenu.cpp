@@ -40,7 +40,6 @@ void PersonMenu::on_lineEditSearch_textChanged(const QString &arg1)
 {
     ui->listWidgetPerson->clear();
 
-    DomainLayer domain;
     string Query = arg1.toStdString();
 
     vector<person> personVector = domain.searchPersonByName(Query);
@@ -57,7 +56,6 @@ void PersonMenu::on_lineEditSearch_textChanged(const QString &arg1)
 
 void PersonMenu::on_listWidgetPerson_clicked(const QModelIndex &index)
 {
-    DomainLayer domain;
 
     string nameOfSelected = ui->listWidgetPerson->currentItem()->text().toStdString();
     transform(nameOfSelected.begin(), nameOfSelected.end(), nameOfSelected.begin(),::tolower);
@@ -86,15 +84,21 @@ void PersonMenu::on_listWidgetPerson_clicked(const QModelIndex &index)
     ui->labelYearofBirth->setText(QString::fromStdString(strYearofbirth));
 
     ui->lineEditPersonName->setText(QString::fromStdString(selected.getName()));
+    ui->lineEditPersonYearOfBirth->setText(QString::fromStdString(strYearofbirth));
+    ui->lineEditPersonYearOfDeath->setText(QString::fromStdString(strYearofdeath));
     if(selected.getYearOfdeath() == 0)
     {
         ui->label5->setText("");
         ui->labelYearofDeath->setText("");
+        ui->checkBoxPersonAlive->setChecked(true);
+        ui->lineEditPersonYearOfDeath->hide();
     }
     else
     {
         ui->label5->setText("Year Of Death:");
         ui->labelYearofDeath->setText(QString::fromStdString(strYearofdeath));
+        ui->checkBoxPersonAlive->setChecked(false);
+        ui->lineEditPersonYearOfDeath->show();
     }
 
 
@@ -116,7 +120,6 @@ void PersonMenu::on_commandLinkButtonRemovePerson_clicked()
 
     if(ui->listWidgetPerson->currentItem()->isSelected())
     {
-        DomainLayer domain;
 
         string nameOfSelected = ui->listWidgetPerson->currentItem()->text().toStdString();
         transform(nameOfSelected.begin(), nameOfSelected.end(), nameOfSelected.begin(),::tolower);
@@ -160,42 +163,41 @@ int PersonMenu::findPersonInVector(vector<person> personVector, string nameOfSel
 
 }
 
-void PersonMenu::on_commandLinkButtonAddNewPerson_clicked()
+bool PersonMenu::validateInput()
 {
-    addpersonform.show();
+    int validation = 0;
+    if(ui->lineEditPersonName->text().isEmpty() ||
+       ui->lineEditPersonName->text() == "Cannot Be Empty!")
+    {
+        ui->lineEditPersonName->setText("Cannot Be Empty!");
+        validation = 1;
+    }
+
+    if(ui->lineEditPersonYearOfBirth->text().isEmpty())
+    {
+        ui->lineEditPersonYearOfBirth->setText("Cannot Be Empty!");
+        validation = 1;
+    }
+
+    if(ui->lineEditPersonYearOfDeath->text().isEmpty())
+    {
+        if(!ui->checkBoxPersonAlive->isChecked())
+        {
+            ui->lineEditPersonYearOfDeath->setText("Cannot Be Empty!");
+            validation = 1;
+        }
+    }
+
+    if (validation == 1)
+    {
+        return false;
+    }
+
+    return true;
+
 }
 
-void PersonMenu::on_commandLinkButtonEditPerson_clicked()
-{
-    if(ui->listWidgetPerson->count() < 1)
-    {
-        QMessageBox::warning(this,"Warning!","List is Empty!");
-        return;
-    }
 
-    if(ui->listWidgetPerson->currentItem()->isSelected())
-    {
-        DomainLayer domain;
-
-        string nameOfSelected = ui->listWidgetPerson->currentItem()->text().toStdString();
-        transform(nameOfSelected.begin(), nameOfSelected.end(), nameOfSelected.begin(),::tolower);
-
-        vector<person> personVector = domain.sortPersonVectorByName("Normal");
-        string personName;
-
-        int locationInVector = findPersonInVector(personVector,nameOfSelected);
-
-        person selected = personVector.at(locationInVector);
-
-        editpersonform.fillInfo(selected.getID());
-        editpersonform.show();
-    }
-    else
-    {
-        QMessageBox::warning(this,"Warning!","Select a person");
-    }
-
-}
 
 void PersonMenu::on_commandLinkButtonShowTable_clicked()
 {
@@ -204,10 +206,11 @@ void PersonMenu::on_commandLinkButtonShowTable_clicked()
 
 void PersonMenu::Refresh()
 {
-    DomainLayer domain;
+    ui->listWidgetPerson->clear();
     vector <person> personVector = domain.sortPersonVectorByName("normal");
     displayPersonVector(personVector);
     ui->lineEditSearch->clear();
+
 
     if(ui->listWidgetPerson->count() > 0)
     {
@@ -262,9 +265,12 @@ void PersonMenu::on_pushButtonAddPerson_clicked()
         yearofdeath = 0;
     }
 
-    DomainLayer domain;
-    domain.addPerson(name,gender,yearofbirth,yearofdeath);
-    Refresh();
+    if(validateInput())
+    {
+        domain.addPerson(name,gender,yearofbirth,yearofdeath);
+        Refresh();
+    }
+
 
 }
 
@@ -285,32 +291,52 @@ void PersonMenu::on_checkBoxPersonAlive_clicked()
 
 void PersonMenu::on_pushButtonUpdatePerson_clicked()
 {
-    string name = ui->lineEditPersonName->text().toStdString();
-    string gender;
-    int yearofbirth = ui->lineEditPersonYearOfBirth->text().toInt();
-    int yearofdeath;
-
-
-    if(ui->radioButtonPersonGenderMale->isChecked())
+    if(ui->listWidgetPerson->count() < 1)
     {
-        gender = "Male";
+        QMessageBox::warning(this,"Warning!","List is Empty!");
+        return;
     }
+
+    if(ui->listWidgetPerson->currentItem()->isSelected())
+    {
+        string name = ui->lineEditPersonName->text().toStdString();
+        string gender;
+        int yearofbirth = ui->lineEditPersonYearOfBirth->text().toInt();
+        int yearofdeath;
+
+        if(ui->radioButtonPersonGenderMale->isChecked())
+        {
+            gender = "Male";
+        }
+        else
+        {
+            gender = "Female";
+        }
+
+        if(ui->checkBoxPersonAlive->isChecked())
+        {
+            yearofdeath = 0;
+        }
+        else
+        {
+            yearofdeath = ui->lineEditPersonYearOfDeath->text().toInt();
+        }
+
+        if(validateInput())
+        {
+            domain.updatePerson(getPersonID(),name,gender,yearofbirth,yearofdeath);
+            Refresh();
+        }
+
+
+    }
+
     else
     {
-        gender = "Female";
+        QMessageBox::warning(this,"Warning!","Select a person");
     }
 
-    if(ui->checkBoxPersonAlive->isChecked())
-    {
-        yearofdeath = 0;
-    }
-    else
-    {
-        yearofdeath = ui->lineEditPersonYearOfDeath->text().toInt();
-    }
 
-    domain.updatePerson(getPersonID(),name,gender,yearofbirth,yearofdeath);
-    Refresh();
 
 
 }

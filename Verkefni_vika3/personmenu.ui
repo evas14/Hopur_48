@@ -522,70 +522,6 @@
     </palette>
    </property>
   </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButtonAddNewPerson">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>320</y>
-     <width>187</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>132</red>
-         <green>132</green>
-         <blue>132</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>132</red>
-         <green>132</green>
-         <blue>132</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>125</red>
-         <green>125</green>
-         <blue>125</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-     <pointsize>11</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Add New Person</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-  </widget>
   <widget class="QLabel" name="label1">
    <property name="geometry">
     <rect>
@@ -760,7 +696,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>360</y>
+     <y>310</y>
      <width>261</width>
      <height>41</height>
     </rect>
@@ -820,75 +756,11 @@
     </size>
    </property>
   </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButtonEditPerson">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>400</y>
-     <width>281</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>126</red>
-         <green>126</green>
-         <blue>126</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>126</red>
-         <green>126</green>
-         <blue>126</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>125</red>
-         <green>125</green>
-         <blue>125</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-     <pointsize>11</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Edit Person</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-  </widget>
   <widget class="QCommandLinkButton" name="commandLinkButtonShowTable">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>440</y>
+     <y>360</y>
      <width>241</width>
      <height>41</height>
     </rect>
