@@ -6,7 +6,7 @@ ConnectionsMenu::ConnectionsMenu(QWidget *parent) :
     ui(new Ui::ConnectionsMenu)
 {
     ui->setupUi(this);
-
+    setWindowFlags(Qt::FramelessWindowHint);
 
 }
 
@@ -267,4 +267,34 @@ void ConnectionsMenu::on_commandLinkButtonRemoveConnection_clicked()
 void ConnectionsMenu::on_pushButtonRefresh_clicked()
 {
     refresh();
+}
+
+void ConnectionsMenu::on_ButtonClose_clicked()
+{
+    ConnectionsMenu::close();
+}
+
+void ConnectionsMenu::mousePressEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = true;
+        mLastMousePosition = event->pos();
+    }
+}
+
+void ConnectionsMenu::mouseMoveEvent(QMouseEvent* event)
+{
+    if( event->buttons().testFlag(Qt::LeftButton) && mMoving)
+    {
+        this->move(this->pos() + (event->pos() - mLastMousePosition));
+    }
+}
+
+void ConnectionsMenu::mouseReleaseEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = false;
+    }
 }

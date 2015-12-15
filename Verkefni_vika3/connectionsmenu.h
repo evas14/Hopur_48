@@ -9,6 +9,7 @@
 #include <person.h>
 #include <computer.h>
 #include <QMessageBox>
+#include <QMoveEvent>
 
 using namespace std;
 
@@ -30,6 +31,11 @@ public:
     int findComputerInVector(vector <Computer> computerVector, string nameOfSelected);
     void refresh();
 
+    //Mouse functions
+    void mouseMoveEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
+
 
 private slots:
     void fillComboBoxConnectionID();
@@ -42,10 +48,16 @@ private slots:
 
     void on_pushButtonRefresh_clicked();
 
+    void on_ButtonClose_clicked();
+
 private:
     Ui::ConnectionsMenu *ui;
     AddConnectionForm addconnectionform;
     DomainLayer domain;
+
+    //mouse variables
+    QPoint mLastMousePosition;
+    bool mMoving;
 
 };
 
