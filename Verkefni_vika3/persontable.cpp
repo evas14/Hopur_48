@@ -6,6 +6,7 @@ PersonTable::PersonTable(QWidget *parent) :
     ui(new Ui::PersonTable)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint);
 }
 
 PersonTable::~PersonTable()
@@ -97,4 +98,34 @@ void PersonTable::displayPersonVectorInTable(vector<person> personVector)
 void PersonTable::on_commandLinkButtonRefresh_clicked()
 {
     refresh();
+}
+
+void PersonTable::on_ButtonClose_clicked()
+{
+    PersonTable::close();
+}
+
+void PersonTable::mousePressEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = true;
+        mLastMousePosition = event->pos();
+    }
+}
+
+void PersonTable::mouseMoveEvent(QMouseEvent* event)
+{
+    if( event->buttons().testFlag(Qt::LeftButton) && mMoving)
+    {
+        this->move(this->pos() + (event->pos() - mLastMousePosition));
+    }
+}
+
+void PersonTable::mouseReleaseEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = false;
+    }
 }
