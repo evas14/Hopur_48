@@ -27,7 +27,7 @@ public:
     //setur allar upplýsingar úr vector og setur í töflu
     void displayComputerVectorInTable(vector<Computer> computerVector);
 
-    //mouse functions
+    //föll sem tengjast færslu á músabendli(gerir gluggan færanlegan)
     void mouseMoveEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
@@ -41,9 +41,10 @@ private slots:
 
 private:
     Ui::ComputerTable *ui;
+    //býr til tilvik af DomainLayer
     DomainLayer domain;
 
-    //mouse variables
+    //Breytur fyrir mús
     QPoint mLastMousePosition;
     bool mMoving;
 };
