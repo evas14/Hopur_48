@@ -778,7 +778,7 @@
    </property>
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/images/images/imageedit_12_3454842660.gif</normaloff>:/images/images/imageedit_12_3454842660.gif</iconset>
+     <normaloff>:/images/images/minus.png</normaloff>:/images/images/minus.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -846,7 +846,7 @@
    </property>
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/images/images/imageedit_10_3657074015.gif</normaloff>:/images/images/imageedit_10_3657074015.gif</iconset>
+     <normaloff>:/images/images/tafla.png</normaloff>:/images/images/tafla.png</iconset>
    </property>
    <property name="iconSize">
     <size>
