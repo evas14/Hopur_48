@@ -8,6 +8,7 @@
 #include <vector>
 #include <person.h>
 #include <computer.h>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -23,18 +24,28 @@ public:
     explicit ConnectionsMenu(QWidget *parent = 0);
     ~ConnectionsMenu();
     void displayConnectionsVectorInTable(vector <Connections> connectionsVector);
+    void displayPersonVector(vector <person> perVec);
+    void displayComputerVector(vector <Computer> compVec);
+    int findPersonInVector(vector<person> personVector, string nameOfSelected);
+    int findComputerInVector(vector <Computer> computerVector, string nameOfSelected);
     void refresh();
+
 
 private slots:
     void fillComboBoxConnectionID();
 
-    void on_pushButtonRemoveConnection_clicked();
-
     void on_commandLinkButtonAddNewConnection_clicked();
+
+    void on_pushButtonMakeConnection_clicked();
+
+    void on_commandLinkButtonRemoveConnection_clicked();
+
+    void on_pushButtonRefresh_clicked();
 
 private:
     Ui::ConnectionsMenu *ui;
     AddConnectionForm addconnectionform;
+    DomainLayer domain;
 
 };
 

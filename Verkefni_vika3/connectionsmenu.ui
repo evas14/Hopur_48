@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>568</width>
-    <height>398</height>
+    <width>1218</width>
+    <height>440</height>
    </rect>
   </property>
   <property name="palette">
@@ -434,11 +434,11 @@
      <x>10</x>
      <y>10</y>
      <width>541</width>
-     <height>281</height>
+     <height>381</height>
     </rect>
    </property>
    <property name="sortingEnabled">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <attribute name="horizontalHeaderCascadingSectionResizes">
     <bool>false</bool>
@@ -462,45 +462,18 @@
     </property>
    </column>
   </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButtonAddNewConnection">
+  <widget class="QCommandLinkButton" name="commandLinkButtonRemoveConnection">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>310</y>
-     <width>221</width>
+     <x>240</x>
+     <y>390</y>
+     <width>211</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Tw Cen MT</family>
-     <pointsize>11</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Make New Connection</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButtonRemoveConnection">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>360</y>
-     <width>151</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Tw Cen MT</family>
+     <family>Segoe UI</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -513,11 +486,57 @@
   <widget class="QComboBox" name="comboBoxConnectionID">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>310</y>
-     <width>151</width>
-     <height>21</height>
+     <x>10</x>
+     <y>400</y>
+     <width>221</width>
+     <height>31</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonMakeConnection">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>390</y>
+     <width>611</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Make Connection</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidgetDisplayPerson">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>10</y>
+     <width>291</width>
+     <height>371</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidgetDisplayComputer">
+   <property name="geometry">
+    <rect>
+     <x>900</x>
+     <y>10</y>
+     <width>301</width>
+     <height>371</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonRefresh">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>400</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Refresh</string>
    </property>
   </widget>
  </widget>

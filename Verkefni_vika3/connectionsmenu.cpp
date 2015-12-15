@@ -68,15 +68,44 @@ void ConnectionsMenu::displayConnectionsVectorInTable(vector<Connections> connec
 void ConnectionsMenu::refresh()
 {
     ui->tableWidgetDisplayConnections->verticalHeader()->hide();
-    DomainLayer domain;
+
     displayConnectionsVectorInTable(domain.sortConnectionsVectorByID());
+    fillComboBoxConnectionID();
+
+    vector <person> personVector = domain.sortPersonVectorByName("normal");
+    vector <Computer> computerVector = domain.sortComputerVectorByName("normal");
+    displayPersonVector(personVector);
+    displayComputerVector(computerVector);
+
+    if(ui->listWidgetDisplayPerson->count() > 0)
+    {
+        ui->listWidgetDisplayPerson->item(0)->setSelected(true);
+        ui->listWidgetDisplayPerson->setCurrentRow(0);
+    }
+    else
+    {
+        QMessageBox::warning(this,"Warning!","Person Table is Empty!");
+
+    }
+
+    if(ui->listWidgetDisplayComputer->count() > 0)
+    {
+        ui->listWidgetDisplayComputer->item(0)->setSelected(true);
+        ui->listWidgetDisplayComputer->setCurrentRow(0);
+    }
+    else
+    {
+        QMessageBox::warning(this,"Warning!","Computer Table is Empty!");
+
+    }
+
     fillComboBoxConnectionID();
 }
 
 
 void ConnectionsMenu::fillComboBoxConnectionID()
 {
-    DomainLayer domain;
+
     vector <Connections> connectionVector = domain.sortConnectionsVectorByID();
     int ID = 0;
 
@@ -100,9 +129,122 @@ void ConnectionsMenu::fillComboBoxConnectionID()
 
 }
 
-void ConnectionsMenu::on_pushButtonRemoveConnection_clicked()
+
+
+void ConnectionsMenu::on_commandLinkButtonAddNewConnection_clicked()
 {
-    DomainLayer domain;
+     addconnectionform.show();
+}
+
+void ConnectionsMenu::on_pushButtonMakeConnection_clicked()
+{
+    if(ui->listWidgetDisplayPerson->count() < 1 || ui->listWidgetDisplayComputer->count() < 1)
+    {
+        QMessageBox::warning(this,"Warning!","List is Empty!");
+        return;
+    }
+
+    if(ui->listWidgetDisplayPerson->currentItem()->isSelected() &&
+       ui->listWidgetDisplayComputer -> currentItem() ->isSelected())
+    {
+
+        string nameOfSelectedPerson = ui->listWidgetDisplayPerson->currentItem()->text().toStdString();
+        transform(nameOfSelectedPerson.begin(), nameOfSelectedPerson.end(), nameOfSelectedPerson.begin(),::tolower);
+
+        string nameOfSelectedComputer = ui->listWidgetDisplayComputer->currentItem()->text().toStdString();
+        transform(nameOfSelectedComputer.begin(), nameOfSelectedComputer.end(), nameOfSelectedComputer.begin(),::tolower);
+
+        vector<person> personVector = domain.sortPersonVectorByName("normal");
+        vector<Computer>computerVector = domain.sortComputerVectorByName("normal");
+
+        int personLocationInVector = findPersonInVector(personVector,nameOfSelectedPerson);
+        int computerLocationInVector = findComputerInVector(computerVector,nameOfSelectedComputer);
+
+        int personID = personVector.at(personLocationInVector).getID();
+        int computerID = computerVector.at(computerLocationInVector).getID();
+
+        domain.addConnection(personID,computerID);
+
+        ui->listWidgetDisplayPerson->clear();
+        ui->listWidgetDisplayComputer->clear();
+        refresh();
+
+
+    }
+
+    else
+    {
+        QMessageBox::warning(this,"Warning!","Select a person and computer");
+    }
+
+
+}
+
+void ConnectionsMenu::displayPersonVector(vector<person> perVec)
+{
+    string name;
+    ui->listWidgetDisplayPerson->clear();
+    for(unsigned int i = 0; i < perVec.size(); i++)
+    {
+        person per = perVec.at(i);
+        name = per.getName();
+
+        ui->listWidgetDisplayPerson->addItem(QString::fromStdString(name));
+
+    }
+
+}
+
+void ConnectionsMenu::displayComputerVector(vector<Computer> compVec)
+{
+
+    string name;
+    ui->listWidgetDisplayComputer->clear();
+    for(unsigned int i = 0; i < compVec.size(); i++)
+    {
+        Computer com = compVec.at(i);
+        name = com.getName();
+
+        ui->listWidgetDisplayComputer->addItem(QString::fromStdString(name));
+    }
+}
+
+
+int ConnectionsMenu::findPersonInVector(vector<person> personVector, string nameOfSelected)
+{
+    string personName;
+    for(unsigned int i = 0; i < personVector.size(); i++)
+    {
+        personName = personVector.at(i).getName();
+        transform(personName.begin(), personName.end(), personName.begin(),::tolower);
+
+        if(personName == nameOfSelected)
+        {
+            return i;
+        }
+    }
+
+}
+
+int ConnectionsMenu::findComputerInVector(vector<Computer> computerVector, string nameOfSelected)
+{
+    string computerName;
+    for(unsigned int i = 0; i < computerVector.size(); i++)
+    {
+        computerName = computerVector.at(i).getName();
+        transform(computerName.begin(), computerName.end(), computerName.begin(),::tolower);
+
+        if(computerName == nameOfSelected)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+void ConnectionsMenu::on_commandLinkButtonRemoveConnection_clicked()
+{
     vector<Connections> connectionsVector = domain.sortConnectionsVectorByID();
 
     if(connectionsVector.size() > 0)
@@ -112,7 +254,7 @@ void ConnectionsMenu::on_pushButtonRemoveConnection_clicked()
         {
             connectionsVector = domain.sortConnectionsVectorByID();
             displayConnectionsVectorInTable(connectionsVector);
-            fillComboBoxConnectionID();
+            refresh();
         }
         else
         {
@@ -120,10 +262,9 @@ void ConnectionsMenu::on_pushButtonRemoveConnection_clicked()
         }
 
     }
-
 }
 
-void ConnectionsMenu::on_commandLinkButtonAddNewConnection_clicked()
+void ConnectionsMenu::on_pushButtonRefresh_clicked()
 {
-     addconnectionform.show();
+    refresh();
 }
