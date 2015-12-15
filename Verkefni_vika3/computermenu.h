@@ -24,20 +24,26 @@ class ComputerMenu : public QWidget
 public:
     explicit ComputerMenu(QWidget *parent = 0);
     ~ComputerMenu();
+    //Tekur hvert stak fyrir sig úr vector og setur í lista
     void displayComputerVector(vector <Computer> compVec);
+    //refreshar ef breytingar hafa orðið
     void refresh();
+    //Finnur tölvu sem leitað er að
     int findComputerInVector(vector <Computer> computerVector, string nameofSelected);
 
+    //sækir tölvu ID
     int getComputerID() const;
+    //breytir gildi tölvu ID
     void setComputerID(int value);
 
-    //Mouse dragging
+    //Tengjast færslu á músabendli(gerir glugga færanlega)
     void mouseMoveEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
 
 
 private slots:
+    //útfærlsa á tökkum
     void on_commandLinkButtonAddNewComputer_clicked();
 
     void on_commandLinkButtonRemoveComputer_clicked();
