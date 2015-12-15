@@ -437,6 +437,14 @@
      <height>381</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Tw Cen MT</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="sortingEnabled">
     <bool>false</bool>
    </property>
@@ -467,13 +475,13 @@
     <rect>
      <x>240</x>
      <y>390</y>
-     <width>211</width>
+     <width>171</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Segoe UI</family>
+     <family>Tw Cen MT</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -496,6 +504,14 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Tw Cen MT</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButtonMakeConnection">
    <property name="geometry">
@@ -505,6 +521,14 @@
      <width>611</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Tw Cen MT</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Make Connection</string>
@@ -519,6 +543,14 @@
      <height>371</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Tw Cen MT</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
   </widget>
   <widget class="QListWidget" name="listWidgetDisplayComputer">
    <property name="geometry">
@@ -529,18 +561,47 @@
      <height>371</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Tw Cen MT</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButtonRefresh">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>400</x>
      <y>400</y>
-     <width>93</width>
-     <height>28</height>
+     <width>151</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Tw Cen MT</family>
+     <pointsize>11</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Refresh</string>
+   </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/refresh.png</normaloff>:/images/images/refresh.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="ButtonClose">
