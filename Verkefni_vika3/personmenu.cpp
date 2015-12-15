@@ -201,7 +201,8 @@ bool PersonMenu::validateInput()
 
 void PersonMenu::on_commandLinkButtonShowTable_clicked()
 {
-    //Show table form
+    persontable.show();
+    persontable.refresh();
 }
 
 void PersonMenu::Refresh()

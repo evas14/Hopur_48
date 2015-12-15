@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <addpersonform.h>
 #include <editperson.h>
+#include <persontable.h>
 #include <QMessageBox>
 
 using namespace std;
@@ -57,6 +58,7 @@ private:
     AddPersonForm addpersonform;
     EditPerson editpersonform;
     DomainLayer domain;
+    PersonTable persontable;
     int personID;
 
 

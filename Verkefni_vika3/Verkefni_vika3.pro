@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     editperson.cpp \
     connectionsmenu.cpp \
     addconnectionform.cpp \
-    computertable.cpp
+    computertable.cpp \
+    persontable.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     editperson.h \
     connectionsmenu.h \
     addconnectionform.h \
-    computertable.h
+    computertable.h \
+    persontable.h
 
 
 FORMS    += \
@@ -54,5 +56,6 @@ FORMS    += \
     addconnectionform.ui \
     computertable.ui \
     mainwindow.ui \
+    persontable.ui
 
 RESOURCES +=
