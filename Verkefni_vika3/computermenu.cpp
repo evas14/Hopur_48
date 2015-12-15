@@ -10,6 +10,8 @@ ComputerMenu::ComputerMenu(QWidget *parent) :
     ui->label4->hide();
     ui->lineEditComputerYearBuilt->hide();
     ui->label_3->hide();
+
+    setWindowFlags(Qt::FramelessWindowHint);
 }
 
 ComputerMenu::~ComputerMenu()
@@ -257,4 +259,34 @@ int ComputerMenu::getComputerID() const
 void ComputerMenu::setComputerID(int value)
 {
     computerID = value;
+}
+
+void ComputerMenu::on_ButtonCllose_clicked()
+{
+    ComputerMenu::close();
+}
+
+void ComputerMenu::mousePressEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = true;
+        mLastMousePosition = event->pos();
+    }
+}
+
+void ComputerMenu::mouseMoveEvent(QMouseEvent* event)
+{
+    if( event->buttons().testFlag(Qt::LeftButton) && mMoving)
+    {
+        this->move(this->pos() + (event->pos() - mLastMousePosition));
+    }
+}
+
+void ComputerMenu::mouseReleaseEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = false;
+    }
 }

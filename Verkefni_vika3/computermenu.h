@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <algorithm>
 #include <computertable.h>
+#include <QMoveEvent>
 
 
 using namespace std;
@@ -30,6 +31,12 @@ public:
     int getComputerID() const;
     void setComputerID(int value);
 
+    //Mouse dragging
+    void mouseMoveEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
+
+
 private slots:
     void on_commandLinkButtonAddNewComputer_clicked();
 
@@ -45,11 +52,17 @@ private slots:
 
     void on_checkBoxWasBuilt_clicked();
 
+    void on_ButtonCllose_clicked();
+
 private:
     Ui::ComputerMenu *ui;
     DomainLayer domain;
     ComputerTable comptable;
     int computerID;
+
+    //Mouse objects
+    QPoint mLastMousePosition;
+    bool mMoving;
 };
 
 #endif // COMPUTERMENU_H
