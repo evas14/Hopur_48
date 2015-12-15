@@ -129,7 +129,11 @@ void PersonMenu::on_commandLinkButtonRemovePerson_clicked()
 
         int locationInVector = findPersonInVector(personVector,nameOfSelected);
 
-        domain.removePerson(personVector.at(locationInVector).getID());
+        if(domain.removePerson(personVector.at(locationInVector).getID()))
+            ui->labelStatus->setText("<font color = 'green'> Operation Successful! </font>");
+        else
+            ui->labelStatus->setText("<font color = 'red'> Error: Failed to remove person! </font>");
+
 
         ui->listWidgetPerson->clear();
 
@@ -233,6 +237,7 @@ void PersonMenu::on_pushButtonClear_clicked()
    ui->checkBoxPersonAlive->setChecked(false);
    ui->lineEditPersonYearOfDeath->clear();
    ui->lineEditPersonYearOfDeath->show();
+   ui->labelStatus->clear();
 }
 
 void PersonMenu::on_pushButtonAddPerson_clicked()
@@ -240,7 +245,7 @@ void PersonMenu::on_pushButtonAddPerson_clicked()
 
     string name;
     string gender;
-    int yearofbirth=0,yearofdeath=0;
+    int yearofbirth=0,yearofdeath=0, status = 0;;
 
 
     name = ui->lineEditPersonName->text().toStdString();
@@ -258,17 +263,36 @@ void PersonMenu::on_pushButtonAddPerson_clicked()
 
     if(ui->checkBoxPersonAlive->isChecked())
     {
-        yearofdeath = ui->lineEditPersonYearOfDeath->text().toInt();
+        yearofdeath = 0;
     }
 
     else
-    {
-        yearofdeath = 0;
+    { 
+        yearofdeath = ui->lineEditPersonYearOfDeath->text().toInt();
     }
 
     if(validateInput())
     {
-        domain.addPerson(name,gender,yearofbirth,yearofdeath);
+        status = domain.addPerson(name,gender,yearofbirth,yearofdeath);
+
+        switch(status)
+        {
+            case 0:
+                ui->labelStatus->setText("<font color = 'green'> Operation Successful! </font>");
+                break;
+            case 1:
+                ui->labelStatus->setText("<font color = 'red'>Error: Name cannot contain numbers! </font>");
+                break;
+            case 2:
+                ui->labelStatus->setText("<font color = 'red'>Error: Invalid Birth Year! </font>");
+                break;
+            case 3:
+                ui->labelStatus->setText("<font color = 'red'>Error: Invalid Death Year! </font>");
+                break;
+            case 4:
+                ui->labelStatus->setText("<font color = 'red'>Error: Database Error! </font>");
+                break;
+        }
         Refresh();
     }
 
@@ -303,7 +327,7 @@ void PersonMenu::on_pushButtonUpdatePerson_clicked()
         string name = ui->lineEditPersonName->text().toStdString();
         string gender;
         int yearofbirth = ui->lineEditPersonYearOfBirth->text().toInt();
-        int yearofdeath;
+        int yearofdeath, status = 0;
 
         if(ui->radioButtonPersonGenderMale->isChecked())
         {
@@ -325,7 +349,27 @@ void PersonMenu::on_pushButtonUpdatePerson_clicked()
 
         if(validateInput())
         {
-            domain.updatePerson(getPersonID(),name,gender,yearofbirth,yearofdeath);
+            status = domain.updatePerson(getPersonID(),name,gender,yearofbirth,yearofdeath);
+
+            switch(status)
+            {
+                case 0:
+                    ui->labelStatus->setText("<font color = 'green'> Operation Successful! </font>");
+                    break;
+                case 1:
+                    ui->labelStatus->setText("<font color = 'red'>Error: Name cannot contain numbers! </font>");
+                    break;
+                case 2:
+                    ui->labelStatus->setText("<font color = 'red'>Error: Invalid Birth Year! </font>");
+                    break;
+                case 3:
+                    ui->labelStatus->setText("<font color = 'red'>Error: Invalid Death Year! </font>");
+                    break;
+                case 4:
+                    ui->labelStatus->setText("<font color = 'red'>Error: Database Error! </font>");
+                    break;
+
+            }
             Refresh();
         }
 
