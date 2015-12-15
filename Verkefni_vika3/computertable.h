@@ -22,7 +22,9 @@ class ComputerTable : public QWidget
 public:
     explicit ComputerTable(QWidget *parent = 0);
     ~ComputerTable();
+    //sækir alla töfluna
     void refresh();
+    //setur allar upplýsingar úr vector og setur í töflu
     void displayComputerVectorInTable(vector<Computer> computerVector);
 
     //mouse functions
@@ -31,8 +33,10 @@ public:
     void mouseReleaseEvent(QMouseEvent* event);
 
 private slots:
+    //kallar á refresh fallið
     void on_commandLinkButtonRefresh_clicked();
 
+    //Close takkin.
     void on_ButtonClose_clicked();
 
 private:
