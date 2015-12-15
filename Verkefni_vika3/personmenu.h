@@ -26,20 +26,27 @@ class PersonMenu : public QWidget
 public:
     explicit PersonMenu(QWidget *parent = 0);
     ~PersonMenu();
+    //Sýnir vector með fólki
     void displayPersonVector(vector <person> perVec);
+    //Sækir nýjan lista úr gagnagrunni
     void Refresh();
+    //Finnur úr lista persónur og birtir, hægt að leita eftir hlutstreng
     int findPersonInVector(vector<person> personVector, string nameOfSelected);
+    //Athugar hvort að slegið sé inn lögleg færsla
     bool validateInput();
 
+    //Sækir persónur
     int getPersonID() const;
+    //Gefur persónu gildi
     void setPersonID(int value);
 
-    //Mouse event
+    //Föll sem tengjast mús, hægt að draga glugga til og frá
     void mouseMoveEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
 
 private slots:
+    //Takkar og töflur
     void on_lineEditSearch_textChanged(const QString &arg1);
 
     void on_listWidgetPerson_clicked(const QModelIndex &index);
@@ -68,7 +75,7 @@ private:
     PersonTable persontable;
     int personID;
 
-    //Mouse Objects
+    //Hlutir sem tengjast mús
     QPoint mLastMousePosition;
     bool mMoving;
 
