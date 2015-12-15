@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1218</width>
+    <width>1250</width>
     <height>440</height>
    </rect>
   </property>
@@ -537,6 +537,66 @@
    </property>
    <property name="text">
     <string>Refresh</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ButtonClose">
+   <property name="geometry">
+    <rect>
+     <x>1204</x>
+     <y>10</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>107</red>
+         <green>107</green>
+         <blue>107</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>107</red>
+         <green>107</green>
+         <blue>107</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>69</red>
+         <green>69</green>
+         <blue>69</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>X</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
