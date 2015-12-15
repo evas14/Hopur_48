@@ -723,7 +723,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>310</y>
+     <y>340</y>
      <width>261</width>
      <height>41</height>
     </rect>
@@ -790,8 +790,8 @@
   <widget class="QCommandLinkButton" name="commandLinkButtonShowTable">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>360</y>
+     <x>20</x>
+     <y>430</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -879,33 +879,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonAddPerson">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>490</y>
-     <width>101</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Tw Cen MT</family>
-     <pointsize>11</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Add Person</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-  </widget>
   <widget class="QCheckBox" name="checkBoxPersonAlive">
    <property name="geometry">
     <rect>
@@ -952,14 +925,14 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>490</y>
-     <width>93</width>
-     <height>28</height>
+     <y>480</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Tw Cen MT</family>
+     <family>Segoe UI</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -1012,27 +985,6 @@
    </property>
    <property name="placeholderText">
     <string>Year of Birth</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButtonUpdatePerson">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>460</y>
-     <width>101</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Tw Cen MT</family>
-     <pointsize>11</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Update</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -1106,6 +1058,40 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="commandLinkButtonAddNewPerson">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>300</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add New Person</string>
+   </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/plus.png</normaloff>:/images/images/plus.png</iconset>
+   </property>
+  </widget>
+  <widget class="QCommandLinkButton" name="commandLinkButtonUpdatePerson">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>380</y>
+     <width>281</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Update Person</string>
+   </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/update.png</normaloff>:/images/images/update.png</iconset>
    </property>
   </widget>
  </widget>

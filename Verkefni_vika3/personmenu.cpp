@@ -240,7 +240,62 @@ void PersonMenu::on_pushButtonClear_clicked()
    ui->labelStatus->clear();
 }
 
-void PersonMenu::on_pushButtonAddPerson_clicked()
+void PersonMenu::on_checkBoxPersonAlive_clicked()
+{
+
+    if(!ui->checkBoxPersonAlive->isChecked())
+    {
+        ui->lineEditPersonYearOfDeath->show();
+    }
+    else
+    {
+        ui->lineEditPersonYearOfDeath->hide();
+    }
+}
+
+
+int PersonMenu::getPersonID() const
+{
+    return personID;
+}
+
+void PersonMenu::setPersonID(int value)
+{
+    personID = value;
+}
+
+
+void PersonMenu::mousePressEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = true;
+        mLastMousePosition = event->pos();
+    }
+}
+
+void PersonMenu::mouseMoveEvent(QMouseEvent* event)
+{
+    if( event->buttons().testFlag(Qt::LeftButton) && mMoving)
+    {
+        this->move(this->pos() + (event->pos() - mLastMousePosition));
+    }
+}
+
+void PersonMenu::mouseReleaseEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = false;
+    }
+}
+
+void PersonMenu::on_pushButton_clicked()
+{
+     PersonMenu::close();
+}
+
+void PersonMenu::on_commandLinkButtonAddNewPerson_clicked()
 {
 
     string name;
@@ -267,7 +322,7 @@ void PersonMenu::on_pushButtonAddPerson_clicked()
     }
 
     else
-    { 
+    {
         yearofdeath = ui->lineEditPersonYearOfDeath->text().toInt();
     }
 
@@ -296,26 +351,11 @@ void PersonMenu::on_pushButtonAddPerson_clicked()
         Refresh();
     }
 
-
 }
 
-void PersonMenu::on_checkBoxPersonAlive_clicked()
+void PersonMenu::on_commandLinkButtonUpdatePerson_clicked()
 {
 
-    if(!ui->checkBoxPersonAlive->isChecked())
-    {
-        ui->lineEditPersonYearOfDeath->show();
-    }
-    else
-    {
-        ui->lineEditPersonYearOfDeath->hide();
-    }
-}
-
-
-
-void PersonMenu::on_pushButtonUpdatePerson_clicked()
-{
     if(ui->listWidgetPerson->count() < 1)
     {
         QMessageBox::warning(this,"Warning!","List is Empty!");
@@ -383,46 +423,4 @@ void PersonMenu::on_pushButtonUpdatePerson_clicked()
 
 
 
-
-}
-
-int PersonMenu::getPersonID() const
-{
-    return personID;
-}
-
-void PersonMenu::setPersonID(int value)
-{
-    personID = value;
-}
-
-
-void PersonMenu::mousePressEvent(QMouseEvent* event)
-{
-    if(event->button() == Qt::LeftButton)
-    {
-        mMoving = true;
-        mLastMousePosition = event->pos();
-    }
-}
-
-void PersonMenu::mouseMoveEvent(QMouseEvent* event)
-{
-    if( event->buttons().testFlag(Qt::LeftButton) && mMoving)
-    {
-        this->move(this->pos() + (event->pos() - mLastMousePosition));
-    }
-}
-
-void PersonMenu::mouseReleaseEvent(QMouseEvent* event)
-{
-    if(event->button() == Qt::LeftButton)
-    {
-        mMoving = false;
-    }
-}
-
-void PersonMenu::on_pushButton_clicked()
-{
-     PersonMenu::close();
 }

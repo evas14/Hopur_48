@@ -52,14 +52,13 @@ private slots:
 
     void on_pushButtonClear_clicked();
 
-    void on_pushButtonAddPerson_clicked();
-
     void on_checkBoxPersonAlive_clicked();
 
-
-    void on_pushButtonUpdatePerson_clicked();
-
     void on_pushButton_clicked();
+
+    void on_commandLinkButtonAddNewPerson_clicked();
+
+    void on_commandLinkButtonUpdatePerson_clicked();
 
 private:
     Ui::PersonMenu *ui;
