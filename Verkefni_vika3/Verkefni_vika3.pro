@@ -12,6 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Verkefni_vika3
 TEMPLATE = app
 
+RESOURCES = resource.qrc
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -44,13 +45,15 @@ HEADERS  += mainwindow.h \
     computertable.h
 
 
-FORMS    += mainwindow.ui \
+FORMS    += \
     personmenu.ui \
     computermenu.ui \
     addpersonform.ui \
     editperson.ui \
     connectionsmenu.ui \
     addconnectionform.ui \
-    computertable.ui
+    computertable.ui \
+    ../../../../Desktop/Verkefni_vika3/mainwindow.ui \
+    mainwindow.ui
 
 RESOURCES +=

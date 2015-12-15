@@ -1,6 +1,9 @@
 <RCC>
-    <qresource prefix="/images"/>
-	<file>computer.png</file>
-	<file>connection.png</file>
-	<file>person.png</file>
+    <qresource prefix="/images">
+        <file>Images/computer.png</file>
+        <file>Images/connection.png</file>
+        <file>Images/person.png</file>
+        <file>Images/Charles_Babbage_1860.jpg</file>
+        <file>Images/analytical_engine_lg.jpg</file>
+    </qresource>
 </RCC>
