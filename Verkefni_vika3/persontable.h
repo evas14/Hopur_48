@@ -20,15 +20,18 @@ class PersonTable : public QWidget
 public:
     explicit PersonTable(QWidget *parent = 0);
     ~PersonTable();
+    //refreshar ef breytingar hafa orðið
     void refresh();
+    //Tekur hvert stak fyrir sig úr vector og setur í lista
     void displayPersonVectorInTable(vector<person> personVector);
 
-    //mouse events
+    //Tengjast færslu á músabendli(gerir glugga færanlega)
     void mouseMoveEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
 
 private slots:
+    //útfærsla á tökkum
     void on_commandLinkButtonRefresh_clicked();
 
     void on_ButtonClose_clicked();
