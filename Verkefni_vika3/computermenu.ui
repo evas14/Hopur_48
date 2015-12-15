@@ -45,6 +45,10 @@
    <property name="text">
     <string>Add New Computer</string>
    </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/plus.png</normaloff>:/images/images/plus.png</iconset>
+   </property>
   </widget>
   <widget class="QCommandLinkButton" name="commandLinkButtonRemoveComputer">
    <property name="geometry">
@@ -57,6 +61,10 @@
    </property>
    <property name="text">
     <string>Remove Computer</string>
+   </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/minus.png</normaloff>:/images/images/minus.png</iconset>
    </property>
   </widget>
   <widget class="QCommandLinkButton" name="commandLinkButtonEditComputer">
@@ -71,6 +79,10 @@
    <property name="text">
     <string>Update Computer</string>
    </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/update.png</normaloff>:/images/images/update.png</iconset>
+   </property>
   </widget>
   <widget class="QCommandLinkButton" name="commandLinkButtonShowTable">
    <property name="geometry">
@@ -83,6 +95,10 @@
    </property>
    <property name="text">
     <string>Show Table</string>
+   </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/tafla.png</normaloff>:/images/images/tafla.png</iconset>
    </property>
   </widget>
   <widget class="QLabel" name="labelName">
@@ -364,6 +380,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
