@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <connections.h>
 #include <domainlayer.h>
-#include <addconnectionform.h>
 #include <vector>
 #include <person.h>
 #include <computer.h>
@@ -45,8 +44,6 @@ public:
 private slots:
     void fillComboBoxConnectionID();
 
-    void on_commandLinkButtonAddNewConnection_clicked();
-
     void on_pushButtonMakeConnection_clicked();
 
     void on_commandLinkButtonRemoveConnection_clicked();
@@ -57,7 +54,6 @@ private slots:
 
 private:
     Ui::ConnectionsMenu *ui;
-    AddConnectionForm addconnectionform;
     DomainLayer domain;
 
     //mouse variables

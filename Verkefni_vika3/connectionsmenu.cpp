@@ -113,7 +113,7 @@ void ConnectionsMenu::fillComboBoxConnectionID()
 
     if(connectionVector.size() > 0)
     {
-        for(int i = 0; i < connectionVector.size(); i++)
+        for(unsigned int i = 0; i < connectionVector.size(); i++)
         {
             ID = connectionVector.at(i).getID();
 
@@ -131,10 +131,6 @@ void ConnectionsMenu::fillComboBoxConnectionID()
 
 
 
-void ConnectionsMenu::on_commandLinkButtonAddNewConnection_clicked()
-{
-     addconnectionform.show();
-}
 
 void ConnectionsMenu::on_pushButtonMakeConnection_clicked()
 {

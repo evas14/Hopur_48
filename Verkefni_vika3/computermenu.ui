@@ -467,7 +467,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Tw Cen MT</family>
+     <family>Segoe UI</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -492,7 +492,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Tw Cen MT</family>
+     <family>Segoe UI</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -517,7 +517,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Tw Cen MT</family>
+     <family>Segoe UI</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -542,7 +542,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Tw Cen MT</family>
+     <family>Segoe UI</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -708,7 +708,7 @@
     <rect>
      <x>290</x>
      <y>170</y>
-     <width>71</width>
+     <width>81</width>
      <height>16</height>
     </rect>
    </property>

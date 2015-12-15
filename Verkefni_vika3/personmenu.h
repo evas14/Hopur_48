@@ -7,8 +7,6 @@
 #include <person.h>
 #include <domainlayer.h>
 #include <algorithm>
-#include <addpersonform.h>
-#include <editperson.h>
 #include <persontable.h>
 #include <QMessageBox>
 #include<QMoveEvent>
@@ -69,8 +67,6 @@ private slots:
 
 private:
     Ui::PersonMenu *ui;
-    AddPersonForm addpersonform;
-    EditPerson editpersonform;
     DomainLayer domain;
     PersonTable persontable;
     int personID;
