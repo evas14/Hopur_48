@@ -8,8 +8,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-#include <Qtsql>
-#include <Qtsql/QSqlDatabase>
+#include <QtSql>
 #include <QSqlQuery>
 #include <QCoreApplication>
 

@@ -41,12 +41,12 @@ public:
     vector<Connections> sortConnectionsVectorByID();
 
     //Föll sem bæta við gagnagrunn
-    bool addPerson(string name,string gender,int yearofbirth,int yearofdeath);
-    bool addComputer(string name, string computerType, int yearBuilt, bool wasBuilt);
-    void addConnection(int personID,int computerID);
+    int addPerson(string name,string gender,int yearofbirth,int yearofdeath);
+    int addComputer(string name, string computerType, int yearBuilt, bool wasBuilt);
+    bool addConnection(int personID,int computerID);
 
-    bool updateComputer(int id,string name,string computerType, int yearBuilt, bool wasBuilt);
-    bool updatePerson(int id,string name,string gender,int yearofbirth,int yearofdeath);
+    int updateComputer(int id,string name,string computerType, int yearBuilt, bool wasBuilt);
+    int updatePerson(int id,string name,string gender,int yearofbirth,int yearofdeath);
 
 
     //Athugar hvort stak sé til í vector
