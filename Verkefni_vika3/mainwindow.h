@@ -10,8 +10,8 @@
 #include <personmenu.h>
 #include <string>
 #include <vector>
-
 #include<QMoveEvent>
+
 using namespace std;
 
 namespace Ui {
@@ -27,8 +27,8 @@ public:
     ~MainWindow();
 
     void mouseMoveEvent(QMouseEvent* event);
-        void mousePressEvent(QMouseEvent* event);
-        void mouseReleaseEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
 
 
 
@@ -51,7 +51,7 @@ private:
     ConnectionsMenu connectionsmenu;
 
     QPoint mLastMousePosition;
-        bool mMoving;
+    bool mMoving;
 };
 
 #endif // MAINWINDOW_H

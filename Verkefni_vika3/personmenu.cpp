@@ -6,7 +6,7 @@ PersonMenu::PersonMenu(QWidget *parent) :
     ui(new Ui::PersonMenu)
 {
     ui->setupUi(this);
-
+    setWindowFlags(Qt::FramelessWindowHint);
 }
 
 PersonMenu::~PersonMenu()
@@ -350,4 +350,35 @@ int PersonMenu::getPersonID() const
 void PersonMenu::setPersonID(int value)
 {
     personID = value;
+}
+
+
+void PersonMenu::mousePressEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = true;
+        mLastMousePosition = event->pos();
+    }
+}
+
+void PersonMenu::mouseMoveEvent(QMouseEvent* event)
+{
+    if( event->buttons().testFlag(Qt::LeftButton) && mMoving)
+    {
+        this->move(this->pos() + (event->pos() - mLastMousePosition));
+    }
+}
+
+void PersonMenu::mouseReleaseEvent(QMouseEvent* event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mMoving = false;
+    }
+}
+
+void PersonMenu::on_pushButton_clicked()
+{
+     PersonMenu::close();
 }

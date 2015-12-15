@@ -11,6 +11,7 @@
 #include <editperson.h>
 #include <persontable.h>
 #include <QMessageBox>
+#include<QMoveEvent>
 
 using namespace std;
 
@@ -33,6 +34,11 @@ public:
     int getPersonID() const;
     void setPersonID(int value);
 
+    //Mouse event
+    void mouseMoveEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
+
 private slots:
     void on_lineEditSearch_textChanged(const QString &arg1);
 
@@ -53,6 +59,8 @@ private slots:
 
     void on_pushButtonUpdatePerson_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::PersonMenu *ui;
     AddPersonForm addpersonform;
@@ -61,6 +69,9 @@ private:
     PersonTable persontable;
     int personID;
 
+    //Mouse Objects
+    QPoint mLastMousePosition;
+    bool mMoving;
 
 };
 
