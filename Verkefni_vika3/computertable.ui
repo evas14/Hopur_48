@@ -66,6 +66,10 @@
    <property name="text">
     <string> Refresh Table</string>
    </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/refresh.png</normaloff>:/images/images/refresh.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="ButtonClose">
    <property name="geometry">
@@ -128,6 +132,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

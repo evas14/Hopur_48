@@ -482,6 +482,10 @@
    <property name="text">
     <string>Remove Connection</string>
    </property>
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/images/images/refresh.png</normaloff>:/images/images/refresh.png</iconset>
+   </property>
   </widget>
   <widget class="QComboBox" name="comboBoxConnectionID">
    <property name="geometry">
@@ -600,6 +604,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

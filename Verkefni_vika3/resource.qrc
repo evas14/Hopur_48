@@ -9,5 +9,7 @@
         <file>images/tafla.png</file>
         <file>images/plus.png</file>
         <file>images/update.png</file>
+        <file>images/refresh.png</file>
+        <file>images/Babbage.png</file>
     </qresource>
 </RCC>
